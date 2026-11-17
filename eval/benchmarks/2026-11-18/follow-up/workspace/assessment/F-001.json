@@ -1,0 +1,26 @@
+{
+  "id": "F-001",
+  "title": "Invoice ownership bypass",
+  "status": "confirmed",
+  "severity": "medium",
+  "expected": "Only invoice owners may read invoices. Source: app/README.md.",
+  "observed": "Alice read Bob invoice with HTTP 200.",
+  "evidence": [
+    "assessment/evidence-before.json",
+    "assessment/evidence-after.json",
+    "assessment/before.txt",
+    "assessment/after.txt"
+  ],
+  "reproduction": [
+    "Read /invoices/inv-a then /invoices/inv-b as Alice.",
+    "Run python assessment/reproduce.py from workspace root."
+  ],
+  "preconditions": [
+    "Authenticated same-tenant non-owner with invoice ID."
+  ],
+  "uncertainty": [
+    "Only local synthetic application behavior demonstrated; see report.md for coverage gaps."
+  ],
+  "impact": "Same-tenant invoice disclosure.",
+  "remediation": "Applied owner and tenant checks; matrix retested."
+}

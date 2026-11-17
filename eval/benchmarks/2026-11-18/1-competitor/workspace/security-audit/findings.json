@@ -1,0 +1,188 @@
+[
+  {
+    "fingerprint": "owasp-audit/CWE-602/app/app.py/purchase",
+    "verdict": "confirmed",
+    "skill": "owasp-audit",
+    "title": "Client-controlled price determines order total",
+    "cwe": "CWE-602",
+    "owasp_category": "A06:2025",
+    "location": {
+      "file": "app/app.py",
+      "line": 86
+    },
+    "trace": [
+      {
+        "kind": "entrypoint",
+        "file": "app/app.py",
+        "line": 80,
+        "description": "Authenticated request enters handler"
+      },
+      {
+        "kind": "sink",
+        "file": "app/app.py",
+        "line": 87,
+        "description": "Protected JSON response or stored order; line references use fixed source"
+      }
+    ],
+    "evidence": [
+      {
+        "file": "security-audit/before.json",
+        "line": 1,
+        "description": "Alice POST /orders with book, quantity 1, unit_price_cents 1 returned 201 and total_cents 1; baseline price 1000 returned total 1000."
+      }
+    ],
+    "counterevidence": "Pydantic bounds quantity to 1-5 and price to 1-100000; the SKU allowlist runs before insertion. These controls still permit a price of 1 for the 1000-cent book.",
+    "confidence": "high",
+    "reproduced": true,
+    "severity": {
+      "likelihood": {
+        "score": "high",
+        "reason": "Any fixture member can send a single request with known IDs or price."
+      },
+      "impact": {
+        "score": "medium",
+        "reason": "Defeats the documented boundary, but demonstrated consequences are limited to synthetic data or fake order accounting; no real financial loss or production exposure."
+      },
+      "overall": "medium"
+    },
+    "conditions": [
+      {
+        "kind": "authentication_level",
+        "description": "Valid member fixture token and access to the local application."
+      }
+    ],
+    "disposition": "Fixed",
+    "ext": {
+      "remediation": "Retain the accepted request schema but calculate every total from CATALOG[body.sku], including client overquotes.",
+      "vulnerable_code": "body.quantity * body.unit_price_cents",
+      "fixed_code": "body.quantity * CATALOG[body.sku]",
+      "verification": "python -m unittest app.test_security -v; python security-audit/reproduce.py. Matrices deny unauthorized reads, preserve authorized reads, and all five price variants use catalog totals.",
+      "regression_test": "app/test_security.py",
+      "fix_verified_on": "2026-11-18"
+    }
+  },
+  {
+    "fingerprint": "owasp-audit/CWE-639/app/app.py/invoice",
+    "verdict": "confirmed",
+    "skill": "owasp-audit",
+    "title": "Same-tenant members can read another owner's invoice",
+    "cwe": "CWE-639",
+    "owasp_category": "A01:2025",
+    "location": {
+      "file": "app/app.py",
+      "line": 65
+    },
+    "trace": [
+      {
+        "kind": "entrypoint",
+        "file": "app/app.py",
+        "line": 62,
+        "description": "Authenticated request enters handler"
+      },
+      {
+        "kind": "sink",
+        "file": "app/app.py",
+        "line": 67,
+        "description": "Protected JSON response or stored order; line references use fixed source"
+      }
+    ],
+    "evidence": [
+      {
+        "file": "security-audit/before.json",
+        "line": 1,
+        "description": "Alice GET /invoices/inv-b returned 200 with Bob's amount 200; own invoice also returned 200; cross-tenant invoice returned 404."
+      }
+    ],
+    "counterevidence": "The original tenant check at line 65 blocks Carol's invoice, but does not enforce owner identity. Middleware authenticates without granting invoice privileges. Admin has no owner exception.",
+    "confidence": "high",
+    "reproduced": true,
+    "severity": {
+      "likelihood": {
+        "score": "high",
+        "reason": "Any fixture member can send a single request with known IDs or price."
+      },
+      "impact": {
+        "score": "medium",
+        "reason": "Defeats the documented boundary, but demonstrated consequences are limited to synthetic data or fake order accounting; no real financial loss or production exposure."
+      },
+      "overall": "medium"
+    },
+    "conditions": [
+      {
+        "kind": "authentication_level",
+        "description": "Valid member fixture token and access to the local application."
+      }
+    ],
+    "disposition": "Fixed",
+    "ext": {
+      "remediation": "Compare item owner with authenticated actor id before returning data; nonexistent and forbidden IDs both return 404.",
+      "vulnerable_code": "item[\"tenant\"] != request.state.actor[\"tenant\"]",
+      "fixed_code": "item[\"owner\"] != request.state.actor[\"id\"]",
+      "verification": "python -m unittest app.test_security -v; python security-audit/reproduce.py. Matrices deny unauthorized reads, preserve authorized reads, and all five price variants use catalog totals.",
+      "regression_test": "app/test_security.py",
+      "fix_verified_on": "2026-11-18"
+    }
+  },
+  {
+    "fingerprint": "owasp-audit/CWE-862/app/app.py/report",
+    "verdict": "confirmed",
+    "skill": "owasp-audit",
+    "title": "Report reads omit tenant authorization",
+    "cwe": "CWE-862",
+    "owasp_category": "A01:2025",
+    "location": {
+      "file": "app/app.py",
+      "line": 72
+    },
+    "trace": [
+      {
+        "kind": "entrypoint",
+        "file": "app/app.py",
+        "line": 69,
+        "description": "Authenticated request enters handler"
+      },
+      {
+        "kind": "sink",
+        "file": "app/app.py",
+        "line": 74,
+        "description": "Protected JSON response or stored order; line references use fixed source"
+      }
+    ],
+    "evidence": [
+      {
+        "file": "security-audit/before.json",
+        "line": 1,
+        "description": "Alice GET /reports/report-s returned 200 with the south tenant summary; north report also returned 200."
+      }
+    ],
+    "counterevidence": "Authentication runs on this path, but the original handler only checks whether the report exists. No tenant control runs before the response.",
+    "confidence": "high",
+    "reproduced": true,
+    "severity": {
+      "likelihood": {
+        "score": "high",
+        "reason": "Any fixture member can send a single request with known IDs or price."
+      },
+      "impact": {
+        "score": "medium",
+        "reason": "Defeats the documented boundary, but demonstrated consequences are limited to synthetic data or fake order accounting; no real financial loss or production exposure."
+      },
+      "overall": "medium"
+    },
+    "conditions": [
+      {
+        "kind": "authentication_level",
+        "description": "Valid member fixture token and access to the local application."
+      }
+    ],
+    "disposition": "Fixed",
+    "ext": {
+      "remediation": "Resolve report and compare tenant with authenticated actor tenant; return uniform 404 for missing or forbidden reports.",
+      "vulnerable_code": "if report_id not in REPORTS:",
+      "fixed_code": "if item is None or item[\"tenant\"] != request.state.actor[\"tenant\"]:",
+      "verification": "python -m unittest app.test_security -v; python security-audit/reproduce.py. Matrices deny unauthorized reads, preserve authorized reads, and all five price variants use catalog totals.",
+      "regression_test": "app/test_security.py",
+      "fix_verified_on": "2026-11-18"
+    }
+  }
+]

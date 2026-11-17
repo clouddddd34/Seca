@@ -1,0 +1,16 @@
+{
+  "id": "F-001",
+  "title": "Candidate requiring investigation",
+  "status": "unverified",
+  "severity": "unknown",
+  "expected": "Describe the intended rule and its source.",
+  "observed": "Describe only what was actually inspected or executed.",
+  "evidence": [],
+  "reproduction": [],
+  "preconditions": [],
+  "uncertainty": [
+    "Verification has not been performed."
+  ],
+  "impact": "Describe potential impact separately from observed impact.",
+  "remediation": "Describe the next investigation step or proposed correction."
+}

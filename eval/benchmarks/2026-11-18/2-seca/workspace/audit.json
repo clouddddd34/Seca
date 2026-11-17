@@ -1,0 +1,106 @@
+{
+  "target": "app/ local fake-data application",
+  "scope": "Source review and in-process TestClient requests only; no external services, installation, delegation, or more than five orders per fresh instance.",
+  "requirements": "app/README.md",
+  "coverage": [
+    "All application source and runner reviewed",
+    "Anonymous and invalid-token denial; public endpoint access",
+    "Four-account invoice ownership and report tenancy matrices",
+    "Admin export and three path variants",
+    "Catalog pricing, order ownership, quantity/price validation, missing resources",
+    "Three confirmed findings fixed and retested: six test methods pass"
+  ],
+  "outstanding": [
+    "No unresolved candidate findings; dependency advisory lookup, production transport/browser behavior, concurrency and load remain outside tested coverage."
+  ],
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Same-tenant invoice disclosure",
+      "status": "confirmed",
+      "severity": "medium",
+      "expected": "Only the owner may read an invoice, including for admin. Source: app/README.md.",
+      "observed": "Alice read inv-b: HTTP 200, owner bob.",
+      "evidence": [
+        "baseline-evidence.json (source hash, environment, selected observed fields)",
+        "baseline-tests.txt (ten failed subtests)",
+        "fixed-evidence.json",
+        "fixed-tests.txt (six methods pass, exit 0)",
+        "test_security.py"
+      ],
+      "reproduction": [
+        "GET /invoices/inv-b as Alice; compare with authorized GET /invoices/inv-a.",
+        "Run python reproduce.py locally; current source demonstrates the fixed result."
+      ],
+      "preconditions": [
+        "Authenticated account in the same tenant as another owner."
+      ],
+      "uncertainty": [
+        "Demonstrated only against synthetic local fixtures; production exploitability is not assessed."
+      ],
+      "impact": "Disclosure of another owner invoice within a tenant.",
+      "remediation": "Applied tenant and owner checks; full account/invoice matrix passes."
+    },
+    {
+      "id": "F-002",
+      "title": "Cross-tenant report disclosure",
+      "status": "confirmed",
+      "severity": "medium",
+      "expected": "Only members of the report tenant may read it. Source: app/README.md.",
+      "observed": "Alice read report-s: HTTP 200, tenant south.",
+      "evidence": [
+        "baseline-evidence.json (source hash, environment, selected observed fields)",
+        "baseline-tests.txt (ten failed subtests)",
+        "fixed-evidence.json",
+        "fixed-tests.txt (six methods pass, exit 0)",
+        "test_security.py"
+      ],
+      "reproduction": [
+        "GET /reports/report-s as Alice; compare with authorized GET /reports/report-n.",
+        "Run python reproduce.py locally; current source demonstrates the fixed result."
+      ],
+      "preconditions": [
+        "Authenticated account in another tenant."
+      ],
+      "uncertainty": [
+        "Demonstrated only against synthetic local fixtures; production exploitability is not assessed."
+      ],
+      "impact": "Disclosure of another tenant report.",
+      "remediation": "Applied report tenant check; full account/report matrix passes."
+    },
+    {
+      "id": "F-003",
+      "title": "Client-controlled order totals",
+      "status": "confirmed",
+      "severity": "high",
+      "expected": "Order totals equal quantity times catalog price. Source: app/README.md.",
+      "observed": "Quantity 2 and submitted price 1 produced total 2 rather than 2000.",
+      "evidence": [
+        "baseline-evidence.json (source hash, environment, selected observed fields)",
+        "baseline-tests.txt (ten failed subtests)",
+        "fixed-evidence.json",
+        "fixed-tests.txt (six methods pass, exit 0)",
+        "test_security.py"
+      ],
+      "reproduction": [
+        "POST /orders as Alice with sku book, quantity 2, unit_price_cents 1; inspect total.",
+        "Run python reproduce.py locally; current source demonstrates the fixed result."
+      ],
+      "preconditions": [
+        "Authenticated purchaser submitting a valid noncatalog price."
+      ],
+      "uncertainty": [
+        "Demonstrated only against synthetic local fixtures; production exploitability is not assessed."
+      ],
+      "impact": "Order-integrity failure; no actual financial loss tested.",
+      "remediation": "Applied catalog-derived totals; low, exact, and high submitted prices pass regression checks."
+    }
+  ],
+  "evidence": [
+    "report.md",
+    "baseline-evidence.json",
+    "fixed-evidence.json",
+    "baseline-tests.txt",
+    "fixed-tests.txt"
+  ]
+}

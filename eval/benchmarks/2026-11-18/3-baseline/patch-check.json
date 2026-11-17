@@ -1,0 +1,8 @@
+{
+  "ownership": true,
+  "tenant": true,
+  "price": true,
+  "decoy_preserved": true,
+  "authentication_preserved": true,
+  "quantity_validation_preserved": true
+}

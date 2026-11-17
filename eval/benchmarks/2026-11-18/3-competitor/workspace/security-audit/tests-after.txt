@@ -1,0 +1,21 @@
+test_admin_guard_variants (test_security.SecurityRegression.test_admin_guard_variants) ... ok
+
+test_auth_and_public_routes (test_security.SecurityRegression.test_auth_and_public_routes) ... ok
+
+test_invalid_orders_do_not_mutate (test_security.SecurityRegression.test_invalid_orders_do_not_mutate) ... ok
+
+test_invoice_owner_matrix (test_security.SecurityRegression.test_invoice_owner_matrix) ... ok
+
+test_prices_and_order_isolation (test_security.SecurityRegression.test_prices_and_order_isolation) ... ok
+
+test_report_tenant_matrix (test_security.SecurityRegression.test_report_tenant_matrix) ... ok
+
+
+
+----------------------------------------------------------------------
+
+Ran 6 tests in 0.094s
+
+
+
+OK

@@ -1,0 +1,94 @@
+{
+  "versions": {
+    "fastapi": "0.115.6",
+    "starlette": "0.41.3",
+    "pydantic": "2.13.4",
+    "httpx": "0.26.0",
+    "uvicorn": "0.34.0"
+  },
+  "responses": [
+    {
+      "actor": "alice",
+      "path": "/invoices/inv-a",
+      "status": 200,
+      "body": "{\"id\":\"inv-a\",\"owner\":\"alice\",\"tenant\":\"north\",\"amount\":100}"
+    },
+    {
+      "actor": "alice",
+      "path": "/invoices/inv-b",
+      "status": 200,
+      "body": "{\"id\":\"inv-b\",\"owner\":\"bob\",\"tenant\":\"north\",\"amount\":200}"
+    },
+    {
+      "actor": "alice",
+      "path": "/invoices/inv-c",
+      "status": 404,
+      "body": "{\"detail\":\"Not found\"}"
+    },
+    {
+      "actor": "admin",
+      "path": "/invoices/inv-a",
+      "status": 200,
+      "body": "{\"id\":\"inv-a\",\"owner\":\"alice\",\"tenant\":\"north\",\"amount\":100}"
+    },
+    {
+      "actor": "alice",
+      "path": "/reports/report-s",
+      "status": 200,
+      "body": "{\"id\":\"report-s\",\"tenant\":\"south\",\"summary\":\"Synthetic south report\"}"
+    },
+    {
+      "actor": "carol",
+      "path": "/reports/report-n",
+      "status": 200,
+      "body": "{\"id\":\"report-n\",\"tenant\":\"north\",\"summary\":\"Synthetic north report\"}"
+    },
+    {
+      "actor": "alice",
+      "path": "/admin/export",
+      "status": 403,
+      "body": "{\"detail\":\"Administrator required\"}"
+    },
+    {
+      "actor": "admin",
+      "path": "/admin/export",
+      "status": 200,
+      "body": "{\"export\":\"Synthetic administrative data\"}"
+    },
+    {
+      "actor": "alice",
+      "path": "//admin/export",
+      "status": 404,
+      "body": "{\"detail\":\"Not Found\"}"
+    },
+    {
+      "actor": "alice",
+      "path": "/%61dmin/export",
+      "status": 403,
+      "body": "{\"detail\":\"Administrator required\"}"
+    },
+    {
+      "actor": "alice",
+      "path": "/admin%2fexport",
+      "status": 403,
+      "body": "{\"detail\":\"Administrator required\"}"
+    },
+    {
+      "actor": "alice",
+      "path": "POST /orders",
+      "input": {
+        "sku": "book",
+        "quantity": 2,
+        "unit_price_cents": 1
+      },
+      "status": 201,
+      "body": {
+        "id": 1,
+        "owner": "alice",
+        "sku": "book",
+        "quantity": 2,
+        "total_cents": 2
+      }
+    }
+  ]
+}

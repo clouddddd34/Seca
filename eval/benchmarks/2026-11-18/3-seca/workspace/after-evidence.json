@@ -1,0 +1,45 @@
+{
+  "source_sha256": "061d490b00b25d1414eaea3fb52951a27bf964c7e10680a08525dfa7265f9625",
+  "versions": {
+    "fastapi": "0.115.6",
+    "starlette": "0.41.3",
+    "pydantic": "2.13.4",
+    "httpx": "0.26.0",
+    "uvicorn": "0.34.0"
+  },
+  "observations": [
+    {
+      "actor": "bob",
+      "path": "/invoices/inv-b",
+      "status": 200,
+      "owner": "bob"
+    },
+    {
+      "actor": "alice",
+      "path": "/invoices/inv-b",
+      "status": 404,
+      "owner": null
+    },
+    {
+      "actor": "carol",
+      "path": "/reports/report-s",
+      "status": 200,
+      "tenant": "south"
+    },
+    {
+      "actor": "alice",
+      "path": "/reports/report-s",
+      "status": 404,
+      "tenant": null
+    },
+    {
+      "actor": "alice",
+      "path": "/orders",
+      "quantity": 2,
+      "submitted_price": 1,
+      "expected_total": 2000,
+      "status": 201,
+      "actual_total": 2000
+    }
+  ]
+}

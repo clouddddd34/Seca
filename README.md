@@ -4,7 +4,7 @@
 
 Seca is a reusable Markdown skill for AI coding agents reviewing authorized websites and APIs, with optional Rust helpers and a deliberately vulnerable Python/FastAPI evaluation fixture. It guides an agent through scope, access rules, verification, remediation, and coverage reporting.
 
-**Status: early prototype.** Local fixture and helper tests pass on Windows. The comparative agent benchmark has not produced valid results; see [validation results](eval/RESULTS.md). There is no claim that Seca outperforms existing skills. Desktop application guidance is deferred until there is a desktop fixture.
+**Status: early prototype.** Local fixture and helper tests pass on Windows. A nine-run local benchmark found all planted bugs in every arm, with no detection advantage for Seca; the baseline finished faster. See [validation results](eval/RESULTS.md). There is no claim that Seca outperforms existing skills. Desktop application guidance is deferred until there is a desktop fixture.
 
 ## What you get
 
@@ -90,7 +90,7 @@ SECA_BOB_TOKEN=fixture-bob SECA_ALICE_TOKEN=fixture-alice \
 
 The example checks Bob's invoice with its owner, another user, and anonymous access. Its expected denial status is illustrative: a 404 can also be a valid denial. Inspect response meaning and the access rule; do not equate any status mismatch with a security bug.
 
-Replay is GET-only, accepts 1–8 accounts, uses independent bearer headers, follows no redirects, and performs no retries. Remote targets require HTTPS and `--allow-remote` in addition to established permission. **All development testing for this project uses local fixtures only.** It does not automate login, browser cookies, active scanning, or state-changing requests. See [helper behavior and limits](security-audit/references/helpers.md).
+Replay is GET-only, accepts 1â€“8 accounts, uses independent bearer headers, follows no redirects, and performs no retries. Remote targets require HTTPS and `--allow-remote` in addition to established permission. **All development testing for this project uses local fixtures only.** It does not automate login, browser cookies, active scanning, or state-changing requests. See [helper behavior and limits](security-audit/references/helpers.md).
 
 Reports omit raw URLs, bodies, headers, and token values. They contain observations rather than vulnerability verdicts. Keep a separately redacted reproduction and relevant revision/environment. Do not place real credentials in configs, reports, or source control.
 
@@ -122,4 +122,4 @@ Follow the [fixture instructions](eval/fixture/README.md) to run the local app. 
 
 ## Research and license
 
-See [research and credits](docs/RESEARCH.md) for sources and design decisions. Seca's original code and instructions are MIT-licensed. Upstream competitor material is not vendored in this repository; evaluation preparation preserves its license when copying it into temporary workspaces. Dependencies retain their own licenses.
+See [research and credits](docs/RESEARCH.md) for sources and design decisions. Seca's original code and instructions are MIT-licensed. Upstream skill source is not vendored in the distributed skill. Evaluation preparation preserves its license in temporary workspaces; archived benchmark outputs also include the competitor MIT notice. Dependencies retain their own licenses.

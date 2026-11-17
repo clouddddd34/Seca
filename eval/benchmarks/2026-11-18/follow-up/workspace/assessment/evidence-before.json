@@ -1,0 +1,54 @@
+{
+  "python": "3.11.9",
+  "packages": {
+    "fastapi": "0.115.6",
+    "starlette": "0.41.3",
+    "pydantic": "2.13.4",
+    "httpx": "0.26.0",
+    "uvicorn": "0.34.0",
+    "anyio": "4.13.0"
+  },
+  "source_sha256": "b6cc46582538a044a4d47604c70e586af8602d0958dc66d35fed3609bef685b0",
+  "reads": [
+    {
+      "actor": "alice",
+      "path": "/invoices/inv-a",
+      "status": 200,
+      "returned_id": "inv-a",
+      "owner_matches_actor": true,
+      "tenant_matches_actor": true
+    },
+    {
+      "actor": "alice",
+      "path": "/invoices/inv-b",
+      "status": 200,
+      "returned_id": "inv-b",
+      "owner_matches_actor": false,
+      "tenant_matches_actor": true
+    },
+    {
+      "actor": "alice",
+      "path": "/reports/report-n",
+      "status": 200,
+      "returned_id": "report-n",
+      "owner_matches_actor": null,
+      "tenant_matches_actor": true
+    },
+    {
+      "actor": "alice",
+      "path": "/reports/report-s",
+      "status": 200,
+      "returned_id": "report-s",
+      "owner_matches_actor": null,
+      "tenant_matches_actor": false
+    }
+  ],
+  "orders_before": 0,
+  "purchase": {
+    "status": 201,
+    "orders_after": 1,
+    "persisted_total": 2,
+    "catalog_expected_total": 2000,
+    "read_matches_creation": true
+  }
+}

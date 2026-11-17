@@ -1,0 +1,26 @@
+{
+  "id": "F-001",
+  "title": "Invoice ownership authorization missing",
+  "status": "confirmed",
+  "severity": "medium",
+  "expected": "Only invoice owner may read, including against admin (README).",
+  "observed": "Alice read inv-b: HTTP 200, owner bob; four prohibited matrix combinations succeeded.",
+  "evidence": [
+    "before-evidence.json (original source hash and bounded observations)",
+    "before-tests.txt",
+    "after-evidence.json",
+    "after-tests.txt"
+  ],
+  "reproduction": [
+    "GET /invoices/inv-b as Bob for baseline, then Alice.",
+    "Run python -m unittest discover -s app -p test_security.py -v"
+  ],
+  "preconditions": [
+    "Authenticated fixture account; local original application."
+  ],
+  "uncertainty": [
+    "Impact demonstrated on synthetic local data only; deployment and external integrations not assessed."
+  ],
+  "impact": "Disclosure of another user invoice within the same tenant.",
+  "remediation": "Require tenant and owner match; applied and retested."
+}

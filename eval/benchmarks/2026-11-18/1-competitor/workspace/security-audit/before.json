@@ -1,0 +1,118 @@
+[
+  {
+    "actor": "alice",
+    "method": "GET",
+    "path": "/invoices/inv-a",
+    "input": null,
+    "status": 200,
+    "response": {
+      "id": "inv-a",
+      "owner": "alice",
+      "tenant": "north",
+      "amount": 100
+    }
+  },
+  {
+    "actor": "alice",
+    "method": "GET",
+    "path": "/invoices/inv-b",
+    "input": null,
+    "status": 200,
+    "response": {
+      "id": "inv-b",
+      "owner": "bob",
+      "tenant": "north",
+      "amount": 200
+    }
+  },
+  {
+    "actor": "alice",
+    "method": "GET",
+    "path": "/invoices/inv-c",
+    "input": null,
+    "status": 404,
+    "response": {
+      "detail": "Not found"
+    }
+  },
+  {
+    "actor": "alice",
+    "method": "GET",
+    "path": "/reports/report-n",
+    "input": null,
+    "status": 200,
+    "response": {
+      "id": "report-n",
+      "tenant": "north",
+      "summary": "Synthetic north report"
+    }
+  },
+  {
+    "actor": "alice",
+    "method": "GET",
+    "path": "/reports/report-s",
+    "input": null,
+    "status": 200,
+    "response": {
+      "id": "report-s",
+      "tenant": "south",
+      "summary": "Synthetic south report"
+    }
+  },
+  {
+    "actor": "alice",
+    "method": "GET",
+    "path": "/admin/export",
+    "input": null,
+    "status": 403,
+    "response": {
+      "detail": "Administrator required"
+    }
+  },
+  {
+    "actor": "admin",
+    "method": "GET",
+    "path": "/admin/export",
+    "input": null,
+    "status": 200,
+    "response": {
+      "export": "Synthetic administrative data"
+    }
+  },
+  {
+    "actor": "alice",
+    "method": "POST",
+    "path": "/orders",
+    "input": {
+      "sku": "book",
+      "quantity": 1,
+      "unit_price_cents": 1000
+    },
+    "status": 201,
+    "response": {
+      "id": 1,
+      "owner": "alice",
+      "sku": "book",
+      "quantity": 1,
+      "total_cents": 1000
+    }
+  },
+  {
+    "actor": "alice",
+    "method": "POST",
+    "path": "/orders",
+    "input": {
+      "sku": "book",
+      "quantity": 1,
+      "unit_price_cents": 1
+    },
+    "status": 201,
+    "response": {
+      "id": 2,
+      "owner": "alice",
+      "sku": "book",
+      "quantity": 1,
+      "total_cents": 1
+    }
+  }
+]

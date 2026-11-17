@@ -1,0 +1,211 @@
+[
+  {
+    "id": "route-0-access",
+    "surface": "GET /",
+    "boundary": "caller to API resource",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "route-1-access",
+    "surface": "GET /health",
+    "boundary": "caller to API resource",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "route-2-access",
+    "surface": "GET /me",
+    "boundary": "caller to API resource",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "route-3-access",
+    "surface": "GET /invoices/{invoice_id}",
+    "boundary": "caller to API resource",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "route-4-access",
+    "surface": "GET /reports/{report_id}",
+    "boundary": "caller to API resource",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "route-5-access",
+    "surface": "GET /catalog",
+    "boundary": "caller to API resource",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "route-6-access",
+    "surface": "POST /orders",
+    "boundary": "caller to API resource",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "route-7-access",
+    "surface": "GET /orders",
+    "boundary": "caller to API resource",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "route-8-access",
+    "surface": "GET /admin/export",
+    "boundary": "caller to API resource",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "route-9-access",
+    "surface": "GET /openapi.json",
+    "boundary": "caller to API resource",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "application-A02",
+    "surface": "Application configuration and request processing",
+    "boundary": "untrusted request to application state",
+    "owasp_category": "A02:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "application-A03",
+    "surface": "Application configuration and request processing",
+    "boundary": "untrusted request to application state",
+    "owasp_category": "A03:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "application-A04",
+    "surface": "Application configuration and request processing",
+    "boundary": "untrusted request to application state",
+    "owasp_category": "A04:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "application-A05",
+    "surface": "Application configuration and request processing",
+    "boundary": "untrusted request to application state",
+    "owasp_category": "A05:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "application-A06",
+    "surface": "Application configuration and request processing",
+    "boundary": "untrusted request to application state",
+    "owasp_category": "A06:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "application-A07",
+    "surface": "Application configuration and request processing",
+    "boundary": "untrusted request to application state",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "application-A08",
+    "surface": "Application configuration and request processing",
+    "boundary": "untrusted request to application state",
+    "owasp_category": "A08:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "application-A09",
+    "surface": "Application configuration and request processing",
+    "boundary": "untrusted request to application state",
+    "owasp_category": "A09:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "application-A10",
+    "surface": "Application configuration and request processing",
+    "boundary": "untrusted request to application state",
+    "owasp_category": "A10:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  }
+]

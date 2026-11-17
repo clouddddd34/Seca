@@ -1,0 +1,60 @@
+[
+  {
+    "method": "GET",
+    "path": "/invoices/inv-b",
+    "actor": "alice",
+    "input": null,
+    "status": 404,
+    "response": {
+      "detail": "Not found"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/invoices/inv-c",
+    "actor": "alice",
+    "input": null,
+    "status": 404,
+    "response": {
+      "detail": "Not found"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/reports/report-s",
+    "actor": "alice",
+    "input": null,
+    "status": 404,
+    "response": {
+      "detail": "Not found"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/admin/export",
+    "actor": "alice",
+    "input": null,
+    "status": 403,
+    "response": {
+      "detail": "Administrator required"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/orders",
+    "actor": "alice",
+    "input": {
+      "sku": "book",
+      "quantity": 2,
+      "unit_price_cents": 1
+    },
+    "status": 201,
+    "response": {
+      "id": 1,
+      "owner": "alice",
+      "sku": "book",
+      "quantity": 2,
+      "total_cents": 2000
+    }
+  }
+]

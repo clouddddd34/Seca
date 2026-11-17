@@ -1,0 +1,83 @@
+[
+  {
+    "id": "F-001",
+    "title": "Missing invoice owner authorization",
+    "status": "confirmed",
+    "severity": "medium",
+    "expected": "Only the invoice owner may read it, with no admin exception. Source: app/README.md.",
+    "observed": "Alice retrieved Bob invoice with HTTP 200; four forbidden matrix reads succeeded.",
+    "evidence": [
+      "assessment/before-proof.json",
+      "assessment/before-tests.txt",
+      "assessment/after-proof.json",
+      "assessment/after-tests.txt",
+      "report.md: source hashes and environment"
+    ],
+    "reproduction": [
+      "GET /invoices/inv-b as Alice; compare with own /invoices/inv-a.",
+      "Run python -m assessment.reproduce from workspace."
+    ],
+    "preconditions": [
+      "Authenticated same-tenant non-owner and known invoice ID."
+    ],
+    "uncertainty": [
+      "Verified only against local synthetic in-process application; see report.md for coverage gaps."
+    ],
+    "impact": "Unauthorized invoice disclosure.",
+    "remediation": "Added owner equality alongside tenant check; full matrix now passes."
+  },
+  {
+    "id": "F-002",
+    "title": "Missing report tenant authorization",
+    "status": "confirmed",
+    "severity": "medium",
+    "expected": "Only members of the report tenant may read it. Source: app/README.md.",
+    "observed": "Alice retrieved south report with HTTP 200; four forbidden matrix reads succeeded.",
+    "evidence": [
+      "assessment/before-proof.json",
+      "assessment/before-tests.txt",
+      "assessment/after-proof.json",
+      "assessment/after-tests.txt",
+      "report.md: source hashes and environment"
+    ],
+    "reproduction": [
+      "GET /reports/report-s as Alice; compare with /reports/report-n.",
+      "Run python -m assessment.reproduce from workspace."
+    ],
+    "preconditions": [
+      "Authenticated caller from a different tenant and known report ID."
+    ],
+    "uncertainty": [
+      "Verified only against local synthetic in-process application; see report.md for coverage gaps."
+    ],
+    "impact": "Cross-tenant report disclosure.",
+    "remediation": "Added authenticated tenant check; full matrix now passes."
+  },
+  {
+    "id": "F-003",
+    "title": "Client-controlled order total",
+    "status": "confirmed",
+    "severity": "high",
+    "expected": "Order total must equal quantity times authoritative catalog price. Source: app/README.md.",
+    "observed": "One book at supplied price 1 produced total 1 instead of 1000 cents.",
+    "evidence": [
+      "assessment/before-proof.json",
+      "assessment/before-tests.txt",
+      "assessment/after-proof.json",
+      "assessment/after-tests.txt",
+      "report.md: source hashes and environment"
+    ],
+    "reproduction": [
+      "POST /orders as Alice with sku book, quantity 1, unit_price_cents 1.",
+      "Run python -m assessment.reproduce from workspace."
+    ],
+    "preconditions": [
+      "Authenticated caller and valid SKU."
+    ],
+    "uncertainty": [
+      "Verified only against local synthetic in-process application; see report.md for coverage gaps."
+    ],
+    "impact": "Underpriced stored orders; no actual payment or fulfillment demonstrated.",
+    "remediation": "Calculate total using catalog price; reproduction now returns 1000 and regression passes."
+  }
+]

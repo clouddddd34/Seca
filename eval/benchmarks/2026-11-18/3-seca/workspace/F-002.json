@@ -1,0 +1,26 @@
+{
+  "id": "F-002",
+  "title": "Report tenant authorization missing",
+  "status": "confirmed",
+  "severity": "medium",
+  "expected": "Only members of the report tenant may read (README).",
+  "observed": "Alice read report-s: HTTP 200, tenant south; four cross-tenant matrix combinations succeeded.",
+  "evidence": [
+    "before-evidence.json (original source hash and bounded observations)",
+    "before-tests.txt",
+    "after-evidence.json",
+    "after-tests.txt"
+  ],
+  "reproduction": [
+    "GET /reports/report-s as Carol for baseline, then Alice.",
+    "Run python -m unittest discover -s app -p test_security.py -v"
+  ],
+  "preconditions": [
+    "Authenticated fixture account; local original application."
+  ],
+  "uncertainty": [
+    "Impact demonstrated on synthetic local data only; deployment and external integrations not assessed."
+  ],
+  "impact": "Cross-tenant report disclosure.",
+  "remediation": "Require report tenant to match actor tenant; applied and retested."
+}

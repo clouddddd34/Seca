@@ -1,0 +1,43 @@
+[
+  {
+    "method": "GET",
+    "path": "/invoices/inv-b",
+    "actor": "alice",
+    "status": 200,
+    "body": {
+      "id": "inv-b",
+      "owner": "bob",
+      "tenant": "north",
+      "amount": 200
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/reports/report-s",
+    "actor": "alice",
+    "status": 200,
+    "body": {
+      "id": "report-s",
+      "tenant": "south",
+      "summary": "Synthetic south report"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/orders",
+    "actor": "alice",
+    "request": {
+      "sku": "book",
+      "quantity": 1,
+      "unit_price_cents": 1
+    },
+    "status": 201,
+    "body": {
+      "id": 1,
+      "owner": "alice",
+      "sku": "book",
+      "quantity": 1,
+      "total_cents": 1
+    }
+  }
+]

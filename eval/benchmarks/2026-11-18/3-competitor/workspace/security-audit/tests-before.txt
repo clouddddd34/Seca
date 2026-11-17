@@ -1,0 +1,243 @@
+python : test_admin_guard_variants (test_security.SecurityRegression.test_admin_guard_variants) ... ok
+
+At line:102 char:1
+
++ python -m unittest discover -s app -p test_security.py -v 2>&1 | Tee- ...
+
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    + CategoryInfo          : NotSpecified: (test_admin_guar...ariants) ... ok:String) [], RemoteException
+
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+
+test_auth_and_public_routes (test_security.SecurityRegression.test_auth_and_public_routes) ... ok
+
+test_invalid_orders_do_not_mutate (test_security.SecurityRegression.test_invalid_orders_do_not_mutate) ... ok
+
+test_invoice_owner_matrix (test_security.SecurityRegression.test_invoice_owner_matrix) ...
+
+  test_invoice_owner_matrix (test_security.SecurityRegression.test_invoice_owner_matrix) (who='alice',
+
+invoice='inv-b') ... FAIL
+
+  test_invoice_owner_matrix (test_security.SecurityRegression.test_invoice_owner_matrix) (who='bob', invoice='inv-a')
+
+... FAIL
+
+  test_invoice_owner_matrix (test_security.SecurityRegression.test_invoice_owner_matrix) (who='admin',
+
+invoice='inv-a') ... FAIL
+
+  test_invoice_owner_matrix (test_security.SecurityRegression.test_invoice_owner_matrix) (who='admin',
+
+invoice='inv-b') ... FAIL
+
+test_prices_and_order_isolation (test_security.SecurityRegression.test_prices_and_order_isolation) ... FAIL
+
+test_report_tenant_matrix (test_security.SecurityRegression.test_report_tenant_matrix) ...
+
+  test_report_tenant_matrix (test_security.SecurityRegression.test_report_tenant_matrix) (who='alice',
+
+report='report-s') ... FAIL
+
+  test_report_tenant_matrix (test_security.SecurityRegression.test_report_tenant_matrix) (who='bob',
+
+report='report-s') ... FAIL
+
+  test_report_tenant_matrix (test_security.SecurityRegression.test_report_tenant_matrix) (who='carol',
+
+report='report-n') ... FAIL
+
+  test_report_tenant_matrix (test_security.SecurityRegression.test_report_tenant_matrix) (who='admin',
+
+report='report-s') ... FAIL
+
+
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (test_security.SecurityRegression.test_invoice_owner_matrix) (who='alice',
+
+invoice='inv-b')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\3-competitor\workspace\app\test_security.py", line 30, in
+
+test_invoice_owner_matrix
+
+    self.assertEqual(r.status_code, 200 if who == owner else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (test_security.SecurityRegression.test_invoice_owner_matrix) (who='bob',
+
+invoice='inv-a')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\3-competitor\workspace\app\test_security.py", line 30, in
+
+test_invoice_owner_matrix
+
+    self.assertEqual(r.status_code, 200 if who == owner else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (test_security.SecurityRegression.test_invoice_owner_matrix) (who='admin',
+
+invoice='inv-a')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\3-competitor\workspace\app\test_security.py", line 30, in
+
+test_invoice_owner_matrix
+
+    self.assertEqual(r.status_code, 200 if who == owner else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (test_security.SecurityRegression.test_invoice_owner_matrix) (who='admin',
+
+invoice='inv-b')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\3-competitor\workspace\app\test_security.py", line 30, in
+
+test_invoice_owner_matrix
+
+    self.assertEqual(r.status_code, 200 if who == owner else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_prices_and_order_isolation (test_security.SecurityRegression.test_prices_and_order_isolation)
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\3-competitor\workspace\app\test_security.py", line 49, in
+
+test_prices_and_order_isolation
+
+    self.assertEqual(r.json()['total_cents'], qty * 1000)
+
+AssertionError: 2 != 2000
+
+
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (test_security.SecurityRegression.test_report_tenant_matrix) (who='alice',
+
+report='report-s')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\3-competitor\workspace\app\test_security.py", line 40, in
+
+test_report_tenant_matrix
+
+    self.assertEqual(r.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (test_security.SecurityRegression.test_report_tenant_matrix) (who='bob',
+
+report='report-s')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\3-competitor\workspace\app\test_security.py", line 40, in
+
+test_report_tenant_matrix
+
+    self.assertEqual(r.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (test_security.SecurityRegression.test_report_tenant_matrix) (who='carol',
+
+report='report-n')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\3-competitor\workspace\app\test_security.py", line 40, in
+
+test_report_tenant_matrix
+
+    self.assertEqual(r.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (test_security.SecurityRegression.test_report_tenant_matrix) (who='admin',
+
+report='report-s')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\3-competitor\workspace\app\test_security.py", line 40, in
+
+test_report_tenant_matrix
+
+    self.assertEqual(r.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+
+
+----------------------------------------------------------------------
+
+Ran 6 tests in 0.097s
+
+
+
+FAILED (failures=9)

@@ -1,0 +1,38 @@
+[
+  {
+    "method": "GET",
+    "path": "/invoices/inv-b",
+    "actor": "alice",
+    "status": 404,
+    "body": {
+      "detail": "Not found"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/reports/report-s",
+    "actor": "alice",
+    "status": 404,
+    "body": {
+      "detail": "Not found"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/orders",
+    "actor": "alice",
+    "request": {
+      "sku": "book",
+      "quantity": 1,
+      "unit_price_cents": 1
+    },
+    "status": 201,
+    "body": {
+      "id": 1,
+      "owner": "alice",
+      "sku": "book",
+      "quantity": 1,
+      "total_cents": 1000
+    }
+  }
+]

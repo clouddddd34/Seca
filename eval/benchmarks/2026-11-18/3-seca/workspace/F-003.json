@@ -1,0 +1,26 @@
+{
+  "id": "F-003",
+  "title": "Client-controlled order price",
+  "status": "confirmed",
+  "severity": "high",
+  "expected": "Total equals quantity times catalog price (README).",
+  "observed": "Two books with submitted price 1 produced total 2 instead of 2000 cents.",
+  "evidence": [
+    "before-evidence.json (original source hash and bounded observations)",
+    "before-tests.txt",
+    "after-evidence.json",
+    "after-tests.txt"
+  ],
+  "reproduction": [
+    "POST /orders as Alice with sku book, quantity 2, unit_price_cents 1.",
+    "Run python -m unittest discover -s app -p test_security.py -v"
+  ],
+  "preconditions": [
+    "Authenticated fixture account; local original application."
+  ],
+  "uncertainty": [
+    "Impact demonstrated on synthetic local data only; deployment and external integrations not assessed."
+  ],
+  "impact": "Order accounting integrity failure; no real payment or financial loss demonstrated.",
+  "remediation": "Calculate total from CATALOG while retaining request schema; applied and retested."
+}

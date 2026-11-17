@@ -1,0 +1,26 @@
+{
+  "model_requested": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "seconds": 180,
+  "agent_options": [
+    "--ignore-user-config",
+    "--ephemeral",
+    "--skip-git-repo-check",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=\"medium\"",
+    "-c",
+    "plugins._default.enabled=false",
+    "-c",
+    "web_search=\"disabled\"",
+    "--json",
+    "--color",
+    "never",
+    "-c",
+    "windows.sandbox=\"elevated\""
+  ],
+  "cli_version": "codex-cli 0.169.0-alpha.11.1"
+}

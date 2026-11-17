@@ -1,0 +1,26 @@
+{
+  "id": "F-002",
+  "title": "Cross-tenant report disclosure",
+  "status": "confirmed",
+  "severity": "medium",
+  "expected": "Only report tenant members may read reports. Source: app/README.md.",
+  "observed": "Alice read south report with HTTP 200.",
+  "evidence": [
+    "assessment/evidence-before.json",
+    "assessment/evidence-after.json",
+    "assessment/before.txt",
+    "assessment/after.txt"
+  ],
+  "reproduction": [
+    "Read /reports/report-n then /reports/report-s as Alice.",
+    "Run python assessment/reproduce.py from workspace root."
+  ],
+  "preconditions": [
+    "Authenticated other-tenant user with report ID."
+  ],
+  "uncertainty": [
+    "Only local synthetic application behavior demonstrated; see report.md for coverage gaps."
+  ],
+  "impact": "Cross-tenant report disclosure.",
+  "remediation": "Applied tenant check; matrix retested."
+}

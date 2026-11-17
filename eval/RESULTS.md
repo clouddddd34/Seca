@@ -16,14 +16,31 @@ These are implementation tests, not proof that the skill improves an AI agent's 
 
 ## Comparative benchmark
 
-Prepared nine workspaces: three each for baseline, Seca, and the competitor at commit `18642b272e9fe57ed6bdf3fd96614915e8a4d71d`. Every arm receives identical fixture inputs and the same optional helper executable. Evaluator answers and tests are excluded.
+Nine valid assessment runs completed on 2026-11-18: three per arm, requested model `gpt-6-astra`, medium reasoning, Codex CLI 0.169.0-alpha.11.1, 180-second limit each. All used fresh copies of the same small fixture, supplied source/accounts/access rules, and the same optional helper. The order rotated between arms. The competitor was `briiirussell/cybersecurity-skills` at `18642b272e9fe57ed6bdf3fd96614915e8a4d71d`.
 
-The first baseline attempt used Codex CLI 0.169.0-alpha.11.1, requested `gpt-6-astra` with medium reasoning and a 180-second wall-clock limit. The environment rejected its initial PowerShell command to read the local fixture with **blocked by policy**. The agent exited after 20.31 seconds without inspecting source or producing the requested report. This attempt is invalid for measuring assessment quality even though the CLI returned exit code zero. The runner now labels a zero-exit run without `report.md` as incomplete. Other arms were not run against this broken setup.
+| Measure across three runs | No invoked skill | Seca | Upstream OWASP audit |
+| --- | ---: | ---: | ---: |
+| Real bugs found / opportunities | 9/9 | 9/9 | 9/9 |
+| Confirmed false accusations | 0 | 0 | 0 |
+| Complete runtime proofs / opportunities | 4/9 | 6/9 | 6/9 |
+| Fixes passing current fixture oracle | 9/9 | 9/9 | 9/9 |
+| Final reports delivered | 3/3 | 3/3 | 0/3 |
+| Median completion time | 107.69 s | 150.80 s | Not observed: all timed out |
 
-| Arm | Valid scored runs | Comparative result |
-| --- | --- | --- |
-| No explicitly invoked skill | 0 | Not established |
-| Seca | 0 | Not established |
-| Upstream OWASP audit | 0 | Not established |
+**This study does not establish a detection advantage for Seca.** Baseline completed faster. All arms avoided the middleware-protected decoy. Competitor runs produced useful evidence, fixes and tests, but reached the 180-second cutoff before delivering the requested final report; their partial work is scored rather than discarded.
 
-No win rate, detection improvement, or reduction in false positives is claimed. Rerun in fresh prepared workspaces once an approved agent environment can read and test the fixture. Do not bypass the execution policy. Logs remain local rather than publishing provider/account diagnostics.
+Proof scores are deliberately stricter than discovery scores. No original run independently inspected the saved incorrect price: an order-creation response establishes the returned price, but does not by itself prove the saved effect. One baseline run also recorded denial-test status failures without observing the unauthorized response bodies. These gaps reduce proof completeness, not discovery credit for the true bugs. All runs followed the supplied access rules and local scope. Coverage honesty scored 2/2 for baseline and Seca, and 1/2 for the competitor's accurate but incomplete notes.
+
+All patches passed the narrow evaluator oracle. Manual review additionally found that Seca retained the explicit invoice tenant guard in all three patches, compared with one baseline and no competitor patches. Owner-only replacement passes this fixture; removing the tenant guard is not scored as a newly demonstrated vulnerability. The fixture cannot establish general patch quality or behavior under tenant reassignment.
+
+The earlier 20.31-second baseline attempt was invalid: ignoring user configuration omitted the Windows sandbox implementation, blocking the first file read. Explicitly selecting the already-provisioned sandbox passed read/write/import preflight checks. No policy bypass was used. That attempt is excluded from the nine-run results.
+
+See the [frozen evidence and methodology](benchmarks/2026-11-18/README.md) and [per-run scores](benchmarks/2026-11-18/scores.json). Three runs on one easy fixture are preliminary; global agent instructions and skill metadata were not fully isolated, and only the requested model identifier is recorded. No Claude, desktop, real deployment, advisory lookup, or prompt-injection resilience claim follows from these results.
+
+## Changes and separate follow-up checks
+
+After freezing the nine results, one sentence was added to the skill: independently inspect resulting state before and after fixing state-changing issues, or limit the claim if that is unavailable.
+
+A single fresh follow-up using the same task, model, fixture and budget completed in 153.45 seconds. It found all three bugs, preserved the decoy and existing tenant guard, passed all six patch-oracle checks, and independently read saved order totals before (2 cents) and after (2,000 cents) remediation. This is a targeted check on the same fixture, not held-out evidence or a new comparative benchmark. [Follow-up report](benchmarks/2026-11-18/follow-up/workspace/report.md).
+
+A separate URL-only smoke run used the updated skill, with no supplied source, accounts or private access rules. It completed in 61.97 seconds, made exactly one `GET /`, created no orders, and reported no demonstrated vulnerability while identifying blocked checks. Authorization and bounded read-only scope were supplied upfront, so this does not test the initial-question limit or richer URL flows. The local server stopped successfully. [Observed requests](benchmarks/2026-11-18/url-only/observations.json), [report](benchmarks/2026-11-18/url-only/workspace/report.md).

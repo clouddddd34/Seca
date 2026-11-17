@@ -1,0 +1,26 @@
+{
+  "id": "F-003",
+  "title": "Client-controlled order totals",
+  "status": "confirmed",
+  "severity": "high",
+  "expected": "Total equals quantity times catalog price. Source: app/README.md.",
+  "observed": "Independent GET showed stored total 2 instead of 2000 cents.",
+  "evidence": [
+    "assessment/evidence-before.json",
+    "assessment/evidence-after.json",
+    "assessment/before.txt",
+    "assessment/after.txt"
+  ],
+  "reproduction": [
+    "Post book quantity 2 with price 1 then GET /orders.",
+    "Run python assessment/reproduce.py from workspace root."
+  ],
+  "preconditions": [
+    "Authenticated user submitting a valid order."
+  ],
+  "uncertainty": [
+    "Only local synthetic application behavior demonstrated; see report.md for coverage gaps."
+  ],
+  "impact": "Stored pricing integrity compromise; no actual payment.",
+  "remediation": "Applied catalog-based pricing; independent read and regression cases retested."
+}

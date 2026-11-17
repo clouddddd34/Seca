@@ -1,0 +1,15 @@
+{
+  "invoice": {
+    "status": 404,
+    "other_owner_data_returned": false
+  },
+  "report": {
+    "status": 404,
+    "other_tenant_data_returned": false
+  },
+  "order": {
+    "status": 201,
+    "expected_total_cents": 1000,
+    "actual_total_cents": 1000
+  }
+}

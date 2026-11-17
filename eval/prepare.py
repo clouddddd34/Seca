@@ -34,6 +34,9 @@ def prepare(output, competitor, binary):
     task = (ROOT / "eval/task.txt").read_text(encoding="utf-8")
     output.mkdir(parents=True)
     manifest = {"competitor_commit": commit, "competitor_url": "https://github.com/briiirussell/cybersecurity-skills",
+                "task_sha256": hashlib.sha256(task.encode()).hexdigest(),
+                "skill_sha256": {str(path.relative_to(ROOT / "security-audit")).replace('\\', '/'): hashlib.sha256(path.read_bytes()).hexdigest()
+                                 for path in sorted((ROOT / "security-audit").rglob('*')) if path.is_file()},
                 "fixture_sha256": {name: hashlib.sha256((ROOT / "eval/fixture" / name).read_bytes()).hexdigest()
                                    for name in FIXTURE_FILES},
                 "binary_sha256": hashlib.sha256(binary.read_bytes()).hexdigest(), "runs": []}

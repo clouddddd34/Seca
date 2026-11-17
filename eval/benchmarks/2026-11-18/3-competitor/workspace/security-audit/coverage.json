@@ -1,0 +1,156 @@
+[
+  {
+    "id": "public",
+    "surface": "GET / and /health",
+    "boundary": "anonymous -> public metadata",
+    "owasp_category": "A02:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "identity",
+    "surface": "all protected routes including /openapi.json",
+    "boundary": "anonymous -> account",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "invoices",
+    "surface": "GET /invoices/{invoice_id}",
+    "boundary": "member/admin -> private owner",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "reports",
+    "surface": "GET /reports/{report_id}",
+    "boundary": "north -> south tenant",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "admin",
+    "surface": "GET /admin/export and path variants",
+    "boundary": "member -> admin",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "catalog",
+    "surface": "GET /catalog",
+    "boundary": "user -> authoritative price",
+    "owasp_category": "A08:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "pricing",
+    "surface": "POST /orders",
+    "boundary": "client -> merchant pricing",
+    "owasp_category": "A06:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "orders",
+    "surface": "GET /orders",
+    "boundary": "user -> other owners",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "parsing",
+    "surface": "POST /orders invalid inputs",
+    "boundary": "untrusted body -> shared process",
+    "owasp_category": "A10:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "injection",
+    "surface": "all handlers",
+    "boundary": "untrusted input -> executable sinks",
+    "owasp_category": "A05:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "crypto",
+    "surface": "fixture identities",
+    "boundary": "public fixture -> authentication",
+    "owasp_category": "A04:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "integrity",
+    "surface": "order mutation",
+    "boundary": "request -> shared state",
+    "owasp_category": "A08:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "logging",
+    "surface": "middleware and runner",
+    "boundary": "security events -> operator",
+    "owasp_category": "A09:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "dependencies",
+    "surface": "requirements.txt",
+    "boundary": "dependencies -> runtime",
+    "owasp_category": "A03:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  }
+]

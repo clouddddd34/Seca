@@ -1,0 +1,235 @@
+test_authentication_and_admin (app.test_security.SecurityTests.test_authentication_and_admin) ... ok
+
+test_catalog_price_and_order_isolation (app.test_security.SecurityTests.test_catalog_price_and_order_isolation) ...
+
+  test_catalog_price_and_order_isolation (app.test_security.SecurityTests.test_catalog_price_and_order_isolation) (price=1, actor='alice') ... FAIL
+
+  test_catalog_price_and_order_isolation (app.test_security.SecurityTests.test_catalog_price_and_order_isolation) (price=100000, actor='bob') ... FAIL
+
+  test_catalog_price_and_order_isolation (app.test_security.SecurityTests.test_catalog_price_and_order_isolation) (price=999, actor='carol') ... FAIL
+
+  test_catalog_price_and_order_isolation (app.test_security.SecurityTests.test_catalog_price_and_order_isolation) (price=1001, actor='admin') ... FAIL
+
+test_invalid_orders_leave_no_state (app.test_security.SecurityTests.test_invalid_orders_leave_no_state) ... ok
+
+test_invoice_owner_matrix (app.test_security.SecurityTests.test_invoice_owner_matrix) ...
+
+  test_invoice_owner_matrix (app.test_security.SecurityTests.test_invoice_owner_matrix) (actor='alice', invoice='inv-b') ... FAIL
+
+  test_invoice_owner_matrix (app.test_security.SecurityTests.test_invoice_owner_matrix) (actor='bob', invoice='inv-a') ... FAIL
+
+  test_invoice_owner_matrix (app.test_security.SecurityTests.test_invoice_owner_matrix) (actor='admin', invoice='inv-a') ... FAIL
+
+  test_invoice_owner_matrix (app.test_security.SecurityTests.test_invoice_owner_matrix) (actor='admin', invoice='inv-b') ... FAIL
+
+test_report_tenant_matrix (app.test_security.SecurityTests.test_report_tenant_matrix) ...
+
+  test_report_tenant_matrix (app.test_security.SecurityTests.test_report_tenant_matrix) (actor='alice', report='report-s') ... FAIL
+
+  test_report_tenant_matrix (app.test_security.SecurityTests.test_report_tenant_matrix) (actor='bob', report='report-s') ... FAIL
+
+  test_report_tenant_matrix (app.test_security.SecurityTests.test_report_tenant_matrix) (actor='carol', report='report-n') ... FAIL
+
+  test_report_tenant_matrix (app.test_security.SecurityTests.test_report_tenant_matrix) (actor='admin', report='report-s') ... FAIL
+
+System.Management.Automation.RemoteException
+
+======================================================================
+
+FAIL: test_catalog_price_and_order_isolation (app.test_security.SecurityTests.test_catalog_price_and_order_isolation) (price=1, actor='alice')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py", line 47, in test_catalog_price_and_order_isolation
+
+    self.assertEqual(r.json()['total_cents'], quantity * 1000)
+
+AssertionError: 2 != 2000
+
+System.Management.Automation.RemoteException
+
+======================================================================
+
+FAIL: test_catalog_price_and_order_isolation (app.test_security.SecurityTests.test_catalog_price_and_order_isolation) (price=100000, actor='bob')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py", line 47, in test_catalog_price_and_order_isolation
+
+    self.assertEqual(r.json()['total_cents'], quantity * 1000)
+
+AssertionError: 500000 != 5000
+
+System.Management.Automation.RemoteException
+
+======================================================================
+
+FAIL: test_catalog_price_and_order_isolation (app.test_security.SecurityTests.test_catalog_price_and_order_isolation) (price=999, actor='carol')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py", line 47, in test_catalog_price_and_order_isolation
+
+    self.assertEqual(r.json()['total_cents'], quantity * 1000)
+
+AssertionError: 999 != 1000
+
+System.Management.Automation.RemoteException
+
+======================================================================
+
+FAIL: test_catalog_price_and_order_isolation (app.test_security.SecurityTests.test_catalog_price_and_order_isolation) (price=1001, actor='admin')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py", line 47, in test_catalog_price_and_order_isolation
+
+    self.assertEqual(r.json()['total_cents'], quantity * 1000)
+
+AssertionError: 1001 != 1000
+
+System.Management.Automation.RemoteException
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (app.test_security.SecurityTests.test_invoice_owner_matrix) (actor='alice', invoice='inv-b')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py", line 23, in test_invoice_owner_matrix
+
+    self.assertEqual(r.status_code, 200 if actor == owner else 404)
+
+AssertionError: 200 != 404
+
+System.Management.Automation.RemoteException
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (app.test_security.SecurityTests.test_invoice_owner_matrix) (actor='bob', invoice='inv-a')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py", line 23, in test_invoice_owner_matrix
+
+    self.assertEqual(r.status_code, 200 if actor == owner else 404)
+
+AssertionError: 200 != 404
+
+System.Management.Automation.RemoteException
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (app.test_security.SecurityTests.test_invoice_owner_matrix) (actor='admin', invoice='inv-a')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py", line 23, in test_invoice_owner_matrix
+
+    self.assertEqual(r.status_code, 200 if actor == owner else 404)
+
+AssertionError: 200 != 404
+
+System.Management.Automation.RemoteException
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (app.test_security.SecurityTests.test_invoice_owner_matrix) (actor='admin', invoice='inv-b')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py", line 23, in test_invoice_owner_matrix
+
+    self.assertEqual(r.status_code, 200 if actor == owner else 404)
+
+AssertionError: 200 != 404
+
+System.Management.Automation.RemoteException
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (app.test_security.SecurityTests.test_report_tenant_matrix) (actor='alice', report='report-s')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py", line 33, in test_report_tenant_matrix
+
+    self.assertEqual(r.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+System.Management.Automation.RemoteException
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (app.test_security.SecurityTests.test_report_tenant_matrix) (actor='bob', report='report-s')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py", line 33, in test_report_tenant_matrix
+
+    self.assertEqual(r.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+System.Management.Automation.RemoteException
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (app.test_security.SecurityTests.test_report_tenant_matrix) (actor='carol', report='report-n')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py", line 33, in test_report_tenant_matrix
+
+    self.assertEqual(r.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+System.Management.Automation.RemoteException
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (app.test_security.SecurityTests.test_report_tenant_matrix) (actor='admin', report='report-s')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py", line 33, in test_report_tenant_matrix
+
+    self.assertEqual(r.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+System.Management.Automation.RemoteException
+
+----------------------------------------------------------------------
+
+Ran 5 tests in 0.208s
+
+System.Management.Automation.RemoteException
+
+FAILED (failures=12)

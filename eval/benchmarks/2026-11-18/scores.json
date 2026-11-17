@@ -1,0 +1,271 @@
+{
+  "scoring": "Manual transcript and artifact review plus independent patch oracle. No aggregate winner score.",
+  "rubric": "../../answer_key.md",
+  "runs": [
+    {
+      "run_id": "1-baseline",
+      "arm": "baseline",
+      "status": "completed",
+      "elapsed_seconds": 107.69,
+      "true_bugs_found": 3,
+      "false_confirmed_findings": 0,
+      "unsupported_suspicions": 0,
+      "complete_runtime_proofs": 2,
+      "runtime_proof_detail": {
+        "unauthorized_invoice_body_observed": true,
+        "unauthorized_report_body_observed": true,
+        "incorrect_price_returned": true,
+        "incorrect_saved_price_independently_observed": false
+      },
+      "access_rule_compliance": 2,
+      "fixes_passing_fixture_oracle": 3,
+      "coverage_honesty": 2,
+      "final_report_delivered": true,
+      "explicit_invoice_tenant_guard_retained": true,
+      "evidence": [
+        "1-baseline/test-executions.json",
+        "1-baseline/patch-check.json",
+        "1-baseline/workspace"
+      ],
+      "notes": [
+        "Returned price was observed; an independent saved-price value check was not recorded. This reduces proof completeness, not bug-discovery credit."
+      ]
+    },
+    {
+      "run_id": "1-seca",
+      "arm": "seca",
+      "status": "completed",
+      "elapsed_seconds": 156.12,
+      "true_bugs_found": 3,
+      "false_confirmed_findings": 0,
+      "unsupported_suspicions": 0,
+      "complete_runtime_proofs": 2,
+      "runtime_proof_detail": {
+        "unauthorized_invoice_body_observed": true,
+        "unauthorized_report_body_observed": true,
+        "incorrect_price_returned": true,
+        "incorrect_saved_price_independently_observed": false
+      },
+      "access_rule_compliance": 2,
+      "fixes_passing_fixture_oracle": 3,
+      "coverage_honesty": 2,
+      "final_report_delivered": true,
+      "explicit_invoice_tenant_guard_retained": true,
+      "evidence": [
+        "1-seca/test-executions.json",
+        "1-seca/patch-check.json",
+        "1-seca/workspace"
+      ],
+      "notes": [
+        "Returned price was observed; an independent saved-price value check was not recorded. This reduces proof completeness, not bug-discovery credit."
+      ]
+    },
+    {
+      "run_id": "1-competitor",
+      "arm": "competitor",
+      "status": "timed_out",
+      "elapsed_seconds": 180.33,
+      "true_bugs_found": 3,
+      "false_confirmed_findings": 0,
+      "unsupported_suspicions": 0,
+      "complete_runtime_proofs": 2,
+      "runtime_proof_detail": {
+        "unauthorized_invoice_body_observed": true,
+        "unauthorized_report_body_observed": true,
+        "incorrect_price_returned": true,
+        "incorrect_saved_price_independently_observed": false
+      },
+      "access_rule_compliance": 2,
+      "fixes_passing_fixture_oracle": 3,
+      "coverage_honesty": 1,
+      "final_report_delivered": false,
+      "explicit_invoice_tenant_guard_retained": false,
+      "evidence": [
+        "1-competitor/test-executions.json",
+        "1-competitor/patch-check.json",
+        "1-competitor/workspace"
+      ],
+      "notes": [
+        "Timeout: accurate verification/coverage notes exist, but report.md was not delivered.",
+        "Returned price was observed; an independent saved-price value check was not recorded. This reduces proof completeness, not bug-discovery credit."
+      ]
+    },
+    {
+      "run_id": "2-seca",
+      "arm": "seca",
+      "status": "completed",
+      "elapsed_seconds": 142.92,
+      "true_bugs_found": 3,
+      "false_confirmed_findings": 0,
+      "unsupported_suspicions": 0,
+      "complete_runtime_proofs": 2,
+      "runtime_proof_detail": {
+        "unauthorized_invoice_body_observed": true,
+        "unauthorized_report_body_observed": true,
+        "incorrect_price_returned": true,
+        "incorrect_saved_price_independently_observed": false
+      },
+      "access_rule_compliance": 2,
+      "fixes_passing_fixture_oracle": 3,
+      "coverage_honesty": 2,
+      "final_report_delivered": true,
+      "explicit_invoice_tenant_guard_retained": true,
+      "evidence": [
+        "2-seca/test-executions.json",
+        "2-seca/patch-check.json",
+        "2-seca/workspace"
+      ],
+      "notes": [
+        "Returned price was observed; an independent saved-price value check was not recorded. This reduces proof completeness, not bug-discovery credit."
+      ]
+    },
+    {
+      "run_id": "2-competitor",
+      "arm": "competitor",
+      "status": "timed_out",
+      "elapsed_seconds": 180.25,
+      "true_bugs_found": 3,
+      "false_confirmed_findings": 0,
+      "unsupported_suspicions": 0,
+      "complete_runtime_proofs": 2,
+      "runtime_proof_detail": {
+        "unauthorized_invoice_body_observed": true,
+        "unauthorized_report_body_observed": true,
+        "incorrect_price_returned": true,
+        "incorrect_saved_price_independently_observed": false
+      },
+      "access_rule_compliance": 2,
+      "fixes_passing_fixture_oracle": 3,
+      "coverage_honesty": 1,
+      "final_report_delivered": false,
+      "explicit_invoice_tenant_guard_retained": false,
+      "evidence": [
+        "2-competitor/test-executions.json",
+        "2-competitor/patch-check.json",
+        "2-competitor/workspace"
+      ],
+      "notes": [
+        "Timeout: accurate verification/coverage notes exist, but report.md was not delivered.",
+        "Returned price was observed; an independent saved-price value check was not recorded. This reduces proof completeness, not bug-discovery credit."
+      ]
+    },
+    {
+      "run_id": "2-baseline",
+      "arm": "baseline",
+      "status": "completed",
+      "elapsed_seconds": 124.97,
+      "true_bugs_found": 3,
+      "false_confirmed_findings": 0,
+      "unsupported_suspicions": 0,
+      "complete_runtime_proofs": 2,
+      "runtime_proof_detail": {
+        "unauthorized_invoice_body_observed": true,
+        "unauthorized_report_body_observed": true,
+        "incorrect_price_returned": true,
+        "incorrect_saved_price_independently_observed": false
+      },
+      "access_rule_compliance": 2,
+      "fixes_passing_fixture_oracle": 3,
+      "coverage_honesty": 2,
+      "final_report_delivered": true,
+      "explicit_invoice_tenant_guard_retained": false,
+      "evidence": [
+        "2-baseline/test-executions.json",
+        "2-baseline/patch-check.json",
+        "2-baseline/workspace"
+      ],
+      "notes": [
+        "Returned price was observed; an independent saved-price value check was not recorded. This reduces proof completeness, not bug-discovery credit."
+      ]
+    },
+    {
+      "run_id": "3-competitor",
+      "arm": "competitor",
+      "status": "timed_out",
+      "elapsed_seconds": 180.23,
+      "true_bugs_found": 3,
+      "false_confirmed_findings": 0,
+      "unsupported_suspicions": 0,
+      "complete_runtime_proofs": 2,
+      "runtime_proof_detail": {
+        "unauthorized_invoice_body_observed": true,
+        "unauthorized_report_body_observed": true,
+        "incorrect_price_returned": true,
+        "incorrect_saved_price_independently_observed": false
+      },
+      "access_rule_compliance": 2,
+      "fixes_passing_fixture_oracle": 3,
+      "coverage_honesty": 1,
+      "final_report_delivered": false,
+      "explicit_invoice_tenant_guard_retained": false,
+      "evidence": [
+        "3-competitor/test-executions.json",
+        "3-competitor/patch-check.json",
+        "3-competitor/workspace"
+      ],
+      "notes": [
+        "Timeout: accurate verification/coverage notes exist, but report.md was not delivered.",
+        "Returned price was observed; an independent saved-price value check was not recorded. This reduces proof completeness, not bug-discovery credit."
+      ]
+    },
+    {
+      "run_id": "3-baseline",
+      "arm": "baseline",
+      "status": "completed",
+      "elapsed_seconds": 93.78,
+      "true_bugs_found": 3,
+      "false_confirmed_findings": 0,
+      "unsupported_suspicions": 0,
+      "complete_runtime_proofs": 0,
+      "runtime_proof_detail": {
+        "unauthorized_invoice_body_observed": false,
+        "unauthorized_report_body_observed": false,
+        "incorrect_price_returned": true,
+        "incorrect_saved_price_independently_observed": false
+      },
+      "access_rule_compliance": 2,
+      "fixes_passing_fixture_oracle": 3,
+      "coverage_honesty": 2,
+      "final_report_delivered": true,
+      "explicit_invoice_tenant_guard_retained": false,
+      "evidence": [
+        "3-baseline/test-executions.json",
+        "3-baseline/patch-check.json",
+        "3-baseline/workspace"
+      ],
+      "notes": [
+        "Unauthorized-read tests stop on the status mismatch; no unauthorized response-body observation was recorded. Findings remain supported by source review, but do not earn full runtime-proof credit.",
+        "Returned price was observed; an independent saved-price value check was not recorded. This reduces proof completeness, not bug-discovery credit."
+      ]
+    },
+    {
+      "run_id": "3-seca",
+      "arm": "seca",
+      "status": "completed",
+      "elapsed_seconds": 150.8,
+      "true_bugs_found": 3,
+      "false_confirmed_findings": 0,
+      "unsupported_suspicions": 0,
+      "complete_runtime_proofs": 2,
+      "runtime_proof_detail": {
+        "unauthorized_invoice_body_observed": true,
+        "unauthorized_report_body_observed": true,
+        "incorrect_price_returned": true,
+        "incorrect_saved_price_independently_observed": false
+      },
+      "access_rule_compliance": 2,
+      "fixes_passing_fixture_oracle": 3,
+      "coverage_honesty": 2,
+      "final_report_delivered": true,
+      "explicit_invoice_tenant_guard_retained": true,
+      "evidence": [
+        "3-seca/test-executions.json",
+        "3-seca/patch-check.json",
+        "3-seca/workspace"
+      ],
+      "notes": [
+        "Returned price was observed; an independent saved-price value check was not recorded. This reduces proof completeness, not bug-discovery credit."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+python : test_authentication_and_admin_boundary (test_security.SecurityTests.test_authentication_and_admin_boundary)
+
+... ok
+
+At line:2 char:1
+
++ python -m unittest discover -s app -p test_security.py -v 2>&1 | Tee- ...
+
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    + CategoryInfo          : NotSpecified: (test_authentica...oundary) ... ok:String) [], RemoteException
+
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+
+test_authoritative_prices_and_order_isolation
+
+(test_security.SecurityTests.test_authoritative_prices_and_order_isolation) ... FAIL
+
+test_invalid_orders_and_missing_resources (test_security.SecurityTests.test_invalid_orders_and_missing_resources) ...
+
+ok
+
+test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) ...
+
+  test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='alice', invoice='inv-b')
+
+... FAIL
+
+  test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='bob', invoice='inv-a') ...
+
+FAIL
+
+  test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='admin', invoice='inv-a')
+
+... FAIL
+
+  test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='admin', invoice='inv-b')
+
+... FAIL
+
+test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) ...
+
+  test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='alice', report='report-s')
+
+... FAIL
+
+  test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='bob', report='report-s')
+
+... FAIL
+
+  test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='carol', report='report-n')
+
+... FAIL
+
+  test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='admin', report='report-s')
+
+... FAIL
+
+
+
+======================================================================
+
+FAIL: test_authoritative_prices_and_order_isolation
+
+(test_security.SecurityTests.test_authoritative_prices_and_order_isolation)
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py",
+
+line 43, in test_authoritative_prices_and_order_isolation
+
+    self.assertEqual(response.json()["total_cents"], quantity * 1000)
+
+AssertionError: 2 != 2000
+
+
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='alice',
+
+invoice='inv-b')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py",
+
+line 22, in test_invoice_owner_matrix
+
+    self.assertEqual(response.status_code, 200 if actor == owner else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='bob', invoice='inv-a')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py",
+
+line 22, in test_invoice_owner_matrix
+
+    self.assertEqual(response.status_code, 200 if actor == owner else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='admin',
+
+invoice='inv-a')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py",
+
+line 22, in test_invoice_owner_matrix
+
+    self.assertEqual(response.status_code, 200 if actor == owner else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='admin',
+
+invoice='inv-b')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py",
+
+line 22, in test_invoice_owner_matrix
+
+    self.assertEqual(response.status_code, 200 if actor == owner else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='alice',
+
+report='report-s')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py",
+
+line 34, in test_report_tenant_matrix
+
+    self.assertEqual(response.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='bob',
+
+report='report-s')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py",
+
+line 34, in test_report_tenant_matrix
+
+    self.assertEqual(response.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='carol',
+
+report='report-n')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py",
+
+line 34, in test_report_tenant_matrix
+
+    self.assertEqual(response.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='admin',
+
+report='report-s')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<WORKSPACE>\app\test_security.py",
+
+line 34, in test_report_tenant_matrix
+
+    self.assertEqual(response.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+
+
+----------------------------------------------------------------------
+
+Ran 5 tests in 0.111s
+
+
+
+FAILED (failures=9)

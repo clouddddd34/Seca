@@ -1,0 +1,410 @@
+[
+  {
+    "id": "root",
+    "surface": "GET /",
+    "boundary": "anonymous/public",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "anonymous/public policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "GET / returns 200 without authentication and exposes only fixture identification."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "health",
+    "surface": "GET /health",
+    "boundary": "anonymous/public",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "anonymous/public policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "GET /health returns 200 without authentication and only status ok."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "me",
+    "surface": "GET /me",
+    "boundary": "anonymous/identity",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "anonymous/identity policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Missing/invalid tokens return 401; authenticated Alice receives Alice identity."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "invoice",
+    "surface": "GET /invoices/{invoice_id}",
+    "boundary": "member/owner",
+    "owasp_category": "A01:2025",
+    "status": "candidate",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "member/owner policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Full 4-account by 4-ID matrix confirms owner-only reads after fix, including no admin override."
+      }
+    ],
+    "finding_fingerprints": [
+      "owasp-audit/CWE-639/app/app.py/invoice"
+    ],
+    "unresolved": []
+  },
+  {
+    "id": "report",
+    "surface": "GET /reports/{report_id}",
+    "boundary": "member/tenant",
+    "owasp_category": "A01:2025",
+    "status": "candidate",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "member/tenant policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Full 4-account by 3-ID matrix confirms same-tenant reads after fix and uniform 404 otherwise."
+      }
+    ],
+    "finding_fingerprints": [
+      "owasp-audit/CWE-862/app/app.py/report"
+    ],
+    "unresolved": []
+  },
+  {
+    "id": "catalog",
+    "surface": "GET /catalog",
+    "boundary": "anonymous/catalog",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "anonymous/catalog policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Unauthenticated request is 401; Alice receives book price 1000."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "purchase",
+    "surface": "POST /orders",
+    "boundary": "member/price authority",
+    "owasp_category": "A01:2025",
+    "status": "candidate",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "member/price authority policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Five orders on one fresh instance: prices 1/999/1000/1001/100000 and quantities up to 5 all use catalog totals. Injected owner and total fields cannot override server fields."
+      }
+    ],
+    "finding_fingerprints": [
+      "owasp-audit/CWE-602/app/app.py/purchase"
+    ],
+    "unresolved": []
+  },
+  {
+    "id": "orders",
+    "surface": "GET /orders",
+    "boundary": "member/owner",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "member/owner policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Alice sees five own orders; Bob, Carol and admin see none. Anonymous receives 401."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "admin",
+    "surface": "GET /admin/export",
+    "boundary": "member/admin",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "member/admin policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Member denied 403 for canonical, trailing-slash and encoded admin paths; admin gets 200. Middleware role guard runs before export."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "schema",
+    "surface": "GET /openapi.json",
+    "boundary": "anonymous/schema",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "anonymous/schema policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Implicit /openapi.json is authenticated by middleware; anonymous is 401. Docs and redoc are disabled."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "category-2",
+    "surface": "Application source and configuration",
+    "boundary": "client/application",
+    "owasp_category": "A02:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/run.py",
+      "app/requirements.txt",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "client/application policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "FastAPI debug defaults false, docs disabled, runner bound to 127.0.0.1. No CORS middleware. No production configuration examined."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "category-3",
+    "surface": "Application source and configuration",
+    "boundary": "client/application",
+    "owasp_category": "A03:2025",
+    "status": "deferred",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/run.py",
+      "app/requirements.txt",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "client/application policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Direct dependencies pinned; no transitive lock/hashes. Advisory data and KEV/EPSS not checked: external requests prohibited."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": [
+      "External advisory checks prohibited; dependency vulnerability status remains unknown."
+    ]
+  },
+  {
+    "id": "category-4",
+    "surface": "Application source and configuration",
+    "boundary": "client/application",
+    "owasp_category": "A04:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/run.py",
+      "app/requirements.txt",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "client/application policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Only documented public fixture tokens; no passwords, cryptographic functions or external TLS clients. No real secret finding."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "category-5",
+    "surface": "Application source and configuration",
+    "boundary": "client/application",
+    "owasp_category": "A05:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/run.py",
+      "app/requirements.txt",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "client/application policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "All original app source read: dictionary lookups and JSON responses only, no SQL, shell, HTML/template or eval sinks."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "category-6",
+    "surface": "Application source and configuration",
+    "boundary": "client/application",
+    "owasp_category": "A06:2025",
+    "status": "candidate",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/run.py",
+      "app/requirements.txt",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "client/application policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Catalog price authority now enforced; bounded quantities and SKU membership enforced before append."
+      }
+    ],
+    "finding_fingerprints": [
+      "owasp-audit/CWE-602/app/app.py/purchase"
+    ],
+    "unresolved": []
+  },
+  {
+    "id": "category-7",
+    "surface": "Application source and configuration",
+    "boundary": "client/application",
+    "owasp_category": "A07:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/run.py",
+      "app/requirements.txt",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "client/application policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Middleware dictionary lookup fails closed for missing and unknown tokens; no login/reset/session flows. Bare known tokens also accepted, a syntax hardening note without authority gain."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "category-8",
+    "surface": "Application source and configuration",
+    "boundary": "client/application",
+    "owasp_category": "A08:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/run.py",
+      "app/requirements.txt",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "client/application policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Only validated model fields and server identity enter order record. No pickle, dynamic imports, downloaded code or external side effects."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "category-9",
+    "surface": "Application source and configuration",
+    "boundary": "client/application",
+    "owasp_category": "A09:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/run.py",
+      "app/requirements.txt",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "client/application policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "No security event logger or alerting configured; runner access log disabled. Hardening note, no demonstrated exploit or log secret exposure."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "category-10",
+    "surface": "Application source and configuration",
+    "boundary": "client/application",
+    "owasp_category": "A10:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/run.py",
+      "app/requirements.txt",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "client/application policy is enforced or non-applicable sinks are identified",
+        "method": "Full source trace; TestClient checks where described",
+        "result": "Malformed JSON and out-of-range inputs return 422; unknown SKU returns 404; invalid orders do not append. Missing/forbidden resource responses uniform after fixes."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  }
+]

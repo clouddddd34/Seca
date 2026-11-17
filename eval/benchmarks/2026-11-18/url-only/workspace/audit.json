@@ -1,0 +1,39 @@
+{
+  "target": "http://127.0.0.1:43818/",
+  "assessment_date": "2026-11-18",
+  "mode": "URL-only, unauthenticated, bounded non-mutating review",
+  "status": "complete within supplied scope",
+  "skill": "assigned-skill/SKILL.md",
+  "request_count": 1,
+  "checked": [
+    "GET /",
+    "status and response headers",
+    "visible JSON fields",
+    "linked-resource availability"
+  ],
+  "evidence": [
+    {
+      "id": "E-01",
+      "location": "report.md#evidence-e-01",
+      "result": "curl exit 0, HTTP 200, application/json, no resource links"
+    }
+  ],
+  "findings": [],
+  "configuration_observations": [
+    "Plain HTTP on authorized loopback URL",
+    "Selected hardening headers absent on this response",
+    "Server family and fixture labels visible"
+  ],
+  "outstanding_hypotheses": [],
+  "blockers": [
+    "No source",
+    "No test accounts or access rules",
+    "No linked resources or inputs",
+    "No external advisory access authorized",
+    "State changes excluded"
+  ],
+  "next_steps": [
+    "If expanding assessment, supply relevant authorized entry points and test identities with expected access rules"
+  ],
+  "limitations": "Single response only; no comprehensive security or production configuration conclusion. See report.md for full coverage."
+}

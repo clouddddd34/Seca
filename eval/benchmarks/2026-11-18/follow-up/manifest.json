@@ -1,0 +1,24 @@
+{
+  "purpose": "Single targeted follow-up after the frozen comparison; not another comparative result",
+  "task_sha256": "79112f677e685a5917f31c2d46c10a281a2577d915c87349b384cb5765b15cfb",
+  "fixture_sha256": {
+    "app.py": "b6cc46582538a044a4d47604c70e586af8602d0958dc66d35fed3609bef685b0",
+    "run.py": "e3e3054ad217e5627f48303c155acdb8162cc18875879b12b33e4bb2c4bdc164",
+    "requirements.txt": "e80e707a38ef56250085358661b4df1013d8c4e664785922198a93b0183bc8f9",
+    "README.md": "82759c4614c3938a4fb44925f7fe11b9860f700f08b0f39de3c38f7257637d61"
+  },
+  "skill_sha256": {
+    "assets/finding.json": "ad061cbbbdacb09ff170790c850aa5bd52e4439410279a7431449b3a1d99dcca",
+    "references/access-rules.md": "391963d67ad83ad0bf7ae283f782f37fa1e894c85ac7da671a76ffa137ebfd2e",
+    "references/evidence.md": "a020b68e8d5468e4f20891dcc801ac6ab34daf1f15584891dded1871f743ee14",
+    "references/helpers.md": "6481d705cf0f860ca7dcd62176932d46346310a60831ce70e154aa040619d5cb",
+    "SKILL.md": "b10760e89fb2c6213def19f24348bafdc42d4957af29dc984973cd8c4a561d2b"
+  },
+  "runs": [
+    {
+      "id": "1-seca",
+      "arm": "seca",
+      "repetition": 1
+    }
+  ]
+}

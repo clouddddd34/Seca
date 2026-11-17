@@ -1,0 +1,37 @@
+python : test_authentication_and_admin_boundary (test_security.SecurityTests.test_authentication_and_admin_boundary)
+
+... ok
+
+At line:2 char:1
+
++ python -m unittest discover -s app -p test_security.py -v 2>&1 | Tee- ...
+
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    + CategoryInfo          : NotSpecified: (test_authentica...oundary) ... ok:String) [], RemoteException
+
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+
+test_authoritative_prices_and_order_isolation
+
+(test_security.SecurityTests.test_authoritative_prices_and_order_isolation) ... ok
+
+test_invalid_orders_and_missing_resources (test_security.SecurityTests.test_invalid_orders_and_missing_resources) ...
+
+ok
+
+test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) ... ok
+
+test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) ... ok
+
+
+
+----------------------------------------------------------------------
+
+Ran 5 tests in 0.122s
+
+
+
+OK

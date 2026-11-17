@@ -1,0 +1,247 @@
+python : test_authentication_and_admin_boundary (test_security.SecurityTests.test_authentication_and_admin_boundary)
+
+... ok
+
+At line:2 char:1
+
++ python -m unittest discover -s assessment -p test_security.py -v 2>&1 ...
+
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    + CategoryInfo          : NotSpecified: (test_authentica...oundary) ... ok:String) [], RemoteException
+
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+
+test_catalog_pricing_and_order_isolation (test_security.SecurityTests.test_catalog_pricing_and_order_isolation) ...
+
+  test_catalog_pricing_and_order_isolation (test_security.SecurityTests.test_catalog_pricing_and_order_isolation)
+
+(actor='alice') ... FAIL
+
+test_invalid_inputs_do_not_create_orders (test_security.SecurityTests.test_invalid_inputs_do_not_create_orders) ... ok
+
+test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) ...
+
+  test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='alice', resource='inv-b')
+
+... FAIL
+
+  test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='bob', resource='inv-a')
+
+... FAIL
+
+  test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='admin', resource='inv-a')
+
+... FAIL
+
+  test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='admin', resource='inv-b')
+
+... FAIL
+
+test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) ...
+
+  test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='alice',
+
+resource='report-s') ... FAIL
+
+  test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='bob', resource='report-s')
+
+... FAIL
+
+  test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='carol',
+
+resource='report-n') ... FAIL
+
+  test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='admin',
+
+resource='report-s') ... FAIL
+
+
+
+======================================================================
+
+FAIL: test_catalog_pricing_and_order_isolation (test_security.SecurityTests.test_catalog_pricing_and_order_isolation)
+
+(actor='alice')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\1-seca\workspace\assessment\test_security.py", line 48, in
+
+test_catalog_pricing_and_order_isolation
+
+    self.assertEqual(response.json()["total_cents"], quantity * catalog["book"])
+
+AssertionError: 2 != 2000
+
+
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='alice',
+
+resource='inv-b')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\1-seca\workspace\assessment\test_security.py", line 23, in
+
+test_invoice_owner_matrix
+
+    self.assertEqual(response.status_code, 200 if actor == owner else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='bob', resource='inv-a')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\1-seca\workspace\assessment\test_security.py", line 23, in
+
+test_invoice_owner_matrix
+
+    self.assertEqual(response.status_code, 200 if actor == owner else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='admin',
+
+resource='inv-a')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\1-seca\workspace\assessment\test_security.py", line 23, in
+
+test_invoice_owner_matrix
+
+    self.assertEqual(response.status_code, 200 if actor == owner else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_invoice_owner_matrix (test_security.SecurityTests.test_invoice_owner_matrix) (actor='admin',
+
+resource='inv-b')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\1-seca\workspace\assessment\test_security.py", line 23, in
+
+test_invoice_owner_matrix
+
+    self.assertEqual(response.status_code, 200 if actor == owner else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='alice',
+
+resource='report-s')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\1-seca\workspace\assessment\test_security.py", line 35, in
+
+test_report_tenant_matrix
+
+    self.assertEqual(response.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='bob',
+
+resource='report-s')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\1-seca\workspace\assessment\test_security.py", line 35, in
+
+test_report_tenant_matrix
+
+    self.assertEqual(response.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='carol',
+
+resource='report-n')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\1-seca\workspace\assessment\test_security.py", line 35, in
+
+test_report_tenant_matrix
+
+    self.assertEqual(response.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+
+
+======================================================================
+
+FAIL: test_report_tenant_matrix (test_security.SecurityTests.test_report_tenant_matrix) (actor='admin',
+
+resource='report-s')
+
+----------------------------------------------------------------------
+
+Traceback (most recent call last):
+
+  File "<USER_HOME>\AppData\Local\Temp\seca-eval-20261118-v2\1-seca\workspace\assessment\test_security.py", line 35, in
+
+test_report_tenant_matrix
+
+    self.assertEqual(response.status_code, 200 if allowed else 404)
+
+AssertionError: 200 != 404
+
+
+
+----------------------------------------------------------------------
+
+Ran 5 tests in 0.131s
+
+
+
+FAILED (failures=9)

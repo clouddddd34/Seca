@@ -1,0 +1,8 @@
+Read assigned-skill/SKILL.md and use it for a URL-only security review.
+I own and authorize testing of http://127.0.0.1:43818/ only, with bounded non-mutating checks
+of that origin and relevant first-party resources linked from the supplied page.
+No source code, test accounts, or private access rules are available for this run.
+Proceed with the limited review and identify blocked checks without inventing details.
+Do not install packages, delegate work, contact external services, scan ports,
+guess credentials, create application state, or read files outside this workspace.
+Write report.md with actual observations, evidence, confidence, and coverage limits.
