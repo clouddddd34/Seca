@@ -1,0 +1,9 @@
+/target/
+**/__pycache__/
+.venv/
+/eval/runs/
+/artifacts/
+*.pyc
+.env
+.env.*
+!.env.example

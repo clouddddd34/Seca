@@ -1,0 +1,11 @@
+{
+  "scope_origin": "http://127.0.0.1:8765",
+  "url": "http://127.0.0.1:8765/invoices/inv-b",
+  "safe_to_read": true,
+  "accounts": [
+    {"label": "owner", "token_env": "SECA_BOB_TOKEN", "expected_status": 200,
+     "expect_json": {"pointer": "/owner", "value": "bob"}},
+    {"label": "peer", "token_env": "SECA_ALICE_TOKEN", "expected_status": 403},
+    {"label": "anonymous", "expected_status": 401}
+  ]
+}
