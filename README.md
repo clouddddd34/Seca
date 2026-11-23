@@ -2,9 +2,11 @@
 
 **Find security issues you can reproduce, understand, and fix.**
 
+See the [project phases and current status](docs/ROADMAP.md) and [targeted follow-up results](eval/followup/RESULTS.md).
+
 Seca is a reusable Markdown skill for AI coding agents reviewing authorized websites and APIs, with optional Rust helpers and a deliberately vulnerable Python/FastAPI evaluation fixture. It guides an agent through scope, access rules, verification, remediation, and coverage reporting.
 
-**Status: early prototype.** Local fixture and helper tests pass on Windows. A nine-run local benchmark found all planted bugs in every arm, with no detection advantage for Seca; the baseline finished faster. See [validation results](eval/RESULTS.md). There is no claim that Seca outperforms existing skills. Desktop application guidance is deferred until there is a desktop fixture.
+**Status: experimental v0.1.0-rc.1 candidate.** Local fixture and helper tests pass on Windows. A nine-run local benchmark found all planted bugs in every arm, with no detection advantage for Seca; the baseline finished faster. See [validation results](eval/RESULTS.md). There is no claim that Seca outperforms existing skills. Desktop application guidance is deferred until there is a desktop fixture.
 
 [Benchmark v2](eval/v2/RESULTS.md) adds three local applications and stronger patch
 checks. Its 22 reviewed assessments are archived; one provider-blocked assessment and

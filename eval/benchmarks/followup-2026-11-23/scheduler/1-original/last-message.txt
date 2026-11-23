@@ -1,0 +1,5 @@
+Created [report.md](report.md).
+
+Source analysis confirms overlapping `submit` calls can enqueue duplicates. `guarded_submit` satisfies the requirement under the documented shared-instance model. The report distinguishes source proofs from the supplied sequential result and lists further validation needed.
+
+No application execution, tests, patches, or network access occurred.

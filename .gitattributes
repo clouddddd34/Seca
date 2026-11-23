@@ -3,3 +3,6 @@
 eval/benchmarks/v2-2026-11-23/manifest.json -text
 eval/benchmarks/v2-2026-11-23/protocol.json -text
 eval/benchmarks/website-v2-2026-11-23/protocol.json -text
+eval/benchmarks/followup-2026-11-23/manifest.json -text
+eval/benchmarks/followup-2026-11-23/protocol.json -text
+eval/benchmarks/followup-2026-11-23/PROTOCOL.md -text

@@ -1,0 +1,128 @@
+{
+  "checkpoint": "b172c679865ca62e506b17109371a5e5ff3763a5",
+  "model": "gpt-6-astra",
+  "seconds": 120,
+  "protocol_sha256": "b99113a653f86e062dfc54516692e1d6edba9590c1e0ee654b740f03b36aece9",
+  "runs": [
+    {
+      "id": "scheduler/1-original",
+      "case": "scheduler",
+      "revision": "original",
+      "inputs": {
+        "app/app.py": "8777ecf8c53a674d065c577babc1d421dbd4c7a66c9ed028a1baa51e97d0aa56",
+        "app/README.md": "3bc6702cf91445ea4db2991d5413b191ba2de0f780b5d5dd7ad77728bbbcde48",
+        "assigned-skill/assets/finding.json": "ad061cbbbdacb09ff170790c850aa5bd52e4439410279a7431449b3a1d99dcca",
+        "assigned-skill/references/access-rules.md": "391963d67ad83ad0bf7ae283f782f37fa1e894c85ac7da671a76ffa137ebfd2e",
+        "assigned-skill/references/evidence.md": "a020b68e8d5468e4f20891dcc801ac6ab34daf1f15584891dded1871f743ee14",
+        "assigned-skill/references/helpers.md": "6481d705cf0f860ca7dcd62176932d46346310a60831ce70e154aa040619d5cb",
+        "assigned-skill/SKILL.md": "b10760e89fb2c6213def19f24348bafdc42d4957af29dc984973cd8c4a561d2b"
+      },
+      "prompt_sha256": "5dcff8a76c88264e197842fb35c6bcdd38b0cdfed1fce5950475e0577c9ec6a4"
+    },
+    {
+      "id": "scheduler/1-revised",
+      "case": "scheduler",
+      "revision": "revised",
+      "inputs": {
+        "app/app.py": "8777ecf8c53a674d065c577babc1d421dbd4c7a66c9ed028a1baa51e97d0aa56",
+        "app/README.md": "3bc6702cf91445ea4db2991d5413b191ba2de0f780b5d5dd7ad77728bbbcde48",
+        "assigned-skill/assets/finding.json": "ad061cbbbdacb09ff170790c850aa5bd52e4439410279a7431449b3a1d99dcca",
+        "assigned-skill/references/access-rules.md": "391963d67ad83ad0bf7ae283f782f37fa1e894c85ac7da671a76ffa137ebfd2e",
+        "assigned-skill/references/evidence.md": "a020b68e8d5468e4f20891dcc801ac6ab34daf1f15584891dded1871f743ee14",
+        "assigned-skill/references/helpers.md": "6481d705cf0f860ca7dcd62176932d46346310a60831ce70e154aa040619d5cb",
+        "assigned-skill/SKILL.md": "1d2f583b9196d37ee842d792f42e1ff724d0b397ec4de63400bb323e097f28ed"
+      },
+      "prompt_sha256": "5dcff8a76c88264e197842fb35c6bcdd38b0cdfed1fce5950475e0577c9ec6a4"
+    },
+    {
+      "id": "denial/1-original",
+      "case": "denial",
+      "revision": "original",
+      "inputs": {
+        "app/app.py": "378ba3379a3fb101267b4c73468d83e50af590ca20b37ecaeab1c5173801213f",
+        "app/verify.py": "12436ab40195e5f52072593ebede5be87ca6d1b26c481d30cdfc1e33542eb7cf",
+        "assigned-skill/assets/finding.json": "ad061cbbbdacb09ff170790c850aa5bd52e4439410279a7431449b3a1d99dcca",
+        "assigned-skill/references/access-rules.md": "391963d67ad83ad0bf7ae283f782f37fa1e894c85ac7da671a76ffa137ebfd2e",
+        "assigned-skill/references/evidence.md": "a020b68e8d5468e4f20891dcc801ac6ab34daf1f15584891dded1871f743ee14",
+        "assigned-skill/references/helpers.md": "6481d705cf0f860ca7dcd62176932d46346310a60831ce70e154aa040619d5cb",
+        "assigned-skill/SKILL.md": "b10760e89fb2c6213def19f24348bafdc42d4957af29dc984973cd8c4a561d2b"
+      },
+      "prompt_sha256": "2c615b52fe9d7f83308f91ef59e414efc5b220c53c04f368c58dbc8b8c0bdf24"
+    },
+    {
+      "id": "denial/1-revised",
+      "case": "denial",
+      "revision": "revised",
+      "inputs": {
+        "app/app.py": "378ba3379a3fb101267b4c73468d83e50af590ca20b37ecaeab1c5173801213f",
+        "app/verify.py": "12436ab40195e5f52072593ebede5be87ca6d1b26c481d30cdfc1e33542eb7cf",
+        "assigned-skill/assets/finding.json": "ad061cbbbdacb09ff170790c850aa5bd52e4439410279a7431449b3a1d99dcca",
+        "assigned-skill/references/access-rules.md": "391963d67ad83ad0bf7ae283f782f37fa1e894c85ac7da671a76ffa137ebfd2e",
+        "assigned-skill/references/evidence.md": "a020b68e8d5468e4f20891dcc801ac6ab34daf1f15584891dded1871f743ee14",
+        "assigned-skill/references/helpers.md": "6481d705cf0f860ca7dcd62176932d46346310a60831ce70e154aa040619d5cb",
+        "assigned-skill/SKILL.md": "1d2f583b9196d37ee842d792f42e1ff724d0b397ec4de63400bb323e097f28ed"
+      },
+      "prompt_sha256": "2c615b52fe9d7f83308f91ef59e414efc5b220c53c04f368c58dbc8b8c0bdf24"
+    },
+    {
+      "id": "scheduler/2-revised",
+      "case": "scheduler",
+      "revision": "revised",
+      "inputs": {
+        "app/app.py": "8777ecf8c53a674d065c577babc1d421dbd4c7a66c9ed028a1baa51e97d0aa56",
+        "app/README.md": "3bc6702cf91445ea4db2991d5413b191ba2de0f780b5d5dd7ad77728bbbcde48",
+        "assigned-skill/assets/finding.json": "ad061cbbbdacb09ff170790c850aa5bd52e4439410279a7431449b3a1d99dcca",
+        "assigned-skill/references/access-rules.md": "391963d67ad83ad0bf7ae283f782f37fa1e894c85ac7da671a76ffa137ebfd2e",
+        "assigned-skill/references/evidence.md": "a020b68e8d5468e4f20891dcc801ac6ab34daf1f15584891dded1871f743ee14",
+        "assigned-skill/references/helpers.md": "6481d705cf0f860ca7dcd62176932d46346310a60831ce70e154aa040619d5cb",
+        "assigned-skill/SKILL.md": "1d2f583b9196d37ee842d792f42e1ff724d0b397ec4de63400bb323e097f28ed"
+      },
+      "prompt_sha256": "5dcff8a76c88264e197842fb35c6bcdd38b0cdfed1fce5950475e0577c9ec6a4"
+    },
+    {
+      "id": "scheduler/2-original",
+      "case": "scheduler",
+      "revision": "original",
+      "inputs": {
+        "app/app.py": "8777ecf8c53a674d065c577babc1d421dbd4c7a66c9ed028a1baa51e97d0aa56",
+        "app/README.md": "3bc6702cf91445ea4db2991d5413b191ba2de0f780b5d5dd7ad77728bbbcde48",
+        "assigned-skill/assets/finding.json": "ad061cbbbdacb09ff170790c850aa5bd52e4439410279a7431449b3a1d99dcca",
+        "assigned-skill/references/access-rules.md": "391963d67ad83ad0bf7ae283f782f37fa1e894c85ac7da671a76ffa137ebfd2e",
+        "assigned-skill/references/evidence.md": "a020b68e8d5468e4f20891dcc801ac6ab34daf1f15584891dded1871f743ee14",
+        "assigned-skill/references/helpers.md": "6481d705cf0f860ca7dcd62176932d46346310a60831ce70e154aa040619d5cb",
+        "assigned-skill/SKILL.md": "b10760e89fb2c6213def19f24348bafdc42d4957af29dc984973cd8c4a561d2b"
+      },
+      "prompt_sha256": "5dcff8a76c88264e197842fb35c6bcdd38b0cdfed1fce5950475e0577c9ec6a4"
+    },
+    {
+      "id": "denial/2-revised",
+      "case": "denial",
+      "revision": "revised",
+      "inputs": {
+        "app/app.py": "378ba3379a3fb101267b4c73468d83e50af590ca20b37ecaeab1c5173801213f",
+        "app/verify.py": "12436ab40195e5f52072593ebede5be87ca6d1b26c481d30cdfc1e33542eb7cf",
+        "assigned-skill/assets/finding.json": "ad061cbbbdacb09ff170790c850aa5bd52e4439410279a7431449b3a1d99dcca",
+        "assigned-skill/references/access-rules.md": "391963d67ad83ad0bf7ae283f782f37fa1e894c85ac7da671a76ffa137ebfd2e",
+        "assigned-skill/references/evidence.md": "a020b68e8d5468e4f20891dcc801ac6ab34daf1f15584891dded1871f743ee14",
+        "assigned-skill/references/helpers.md": "6481d705cf0f860ca7dcd62176932d46346310a60831ce70e154aa040619d5cb",
+        "assigned-skill/SKILL.md": "1d2f583b9196d37ee842d792f42e1ff724d0b397ec4de63400bb323e097f28ed"
+      },
+      "prompt_sha256": "2c615b52fe9d7f83308f91ef59e414efc5b220c53c04f368c58dbc8b8c0bdf24"
+    },
+    {
+      "id": "denial/2-original",
+      "case": "denial",
+      "revision": "original",
+      "inputs": {
+        "app/app.py": "378ba3379a3fb101267b4c73468d83e50af590ca20b37ecaeab1c5173801213f",
+        "app/verify.py": "12436ab40195e5f52072593ebede5be87ca6d1b26c481d30cdfc1e33542eb7cf",
+        "assigned-skill/assets/finding.json": "ad061cbbbdacb09ff170790c850aa5bd52e4439410279a7431449b3a1d99dcca",
+        "assigned-skill/references/access-rules.md": "391963d67ad83ad0bf7ae283f782f37fa1e894c85ac7da671a76ffa137ebfd2e",
+        "assigned-skill/references/evidence.md": "a020b68e8d5468e4f20891dcc801ac6ab34daf1f15584891dded1871f743ee14",
+        "assigned-skill/references/helpers.md": "6481d705cf0f860ca7dcd62176932d46346310a60831ce70e154aa040619d5cb",
+        "assigned-skill/SKILL.md": "b10760e89fb2c6213def19f24348bafdc42d4957af29dc984973cd8c4a561d2b"
+      },
+      "prompt_sha256": "2c615b52fe9d7f83308f91ef59e414efc5b220c53c04f368c58dbc8b8c0bdf24"
+    }
+  ]
+}

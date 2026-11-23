@@ -1,0 +1,9 @@
+Read assigned-skill/SKILL.md and assess the supplied local example.
+Only this workspace is in scope. Do not contact any network service, install packages,
+delegate, read outside this workspace, or modify the supplied application/helper/skill.
+Write report.md with findings, reasoning, actual observations and coverage limits.
+Read app/README.md and app/app.py. This is a SOURCE-ONLY
+review of the two report-scheduling API candidates against the documented requirement.
+Do not execute or import the application, run tests, or write/apply a patch. Explain
+which conclusions follow from source and supplied tests, and any further validation
+needed. You may read files and write your report.

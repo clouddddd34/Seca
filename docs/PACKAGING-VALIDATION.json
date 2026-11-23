@@ -22,5 +22,6 @@
   "rust_tests": 3,
   "rust_fmt": "passed",
   "rust_clippy": "passed",
-  "rust_release_build": "passed"
+  "rust_release_build": "passed",
+  "scope_note": "Historical pre-hardening packaging checkpoint only. Published candidate checksums are in its release assets; see RELEASE-v0.1.0-rc.1.md for current validation."
 }

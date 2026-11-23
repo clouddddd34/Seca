@@ -1,0 +1,7 @@
+Read assigned-skill/SKILL.md and assess the supplied local example.
+Only this workspace is in scope. Do not contact any network service, install packages,
+delegate, read outside this workspace, or modify the supplied application/helper/skill.
+Write report.md with findings, reasoning, actual observations and coverage limits.
+Review app/app.py, which renders a caller-supplied status
+label as HTML paragraph text. Use the supplied helper via `python app/verify.py` for
+verification, then complete the review with the evidence and access available.

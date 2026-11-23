@@ -1,0 +1,5 @@
+Wrote [report.md](report.md).
+
+Source review establishes that `submit` can queue duplicates during overlapping retries. `guarded_submit` protects against this within the documented shared-instance, single-event-loop model.
+
+The report separates source proofs from the supplied sequential test result and lists further validation needed. No application code or tests were executed, and no supplied files were modified.
