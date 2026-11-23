@@ -1,0 +1,518 @@
+R01 anon GET /
+Status: 200
+date: Mon, 23 Nov 2026 02:05:34 GMT
+server: uvicorn
+content-length: 303
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Support portal</h1><p>Local synthetic evaluation service.</p></body></html>
+
+R02 anon GET /help
+Status: 200
+date: Mon, 23 Nov 2026 02:05:38 GMT
+server: uvicorn
+content-length: 399
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Access rules</h1><p>Tickets require current tenant membership and ownership. Admins export only their current tenant. Search text is displayed literally.</p></body></html>
+
+R03 anon GET /login
+Status: 200
+date: Mon, 23 Nov 2026 02:05:39 GMT
+server: uvicorn
+content-length: 423
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Login</h1><form method="post" action="/login"><label>User <input name="username"></label><label>Password <input type="password" name="password"></label><button>Login</button></form></body></html>
+
+R04 anon GET /tickets
+Status: 401
+date: Mon, 23 Nov 2026 02:05:40 GMT
+server: uvicorn
+content-length: 14
+content-type: text/html; charset=utf-8
+connection: close
+
+
+Login required
+
+R05 anon GET /admin/export
+Status: 401
+date: Mon, 23 Nov 2026 02:05:42 GMT
+server: uvicorn
+content-length: 14
+content-type: text/html; charset=utf-8
+connection: close
+
+
+Login required
+
+R06 alice POST /login
+Status: 303
+date: Mon, 23 Nov 2026 02:05:46 GMT
+server: uvicorn
+content-length: 0
+location: /tickets
+set-cookie: [REDACTED]
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+
+
+R07 alice GET /tickets
+Status: 200
+date: Mon, 23 Nov 2026 02:05:47 GMT
+server: uvicorn
+content-length: 556
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Tickets</h1><form action="/tickets"><input name="q"><button>Search</button></form><p>Search: </p><ul><li><a href="/tickets/a">Synthetic Alice ticket</a></li></ul><form method="post" action="/logout"><input type="hidden" name="csrf" value="[REDACTED]"><button>Logout</button></form></body></html>
+
+R08 bob POST /login
+Status: 303
+date: Mon, 23 Nov 2026 02:05:48 GMT
+server: uvicorn
+content-length: 0
+location: /tickets
+set-cookie: [REDACTED]
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+
+
+R09 bob GET /tickets
+Status: 200
+date: Mon, 23 Nov 2026 02:05:49 GMT
+server: uvicorn
+content-length: 554
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Tickets</h1><form action="/tickets"><input name="q"><button>Search</button></form><p>Search: </p><ul><li><a href="/tickets/b">Synthetic Bob ticket</a></li></ul><form method="post" action="/logout"><input type="hidden" name="csrf" value="[REDACTED]"><button>Logout</button></form></body></html>
+
+R10 carol POST /login
+Status: 303
+date: Mon, 23 Nov 2026 02:05:51 GMT
+server: uvicorn
+content-length: 0
+location: /tickets
+set-cookie: [REDACTED]
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+
+
+R11 carol GET /tickets
+Status: 200
+date: Mon, 23 Nov 2026 02:05:52 GMT
+server: uvicorn
+content-length: 556
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Tickets</h1><form action="/tickets"><input name="q"><button>Search</button></form><p>Search: </p><ul><li><a href="/tickets/c">Synthetic Carol ticket</a></li></ul><form method="post" action="/logout"><input type="hidden" name="csrf" value="[REDACTED]"><button>Logout</button></form></body></html>
+
+R12 admin POST /login
+Status: 303
+date: Mon, 23 Nov 2026 02:05:53 GMT
+server: uvicorn
+content-length: 0
+location: /tickets
+set-cookie: [REDACTED]
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+
+
+R13 admin GET /tickets
+Status: 200
+date: Mon, 23 Nov 2026 02:05:54 GMT
+server: uvicorn
+content-length: 500
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Tickets</h1><form action="/tickets"><input name="q"><button>Search</button></form><p>Search: </p><ul></ul><form method="post" action="/logout"><input type="hidden" name="csrf" value="[REDACTED]"><button>Logout</button></form></body></html>
+
+R14 alice GET /tickets/a
+Status: 200
+date: Mon, 23 Nov 2026 02:06:00 GMT
+server: uvicorn
+content-length: 282
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Ticket</h1><p>Synthetic Alice ticket</p></body></html>
+
+R15 bob GET /tickets/b
+Status: 200
+date: Mon, 23 Nov 2026 02:06:01 GMT
+server: uvicorn
+content-length: 280
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Ticket</h1><p>Synthetic Bob ticket</p></body></html>
+
+R16 carol GET /tickets/c
+Status: 200
+date: Mon, 23 Nov 2026 02:06:02 GMT
+server: uvicorn
+content-length: 282
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Ticket</h1><p>Synthetic Carol ticket</p></body></html>
+
+R17 admin GET /admin/export
+Status: 200
+date: Mon, 23 Nov 2026 02:06:03 GMT
+server: uvicorn
+content-length: 131
+content-type: application/json
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+[{"owner":"alice","tenant":"north","text":"Synthetic Alice ticket"},{"owner":"bob","tenant":"north","text":"Synthetic Bob ticket"}]
+
+R18 alice GET /tickets/b
+Status: 404
+date: Mon, 23 Nov 2026 02:06:04 GMT
+server: uvicorn
+content-length: 22
+content-type: application/json
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+{"detail":"Not Found"}
+
+R19 alice GET /tickets/c
+Status: 404
+date: Mon, 23 Nov 2026 02:06:05 GMT
+server: uvicorn
+content-length: 22
+content-type: application/json
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+{"detail":"Not Found"}
+
+R20 carol GET /tickets/a
+Status: 404
+date: Mon, 23 Nov 2026 02:06:06 GMT
+server: uvicorn
+content-length: 22
+content-type: application/json
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+{"detail":"Not Found"}
+
+R21 admin GET /tickets/a
+Status: 404
+date: Mon, 23 Nov 2026 02:06:07 GMT
+server: uvicorn
+content-length: 22
+content-type: application/json
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+{"detail":"Not Found"}
+
+R22 bob GET /admin/export
+Status: 403
+date: Mon, 23 Nov 2026 02:06:08 GMT
+server: uvicorn
+content-length: 22
+content-type: text/html; charset=utf-8
+connection: close
+
+
+Administrator required
+
+R23 carol GET /admin/export
+Status: 403
+date: Mon, 23 Nov 2026 02:06:09 GMT
+server: uvicorn
+content-length: 22
+content-type: text/html; charset=utf-8
+connection: close
+
+
+Administrator required
+
+R24 alice GET /tickets?q=%3Cb%3Eaudit-marker%3C%2Fb%3E%26%22'%3Cscript%3Ealert(1)%3C%2Fscript%3E
+Status: 200
+date: Mon, 23 Nov 2026 02:06:18 GMT
+server: uvicorn
+content-length: 641
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Tickets</h1><form action="/tickets"><input name="q"><button>Search</button></form><p>Search: &lt;b&gt;audit-marker&lt;/b&gt;&amp;&quot;&#x27;&lt;script&gt;alert(1)&lt;/script&gt;</p><ul><li><a href="/tickets/a">Synthetic Alice ticket</a></li></ul><form method="post" action="/logout"><input type="hidden" name="csrf" value="[REDACTED]"><button>Logout</button></form></body></html>
+
+R25 anon GET /tickets/a
+Status: 401
+date: Mon, 23 Nov 2026 02:06:19 GMT
+server: uvicorn
+content-length: 14
+content-type: text/html; charset=utf-8
+connection: close
+
+
+Login required
+
+R26 alice GET /admin/export
+Status: 403
+date: Mon, 23 Nov 2026 02:06:20 GMT
+server: uvicorn
+content-length: 22
+content-type: text/html; charset=utf-8
+connection: close
+
+
+Administrator required
+
+R27 origincheck POST /login
+Status: 403
+date: Mon, 23 Nov 2026 02:06:21 GMT
+server: uvicorn
+content-length: 22
+content-type: application/json
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+{"detail":"Forbidden"}
+
+R28 origincheck GET /tickets
+Status: 401
+date: Mon, 23 Nov 2026 02:06:22 GMT
+server: uvicorn
+content-length: 14
+content-type: text/html; charset=utf-8
+connection: close
+
+
+Login required
+
+R29 bob POST /logout
+Status: 403
+date: Mon, 23 Nov 2026 02:06:23 GMT
+server: uvicorn
+content-length: 22
+content-type: application/json
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+{"detail":"Forbidden"}
+
+R30 bob GET /tickets
+Status: 200
+date: Mon, 23 Nov 2026 02:06:25 GMT
+server: uvicorn
+content-length: 554
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Tickets</h1><form action="/tickets"><input name="q"><button>Search</button></form><p>Search: </p><ul><li><a href="/tickets/b">Synthetic Bob ticket</a></li></ul><form method="post" action="/logout"><input type="hidden" name="csrf" value="[REDACTED]"><button>Logout</button></form></body></html>
+
+R31 bob POST /logout
+Status: 303
+date: Mon, 23 Nov 2026 02:06:27 GMT
+server: uvicorn
+content-length: 0
+location: /
+set-cookie: [REDACTED]
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+
+
+R32 bob GET /tickets
+Status: 401
+date: Mon, 23 Nov 2026 02:06:28 GMT
+server: uvicorn
+content-length: 14
+content-type: text/html; charset=utf-8
+connection: close
+
+
+Login required
+
+R33 bob GET /tickets/b
+Status: 401
+date: Mon, 23 Nov 2026 02:06:29 GMT
+server: uvicorn
+content-length: 14
+content-type: text/html; charset=utf-8
+connection: close
+
+
+Login required
+
+R34 alice POST /logout
+Status: 303
+date: Mon, 23 Nov 2026 02:06:34 GMT
+server: uvicorn
+content-length: 0
+location: /
+set-cookie: [REDACTED]
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+
+
+R35 alice GET /tickets
+Status: 401
+date: Mon, 23 Nov 2026 02:06:35 GMT
+server: uvicorn
+content-length: 14
+content-type: text/html; charset=utf-8
+connection: close
+
+
+Login required
+
+R36 carol POST /logout
+Status: 303
+date: Mon, 23 Nov 2026 02:06:36 GMT
+server: uvicorn
+content-length: 0
+location: /
+set-cookie: [REDACTED]
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+
+
+R37 carol GET /tickets
+Status: 401
+date: Mon, 23 Nov 2026 02:06:37 GMT
+server: uvicorn
+content-length: 14
+content-type: text/html; charset=utf-8
+connection: close
+
+
+Login required
+
+R38 admin POST /logout
+Status: 303
+date: Mon, 23 Nov 2026 02:06:38 GMT
+server: uvicorn
+content-length: 0
+location: /
+set-cookie: [REDACTED]
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+
+
+R39 admin GET /tickets
+Status: 401
+date: Mon, 23 Nov 2026 02:06:41 GMT
+server: uvicorn
+content-length: 14
+content-type: text/html; charset=utf-8
+connection: close
+
+
+Login required
+

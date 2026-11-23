@@ -1,0 +1,11 @@
+{
+  "usage": {
+    "output_tokens": 3359,
+    "cached_input_tokens": 81664,
+    "input_tokens": 91837,
+    "reasoning_output_tokens": 134,
+    "cache_write_input_tokens": 0
+  },
+  "cost_usd": null,
+  "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+}

@@ -1,0 +1,21 @@
+test_admin_inventory_tracks_current_tenant (test_app.AccessTests.test_admin_inventory_tracks_current_tenant) ... ok
+test_bare_identity_is_not_bearer_authentication (test_app.AccessTests.test_bare_identity_is_not_bearer_authentication) ... ok
+test_expired_share_denied (test_app.AccessTests.test_expired_share_denied) ... ok
+test_expiry_boundary_denied (test_app.AccessTests.test_expiry_boundary_denied) ... ok
+test_invalid_share_targets_and_expiry (test_app.AccessTests.test_invalid_share_targets_and_expiry) ... ok
+test_members_cannot_list_inventory (test_app.AccessTests.test_members_cannot_list_inventory) ... ok
+test_migrated_owner_cannot_share_or_revoke (test_app.AccessTests.test_migrated_owner_cannot_share_or_revoke) ... ok
+test_migrated_owner_denied (test_app.AccessTests.test_migrated_owner_denied) ... ok
+test_migrated_recipient_denied (test_app.AccessTests.test_migrated_recipient_denied) ... ok
+test_missing_and_invalid_authentication (test_app.AccessTests.test_missing_and_invalid_authentication) ... ok
+test_missing_resources (test_app.AccessTests.test_missing_resources) ... ok
+test_owner_and_live_recipient_can_read (test_app.AccessTests.test_owner_and_live_recipient_can_read) ... ok
+test_owner_revoke_denies_recipient_but_preserves_owner (test_app.AccessTests.test_owner_revoke_denies_recipient_but_preserves_owner) ... ok
+test_recipient_cannot_reshare_or_revoke (test_app.AccessTests.test_recipient_cannot_reshare_or_revoke) ... ok
+test_unshared_and_cross_tenant_reads_denied (test_app.AccessTests.test_unshared_and_cross_tenant_reads_denied) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.107s
+
+OK
+Python test exit status: 0

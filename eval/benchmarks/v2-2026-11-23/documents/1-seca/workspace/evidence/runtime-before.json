@@ -1,0 +1,20 @@
+{
+  "owner_migration": {
+    "status": 200,
+    "returns_expected_document_and_text": true
+  },
+  "recipient_migration": {
+    "status": 200,
+    "returns_expected_document_and_text": true
+  },
+  "expiry": {
+    "status": 200,
+    "returns_expected_document_and_text": true
+  },
+  "versions": {
+    "fastapi": "0.115.6",
+    "starlette": "0.41.3",
+    "httpx": "0.26.0",
+    "pydantic": "2.13.4"
+  }
+}

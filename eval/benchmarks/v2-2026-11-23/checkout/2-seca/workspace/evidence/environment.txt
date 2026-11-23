@@ -1,0 +1,5 @@
+3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]
+fastapi==0.115.6
+httpx==0.26.0
+starlette==0.41.3
+pydantic==2.13.4

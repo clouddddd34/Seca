@@ -1,0 +1,16 @@
+{
+  "request": 5,
+  "actor": "anonymous",
+  "method": "GET",
+  "url": "http://127.0.0.1:17499/admin/export",
+  "status": 401,
+  "headers": {
+    "date": "Mon, 23 Nov 2026 01:59:53 GMT",
+    "server": "uvicorn",
+    "content-length": "14",
+    "content-type": "text/html; charset=utf-8",
+    "connection": "close"
+  },
+  "body": "Login required",
+  "truncated": false
+}

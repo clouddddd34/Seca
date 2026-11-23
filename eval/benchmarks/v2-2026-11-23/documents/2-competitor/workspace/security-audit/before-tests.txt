@@ -1,0 +1,65 @@
+python : test_expired_share_denied (test_security.AccessTests.test_expired_share_denied) ... FAIL
+At line:154 char:1
++ python -m unittest discover -s app -p test_security.py -v 2>&1 | Tee- ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_expired_sh...enied) ... FAIL:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_expiry_exact_boundary_denied (test_security.AccessTests.test_expiry_exact_boundary_denied) ... FAIL
+test_inventory_tracks_current_admin_tenant (test_security.AccessTests.test_inventory_tracks_current_admin_tenant) ... 
+ok
+test_malformed_inputs_and_docs (test_security.AccessTests.test_malformed_inputs_and_docs) ... ok
+test_migrated_owner_cannot_mutate (test_security.AccessTests.test_migrated_owner_cannot_mutate) ... ok
+test_migrated_owner_denied_and_return_restores_ownership 
+(test_security.AccessTests.test_migrated_owner_denied_and_return_restores_ownership) ... FAIL
+test_migrated_recipient_denied_and_return_restores_live_grant 
+(test_security.AccessTests.test_migrated_recipient_denied_and_return_restores_live_grant) ... FAIL
+test_missing_and_invalid_credentials (test_security.AccessTests.test_missing_and_invalid_credentials) ... ok
+test_no_share_cross_tenant_and_unknown_documents_denied 
+(test_security.AccessTests.test_no_share_cross_tenant_and_unknown_documents_denied) ... ok
+test_revocation_and_fresh_share (test_security.AccessTests.test_revocation_and_fresh_share) ... ok
+test_sharing_controls (test_security.AccessTests.test_sharing_controls) ... ok
+test_unrelated_grant_cannot_authorize (test_security.AccessTests.test_unrelated_grant_cannot_authorize) ... ok
+
+======================================================================
+FAIL: test_expired_share_denied (test_security.AccessTests.test_expired_share_denied)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\2-competitor\workspace\app\test_security.py", line 
+36, in test_expired_share_denied
+    self.assertEqual(self.read('bob').status_code, 404)
+AssertionError: 200 != 404
+
+======================================================================
+FAIL: test_expiry_exact_boundary_denied (test_security.AccessTests.test_expiry_exact_boundary_denied)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\2-competitor\workspace\app\test_security.py", line 
+43, in test_expiry_exact_boundary_denied
+    self.assertEqual(self.read('bob').status_code, 404)
+AssertionError: 200 != 404
+
+======================================================================
+FAIL: test_migrated_owner_denied_and_return_restores_ownership 
+(test_security.AccessTests.test_migrated_owner_denied_and_return_restores_ownership)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\2-competitor\workspace\app\test_security.py", line 
+56, in test_migrated_owner_denied_and_return_restores_ownership
+    self.assertEqual(self.read('alice').status_code, 404)
+AssertionError: 200 != 404
+
+======================================================================
+FAIL: test_migrated_recipient_denied_and_return_restores_live_grant 
+(test_security.AccessTests.test_migrated_recipient_denied_and_return_restores_live_grant)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\2-competitor\workspace\app\test_security.py", line 
+49, in test_migrated_recipient_denied_and_return_restores_live_grant
+    self.assertEqual(self.read('bob').status_code, 404)
+AssertionError: 200 != 404
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.144s
+
+FAILED (failures=4)

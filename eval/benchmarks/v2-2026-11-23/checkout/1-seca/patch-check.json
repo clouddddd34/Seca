@@ -1,0 +1,15 @@
+{
+  "draft_refund_denied": true,
+  "owner_boundary": true,
+  "discount_payment": true,
+  "payment_once": true,
+  "refund_actual_paid": true,
+  "refund_once": true,
+  "coupon_once": true,
+  "normal_purchase": true,
+  "coupon_per_account": true,
+  "validation_preserved": true,
+  "failed_payment_atomic": true,
+  "failed_payment_keeps_coupon": true,
+  "refund_keeps_coupon_consumed": true
+}

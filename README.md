@@ -6,6 +6,15 @@ Seca is a reusable Markdown skill for AI coding agents reviewing authorized webs
 
 **Status: early prototype.** Local fixture and helper tests pass on Windows. A nine-run local benchmark found all planted bugs in every arm, with no detection advantage for Seca; the baseline finished faster. See [validation results](eval/RESULTS.md). There is no claim that Seca outperforms existing skills. Desktop application guidance is deferred until there is a desktop fixture.
 
+[Benchmark v2](eval/v2/RESULTS.md) adds three local applications and stronger patch
+checks. Its 22 reviewed assessments are archived; one provider-blocked assessment and
+four pending runs leave the comparison incomplete. Concurrency remains an observed
+weakness in the reviewed Seca checkout patches. Release packaging is experimental;
+no completed v2 comparison or validated concurrency improvement is claimed.
+The [six-run website experiment](eval/benchmarks/website-v2-2026-11-23/README.md)
+records broader coverage with supplied accounts, one timeout, and one execution-policy
+deviation; it is separate from the source comparison.
+
 ## What you get
 
 | Component | Purpose |
@@ -90,7 +99,7 @@ SECA_BOB_TOKEN=fixture-bob SECA_ALICE_TOKEN=fixture-alice \
 
 The example checks Bob's invoice with its owner, another user, and anonymous access. Its expected denial status is illustrative: a 404 can also be a valid denial. Inspect response meaning and the access rule; do not equate any status mismatch with a security bug.
 
-Replay is GET-only, accepts 1â€“8 accounts, uses independent bearer headers, follows no redirects, and performs no retries. Remote targets require HTTPS and `--allow-remote` in addition to established permission. **All development testing for this project uses local fixtures only.** It does not automate login, browser cookies, active scanning, or state-changing requests. See [helper behavior and limits](security-audit/references/helpers.md).
+Replay is GET-only, accepts 1-8 accounts, uses independent bearer headers, follows no redirects, and performs no retries. Remote targets require HTTPS and `--allow-remote` in addition to established permission. **All development testing for this project uses local fixtures only.** It does not automate login, browser cookies, active scanning, or state-changing requests. See [helper behavior and limits](security-audit/references/helpers.md).
 
 Reports omit raw URLs, bodies, headers, and token values. They contain observations rather than vulnerability verdicts. Keep a separately redacted reproduction and relevant revision/environment. Do not place real credentials in configs, reports, or source control.
 

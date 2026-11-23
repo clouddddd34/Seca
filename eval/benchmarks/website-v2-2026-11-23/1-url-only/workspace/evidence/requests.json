@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "method": "GET",
+    "url": "http://127.0.0.1:17689/",
+    "time_utc": "2026-11-23T01:55:22.229935+00:00",
+    "status": 200,
+    "truncated": false,
+    "evidence": "evidence\\01.txt"
+  },
+  {
+    "id": 2,
+    "method": "GET",
+    "url": "http://127.0.0.1:17689/help",
+    "time_utc": "2026-11-23T01:55:25.044060+00:00",
+    "status": 200,
+    "truncated": false,
+    "evidence": "evidence\\02.txt"
+  },
+  {
+    "id": 3,
+    "method": "GET",
+    "url": "http://127.0.0.1:17689/login",
+    "time_utc": "2026-11-23T01:55:28.553163+00:00",
+    "status": 200,
+    "truncated": false,
+    "evidence": "evidence\\03.txt"
+  },
+  {
+    "id": 4,
+    "method": "GET",
+    "url": "http://127.0.0.1:17689/tickets",
+    "time_utc": "2026-11-23T01:55:31.714368+00:00",
+    "status": 401,
+    "truncated": false,
+    "evidence": "evidence\\04.txt"
+  },
+  {
+    "id": 5,
+    "method": "GET",
+    "url": "http://127.0.0.1:17689/admin/export",
+    "time_utc": "2026-11-23T01:55:34.843673+00:00",
+    "status": 401,
+    "truncated": false,
+    "evidence": "evidence\\05.txt"
+  }
+]

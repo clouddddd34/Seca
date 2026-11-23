@@ -1,0 +1,17 @@
+test_expired_share_denied (test_security.AccessTests.test_expired_share_denied) ... ok
+test_expiry_boundary_denied (test_security.AccessTests.test_expiry_boundary_denied) ... ok
+test_inventory_scope (test_security.AccessTests.test_inventory_scope) ... ok
+test_migrated_owner_denied (test_security.AccessTests.test_migrated_owner_denied) ... ok
+test_migrated_owner_mutations_denied (test_security.AccessTests.test_migrated_owner_mutations_denied) ... ok
+test_migrated_recipient_denied (test_security.AccessTests.test_migrated_recipient_denied) ... ok
+test_multiple_grants_live_one_suffices (test_security.AccessTests.test_multiple_grants_live_one_suffices) ... ok
+test_owner_and_live_share_and_revocation (test_security.AccessTests.test_owner_and_live_share_and_revocation) ... ok
+test_share_controls (test_security.AccessTests.test_share_controls) ... ok
+test_unauthenticated_and_missing (test_security.AccessTests.test_unauthenticated_and_missing) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.124s
+
+OK
+
+Python exit code: 0

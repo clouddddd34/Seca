@@ -1,0 +1,19 @@
+{
+  "request": 28,
+  "actor": "alice",
+  "method": "GET",
+  "url": "http://127.0.0.1:17499/tickets?q=%3Cb%20data-audit%3D%22%27%26%22%3Eprobe%3C%2Fb%3E",
+  "status": 200,
+  "headers": {
+    "date": "Mon, 23 Nov 2026 02:00:14 GMT",
+    "server": "uvicorn",
+    "content-length": "615",
+    "content-type": "text/html; charset=utf-8",
+    "x-content-type-options": "nosniff",
+    "content-security-policy": "default-src 'none'; form-action 'self'; frame-ancestors 'none'",
+    "cache-control": "no-store",
+    "connection": "close"
+  },
+  "body": "<!doctype html><html><head><title>Support portal</title></head><body><nav><a href=\"/\">Home</a> <a href=\"/help\">Help</a> <a href=\"/login\">Login</a> <a href=\"/tickets\">Tickets</a> <a href=\"/admin/export\">Admin export</a></nav><h1>Tickets</h1><form action=\"/tickets\"><input name=\"q\"><button>Search</button></form><p>Search: &lt;b data-audit=&quot;&#x27;&amp;&quot;&gt;probe&lt;/b&gt;</p><ul><li><a href=\"/tickets/a\">Synthetic Alice ticket</a></li></ul><form method=\"post\" action=\"/logout\"><input type=\"hidden\" name=\"csrf\" value=\"[REDACTED]\"><button>Logout</button></form></body></html>",
+  "truncated": false
+}

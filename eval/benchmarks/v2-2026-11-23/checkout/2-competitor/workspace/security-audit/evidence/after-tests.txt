@@ -1,0 +1,14 @@
+test_auth_requires_documented_bearer_token (app.test_security.AuditTests.test_auth_requires_documented_bearer_token) ... ok
+test_coupon_once_across_orders_even_after_refund (app.test_security.AuditTests.test_coupon_once_across_orders_even_after_refund) ... ok
+test_failed_payment_preserves_unused_coupon (app.test_security.AuditTests.test_failed_payment_preserves_unused_coupon) ... ok
+test_ownership_and_auth_before_order_state (app.test_security.AuditTests.test_ownership_and_auth_before_order_state) ... ok
+test_refund_only_once_and_actual_charge (app.test_security.AuditTests.test_refund_only_once_and_actual_charge) ... ok
+test_simultaneous_coupon_use_across_orders (app.test_security.AuditTests.test_simultaneous_coupon_use_across_orders) ... ok
+test_simultaneous_payment_affects_wallet_once (app.test_security.AuditTests.test_simultaneous_payment_affects_wallet_once) ... ok
+test_simultaneous_refund_affects_wallet_once (app.test_security.AuditTests.test_simultaneous_refund_affects_wallet_once) ... ok
+test_validation_and_invalid_transitions_are_nonmutating (app.test_security.AuditTests.test_validation_and_invalid_transitions_are_nonmutating) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.819s
+
+OK

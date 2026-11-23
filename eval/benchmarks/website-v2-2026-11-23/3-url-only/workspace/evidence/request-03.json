@@ -1,0 +1,85 @@
+{
+  "request_number": 3,
+  "method": "GET",
+  "url": "http://127.0.0.1:56365/login",
+  "status": 200,
+  "headers": {
+    "date": "Mon, 23 Nov 2026 02:03:56 GMT",
+    "server": "uvicorn",
+    "content-length": "423",
+    "content-type": "text/html; charset=utf-8",
+    "x-content-type-options": "nosniff",
+    "content-security-policy": "default-src 'none'; form-action 'self'; frame-ancestors 'none'",
+    "cache-control": "no-store",
+    "connection": "close"
+  },
+  "truncated": false,
+  "elements": [
+    {
+      "tag": "a",
+      "attrs": {
+        "href": "/"
+      }
+    },
+    {
+      "tag": "a",
+      "attrs": {
+        "href": "/help"
+      }
+    },
+    {
+      "tag": "a",
+      "attrs": {
+        "href": "/login"
+      }
+    },
+    {
+      "tag": "a",
+      "attrs": {
+        "href": "/tickets"
+      }
+    },
+    {
+      "tag": "a",
+      "attrs": {
+        "href": "/admin/export"
+      }
+    },
+    {
+      "tag": "form",
+      "attrs": {
+        "method": "post",
+        "action": "/login"
+      }
+    },
+    {
+      "tag": "input",
+      "attrs": {
+        "name": "username"
+      }
+    },
+    {
+      "tag": "input",
+      "attrs": {
+        "type": "password",
+        "name": "password"
+      }
+    },
+    {
+      "tag": "button",
+      "attrs": {}
+    }
+  ],
+  "text": [
+    "Support portal",
+    "Home",
+    "Help",
+    "Login",
+    "Tickets",
+    "Admin export",
+    "Login",
+    "User",
+    "Password",
+    "Login"
+  ]
+}

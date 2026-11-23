@@ -1,0 +1,2 @@
+Application security-event logging is absent (app/app.py); consider logging denials and share changes without credentials or document text. No traced logging-related vulnerability.
+Mutation routes distinguish missing resources (404) from unauthorized existing resources (403). Identifiers and their sensitivity are not established as confidential in this synthetic fixture; no demonstrated sensitive metadata disclosure, and no behavioral change made.

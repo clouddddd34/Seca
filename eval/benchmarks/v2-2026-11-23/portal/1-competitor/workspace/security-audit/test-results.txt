@@ -1,0 +1,20 @@
+test_current_membership_and_export (test_portal.PortalChecks.test_current_membership_and_export) ... ok
+test_literal_search (test_portal.PortalChecks.test_literal_search) ... ok
+test_malformed_input_is_request_local (test_portal.PortalChecks.test_malformed_input_is_request_local) ... <USER_HOME>\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\streams\memory.py:189: ResourceWarning: Unclosed <MemoryObjectReceiveStream at 2309e5ebfd0>
+  warnings.warn(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<USER_HOME>\AppData\Local\Programs\Python\Python311\Lib\site-packages\anyio\streams\memory.py:189: ResourceWarning: Unclosed <MemoryObjectReceiveStream at 2309f9ad550>
+  warnings.warn(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_origin_and_cookie_controls (test_portal.PortalChecks.test_origin_and_cookie_controls) ... ok
+test_owner_tenant_matrix (test_portal.PortalChecks.test_owner_tenant_matrix) ... ok
+test_public_and_anonymous_boundaries (test_portal.PortalChecks.test_public_and_anonymous_boundaries) ... ok
+test_rotation_csrf_logout (test_portal.PortalChecks.test_rotation_csrf_logout) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.158s
+
+OK
+
+Process exit code: 0

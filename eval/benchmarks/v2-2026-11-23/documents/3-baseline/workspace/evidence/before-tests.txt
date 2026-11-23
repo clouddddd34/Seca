@@ -1,0 +1,90 @@
+python : test_admin_inventory_tracks_current_tenant (test_app.AccessTests.test_admin_inventory_tracks_current_tenant) 
+... ok
+At line:10 char:1
++ python -m unittest discover -s app -p test_app.py -v 2>&1 | Tee-Objec ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_admin_inve..._tenant) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_bare_identity_is_not_bearer_authentication (test_app.AccessTests.test_bare_identity_is_not_bearer_authentication) 
+... 
+  test_bare_identity_is_not_bearer_authentication 
+(test_app.AccessTests.test_bare_identity_is_not_bearer_authentication) (path='/documents/a', identity='alice') ... FAIL
+  test_bare_identity_is_not_bearer_authentication 
+(test_app.AccessTests.test_bare_identity_is_not_bearer_authentication) (path='/admin/inventory', identity='admin') ... 
+FAIL
+test_expired_share_denied (test_app.AccessTests.test_expired_share_denied) ... FAIL
+test_expiry_boundary_denied (test_app.AccessTests.test_expiry_boundary_denied) ... FAIL
+test_invalid_share_targets_and_expiry (test_app.AccessTests.test_invalid_share_targets_and_expiry) ... ok
+test_members_cannot_list_inventory (test_app.AccessTests.test_members_cannot_list_inventory) ... ok
+test_migrated_owner_cannot_share_or_revoke (test_app.AccessTests.test_migrated_owner_cannot_share_or_revoke) ... ok
+test_migrated_owner_denied (test_app.AccessTests.test_migrated_owner_denied) ... FAIL
+test_migrated_recipient_denied (test_app.AccessTests.test_migrated_recipient_denied) ... FAIL
+test_missing_and_invalid_authentication (test_app.AccessTests.test_missing_and_invalid_authentication) ... ok
+test_missing_resources (test_app.AccessTests.test_missing_resources) ... ok
+test_owner_and_live_recipient_can_read (test_app.AccessTests.test_owner_and_live_recipient_can_read) ... ok
+test_owner_revoke_denies_recipient_but_preserves_owner 
+(test_app.AccessTests.test_owner_revoke_denies_recipient_but_preserves_owner) ... ok
+test_recipient_cannot_reshare_or_revoke (test_app.AccessTests.test_recipient_cannot_reshare_or_revoke) ... ok
+test_unshared_and_cross_tenant_reads_denied (test_app.AccessTests.test_unshared_and_cross_tenant_reads_denied) ... ok
+
+======================================================================
+FAIL: test_bare_identity_is_not_bearer_authentication 
+(test_app.AccessTests.test_bare_identity_is_not_bearer_authentication) (path='/documents/a', identity='alice')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\3-baseline\workspace\app\test_app.py", line 52, in 
+test_bare_identity_is_not_bearer_authentication
+    self.assertEqual(self.client.get(path, headers={"Authorization": identity}).status_code, 401)
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_bare_identity_is_not_bearer_authentication 
+(test_app.AccessTests.test_bare_identity_is_not_bearer_authentication) (path='/admin/inventory', identity='admin')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\3-baseline\workspace\app\test_app.py", line 52, in 
+test_bare_identity_is_not_bearer_authentication
+    self.assertEqual(self.client.get(path, headers={"Authorization": identity}).status_code, 401)
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_expired_share_denied (test_app.AccessTests.test_expired_share_denied)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\3-baseline\workspace\app\test_app.py", line 32, in 
+test_expired_share_denied
+    self.assertEqual(self.client.get("/documents/a", headers=auth("bob")).status_code, 404)
+AssertionError: 200 != 404
+
+======================================================================
+FAIL: test_expiry_boundary_denied (test_app.AccessTests.test_expiry_boundary_denied)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\3-baseline\workspace\app\test_app.py", line 38, in 
+test_expiry_boundary_denied
+    self.assertEqual(self.client.get("/documents/a", headers=auth("bob")).status_code, 404)
+AssertionError: 200 != 404
+
+======================================================================
+FAIL: test_migrated_owner_denied (test_app.AccessTests.test_migrated_owner_denied)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\3-baseline\workspace\app\test_app.py", line 42, in 
+test_migrated_owner_denied
+    self.assertEqual(self.client.get("/documents/a", headers=auth("alice")).status_code, 404)
+AssertionError: 200 != 404
+
+======================================================================
+FAIL: test_migrated_recipient_denied (test_app.AccessTests.test_migrated_recipient_denied)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\3-baseline\workspace\app\test_app.py", line 47, in 
+test_migrated_recipient_denied
+    self.assertEqual(self.client.get("/documents/a", headers=auth("bob")).status_code, 404)
+AssertionError: 200 != 404
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.121s
+
+FAILED (failures=6)

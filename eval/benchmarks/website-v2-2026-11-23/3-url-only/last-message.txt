@@ -1,0 +1,3 @@
+Created [report.md](<USER_HOME>/AppData/Local/Temp/seca-website-v2-20261123/3-url-only/workspace/report.md) with evidence, protected controls, coverage limits and follow-up access requirements.
+
+Used 5 sequential GET requests. No vulnerabilities confirmed; both protected endpoints denied anonymous access. Authenticated and internal checks remain untested.

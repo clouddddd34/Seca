@@ -1,0 +1,12 @@
+Scope: http://127.0.0.1:2164/ and linked same-origin resources only.
+Method: sequential anonymous non-mutating GET, 40-request maximum; no redirects automatically followed, no retries, 15-second timeout, cookies not replayed.
+No source inspection, accounts, form submissions, route guessing, external contacts, or state changes.
+Status: initial inspection. Authenticated and internal controls untested.
+Evidence: evidence-NN.txt (redacted); requests.jsonl records requests before transmission.
+Status: complete. 5/40 sequential anonymous GET requests made; every distinct navigation destination inspected.
+Confirmed findings: none. Likely findings: none.
+Protected controls: tickets and admin export deny anonymous access (401, Login required); public responses carry restrictive CSP, nosniff, no-store.
+Observations only: login form has no explicit CSRF field; 401 responses omit public-page security headers. No demonstrated exploit.
+Outstanding/untested: all authenticated and internal checks, tenant/ownership/role enforcement, search rendering, CSRF and sessions.
+Additional access for future scope: accounts/role rules/safe resources and explicit authorization for authentication/form submissions; source authorization for internal review.
+Deliverable: report.md. Evidence: evidence-01.txt through evidence-05.txt; requests.jsonl. No secrets observed or saved.

@@ -1,0 +1,7 @@
+Completed the assessment and wrote [report.md](report.md).
+
+- Fixed one confirmed input-handling bug: non-ASCII passwords and logout CSRF values caused HTTP 500 errors.
+- Added seven tests; all pass. Both regression tests detect the original bug.
+- No authorization bypass or HTML injection was demonstrated.
+
+The report includes evidence, protected controls, executed tests, fixture conditions, and limitations.

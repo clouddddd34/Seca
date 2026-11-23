@@ -1,0 +1,172 @@
+[
+  {
+    "fingerprint": "owasp-audit/access/app/app.py/expired-share",
+    "verdict": "confirmed",
+    "skill": "owasp-audit",
+    "title": "Expired shares continue to disclose documents",
+    "cwe": "CWE-863",
+    "owasp_category": "A01:2025",
+    "location": {
+      "file": "app/app.py",
+      "line": 45
+    },
+    "trace": [
+      {
+        "kind": "entrypoint",
+        "file": "app/app.py",
+        "line": 48,
+        "description": "Authenticated caller selects document ID in GET /documents/{doc_id}."
+      },
+      {
+        "kind": "propagation",
+        "file": "app/app.py",
+        "line": 45,
+        "description": "Original can_read omitted the required condition; cited current location contains its fix."
+      },
+      {
+        "kind": "sink",
+        "file": "app/app.py",
+        "line": 54,
+        "description": "Return the full copied document as JSON."
+      }
+    ],
+    "evidence": [
+      {
+        "file": "security-audit/original-app.py.txt",
+        "line": 39,
+        "description": "Preserved original read predicate."
+      },
+      {
+        "file": "security-audit/before-tests.txt",
+        "line": 1,
+        "description": "Four failing denial assertions observed HTTP 200 rather than 404."
+      },
+      {
+        "file": "app/test_security.py",
+        "line": 23,
+        "description": "Executable regression test."
+      },
+      {
+        "file": "security-audit/after-tests.txt",
+        "line": 1,
+        "description": "All ten tests passed after the focused patch; Python exit code 0."
+      }
+    ],
+    "counterevidence": "Share creation rejects past deadlines and read checks revoked. Neither re-evaluates a previously valid deadline at read time. The expiry and exact-deadline tests both returned 200 before the fix.",
+    "confidence": "high",
+    "reproduced": true,
+    "severity": {
+      "likelihood": {
+        "score": "medium",
+        "reason": "Requires prior legitimate access followed by expiry or trusted migration."
+      },
+      "impact": {
+        "score": "medium",
+        "reason": "Read disclosure of previously accessible documents beyond authorization lifetime; no new grant, write, or broad arbitrary-document access demonstrated."
+      },
+      "overall": "medium"
+    },
+    "conditions": [
+      {
+        "kind": "authentication_level",
+        "description": "Authenticated fixture account."
+      },
+      {
+        "kind": "data_state",
+        "description": "A recipient has a previously valid, unrevoked share whose deadline has passed."
+      }
+    ],
+    "disposition": "Fixed",
+    "ext": {
+      "description": "Bob requests document a after an owner-created share expires. The original read predicate checked recipient and revocation but ignored expires_at; the GET still returned 200 with the document.",
+      "fix": "Require time() < expires_at for each matching, unrevoked share; equality denies access.",
+      "regression_test": "app/test_security.py",
+      "fix_verified_on": "2026-11-23"
+    }
+  },
+  {
+    "fingerprint": "owasp-audit/access/app/app.py/tenant-membership",
+    "verdict": "confirmed",
+    "skill": "owasp-audit",
+    "title": "Former tenant members retain document access",
+    "cwe": "CWE-863",
+    "owasp_category": "A01:2025",
+    "location": {
+      "file": "app/app.py",
+      "line": 40
+    },
+    "trace": [
+      {
+        "kind": "entrypoint",
+        "file": "app/app.py",
+        "line": 48,
+        "description": "Authenticated caller selects document ID in GET /documents/{doc_id}."
+      },
+      {
+        "kind": "propagation",
+        "file": "app/app.py",
+        "line": 40,
+        "description": "Original can_read omitted the required condition; cited current location contains its fix."
+      },
+      {
+        "kind": "sink",
+        "file": "app/app.py",
+        "line": 54,
+        "description": "Return the full copied document as JSON."
+      }
+    ],
+    "evidence": [
+      {
+        "file": "security-audit/original-app.py.txt",
+        "line": 39,
+        "description": "Preserved original read predicate."
+      },
+      {
+        "file": "security-audit/before-tests.txt",
+        "line": 1,
+        "description": "Four failing denial assertions observed HTTP 200 rather than 404."
+      },
+      {
+        "file": "app/test_security.py",
+        "line": 35,
+        "description": "Executable regression test."
+      },
+      {
+        "file": "security-audit/after-tests.txt",
+        "line": 1,
+        "description": "All ten tests passed after the focused patch; Python exit code 0."
+      }
+    ],
+    "counterevidence": "Sharing and revocation check owner and current tenant; those guards do not execute on GET. Ownership and a live share cannot substitute for the separate current membership requirement. Both migration tests failed before the fix.",
+    "confidence": "high",
+    "reproduced": true,
+    "severity": {
+      "likelihood": {
+        "score": "medium",
+        "reason": "Requires prior legitimate access followed by expiry or trusted migration."
+      },
+      "impact": {
+        "score": "medium",
+        "reason": "Read disclosure of previously accessible documents beyond authorization lifetime; no new grant, write, or broad arbitrary-document access demonstrated."
+      },
+      "overall": "medium"
+    },
+    "conditions": [
+      {
+        "kind": "authentication_level",
+        "description": "Authenticated fixture account."
+      },
+      {
+        "kind": "data_state",
+        "description": "The trusted directory moves a document owner or an existing share recipient to another tenant. The caller remains authenticated."
+      }
+    ],
+    "disposition": "Fixed",
+    "ext": {
+      "description": "After trusted directory migration from north to south, Bob can still read north document a through a live share; migrated owner Alice can also still read a. Both GETs returned 200. Current tenant membership was absent from can_read.",
+      "fix": "Deny tenant mismatch before either ownership or share authorization.",
+      "regression_test": "app/test_security.py",
+      "fix_verified_on": "2026-11-23"
+    }
+  }
+]

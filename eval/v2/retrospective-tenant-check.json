@@ -1,0 +1,14 @@
+{
+  "note": "Separate retrospective check using strengthened evaluator; not part of original benchmark scores.",
+  "runs": {
+    "1-baseline": true,
+    "1-competitor": false,
+    "1-seca": true,
+    "2-baseline": false,
+    "2-competitor": false,
+    "2-seca": true,
+    "3-baseline": false,
+    "3-competitor": false,
+    "3-seca": true
+  }
+}

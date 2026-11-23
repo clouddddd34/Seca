@@ -1,0 +1,27 @@
+{
+  "id": "F-002",
+  "title": "Expired shares continue authorizing reads",
+  "status": "confirmed",
+  "severity": "medium",
+  "expected": "Shared reads require expires_at strictly in future.",
+  "observed": "Expired recipient received full document; after fix receives 404.",
+  "evidence": [
+    "evidence/app-before.py:can_read",
+    "evidence/probe-before.txt",
+    "evidence/probe-after.txt",
+    "evidence/tests-before.txt",
+    "evidence/tests-after.txt"
+  ],
+  "reproduction": [
+    "Create future share, read as recipient, set stored expiry to past, read again.",
+    "Run python evidence/probe.py against the assessed source."
+  ],
+  "preconditions": [
+    "Authenticated previous owner or share recipient; authorized synthetic setup as described in report.md."
+  ],
+  "uncertainty": [
+    "Local synthetic impact only; deployment not assessed."
+  ],
+  "impact": "Unauthorized document confidentiality loss under the stated preconditions.",
+  "remediation": "Applied and retested current tenant and live expiry checks in can_read; all 12 tests pass."
+}

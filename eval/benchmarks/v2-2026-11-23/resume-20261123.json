@@ -1,0 +1,17 @@
+{
+  "resumed_on": "2026-11-23",
+  "client_timezone": "Asia/Taipei",
+  "first_pending_run": "portal/2-seca",
+  "completed_before_resume": 15,
+  "reviewed_before_resume": 14,
+  "cli_version": "codex-cli 0.169.0-alpha.11.1",
+  "model_requested": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "seconds": 180,
+  "notes": [
+    "Original frozen protocol and remaining workspace inputs retained.",
+    "checkout/2-baseline had completed execution but missing metrics and patch-check outputs; recovered from original events and independent evaluation without rerunning assessment.",
+    "Preflight verified FastAPI TestClient and local write/read under original sandbox settings.",
+    "Assessments span multiple dates; provider model build and global runtime instructions cannot be guaranteed identical."
+  ]
+}

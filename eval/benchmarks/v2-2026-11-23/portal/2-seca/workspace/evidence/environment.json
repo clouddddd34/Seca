@@ -1,0 +1,15 @@
+{
+  "python": "3.11.9",
+  "packages": {
+    "fastapi": "0.115.6",
+    "starlette": "0.41.3",
+    "httpx": "0.26.0",
+    "anyio": "4.13.0",
+    "pydantic": "2.13.4"
+  },
+  "sha256": {
+    "app/app.py": "e6b0dbacd14ec56805faf9e0e5a67342a1f0b53fe0ac10eb4847d98df34d2259",
+    "app/README.md": "95e4d502a5a3770f0f109ef2823bf48e6ac24a9212024f34dfc7466f59cb819e",
+    "app/test_security.py": "6c5c0bb9cd1d16fb332c95ecd0b28e58d99f5aeb9280576d2bd1c4325ec4196f"
+  }
+}

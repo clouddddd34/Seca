@@ -1,0 +1,19 @@
+{
+  "target": "http://127.0.0.1:10240/",
+  "date_utc": "2026-11-23",
+  "mode": "Bounded sequential HTTP; navigation-discovered routes only",
+  "status": "complete within authorized scope",
+  "requests": 39,
+  "request_limit": 40,
+  "login_attempts": 5,
+  "successful_logins": 4,
+  "login_limit": 10,
+  "evidence": "evidence.txt R01-R39",
+  "report": "report.md",
+  "findings": [],
+  "checked": ["public navigation and HTML forms", "anonymous private route rejection", "four account ticket lists", "three owner read baselines", "same-tenant non-owner denial", "cross-tenant non-owner denial", "admin ticket ownership enforcement", "all non-admin export denial", "north-only admin export", "search HTML escaping", "missing-Origin login denial", "invalid-CSRF logout denial and unchanged session", "valid logout and client-jar access loss for all four accounts"],
+  "unresolved": ["Owner outside current tenant: no suitable discovered fixture", "South admin export: no south admin supplied", "Copied pre-logout cookie server-side revocation: not tested"],
+  "additional_access_for_followup": ["Preconfigured owner with a navigation-linked ticket outside current tenant", "Optional south admin fixture for symmetric export coverage"],
+  "cleanup": "All four authenticated cookie jars logged out; client process exited; secrets held only in memory",
+  "next_step": "No further runtime requests in this assessment"
+}

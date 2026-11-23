@@ -1,0 +1,13 @@
+{
+  "target": "app/app.py; local FastAPI TestClient only",
+  "rules": "app/README.md",
+  "scope": "Source review, bounded synthetic verification, focused fixes and regression tests",
+  "exclusions": ["External services", "Package installation", "Deployment assessment", "Delegation"],
+  "status": "Source reviewed; runtime verification pending",
+  "hypotheses": [
+    "Read access survives current tenant migration for owners and recipients",
+    "Expired unrevoked shares continue granting read access"
+  ],
+  "coverage": ["All application routes and authentication helper inspected"],
+  "limits": ["Fixture credentials and in-memory storage are not production findings"]
+}

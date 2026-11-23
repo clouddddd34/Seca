@@ -1,0 +1,5 @@
+Confirmed and fixed three bugs: bare-name authentication, WELCOME coupon reuse, and repeated refunds.
+
+All six regression tests pass. `report.md` contains reproduction evidence, fixes, protected controls, coverage, and limitations. Concurrency remains unverified.
+
+All work stayed local; no skills, delegation, installations, or external services were used.

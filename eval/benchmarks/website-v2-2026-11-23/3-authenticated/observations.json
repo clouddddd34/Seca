@@ -1,0 +1,216 @@
+{
+  "mode": "authenticated",
+  "source_supplied": false,
+  "accounts_supplied": true,
+  "origin": "http://127.0.0.1:10240",
+  "model_requested": "gpt-6-astra",
+  "seconds": 180,
+  "skill_sha256": {
+    "assets/finding.json": "ad061cbbbdacb09ff170790c850aa5bd52e4439410279a7431449b3a1d99dcca",
+    "references/access-rules.md": "391963d67ad83ad0bf7ae283f782f37fa1e894c85ac7da671a76ffa137ebfd2e",
+    "references/evidence.md": "a020b68e8d5468e4f20891dcc801ac6ab34daf1f15584891dded1871f743ee14",
+    "references/helpers.md": "6481d705cf0f860ca7dcd62176932d46346310a60831ce70e154aa040619d5cb",
+    "SKILL.md": "b10760e89fb2c6213def19f24348bafdc42d4957af29dc984973cd8c4a561d2b"
+  },
+  "cli_version": "codex-cli 0.169.0-alpha.11.1",
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/help",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/tickets",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/admin/export",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/login",
+      "status": 303
+    },
+    {
+      "method": "GET",
+      "path": "/tickets",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/login",
+      "status": 303
+    },
+    {
+      "method": "GET",
+      "path": "/tickets",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/login",
+      "status": 303
+    },
+    {
+      "method": "GET",
+      "path": "/tickets",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/login",
+      "status": 303
+    },
+    {
+      "method": "GET",
+      "path": "/tickets",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/tickets/a",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/tickets/b",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/tickets/c",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/admin/export",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/tickets/b",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/tickets/c",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/tickets/a",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/tickets/a",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/admin/export",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/admin/export",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/tickets",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/tickets/a",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/admin/export",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/login",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/tickets",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/logout",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/tickets",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/logout",
+      "status": 303
+    },
+    {
+      "method": "GET",
+      "path": "/tickets",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/tickets/b",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/logout",
+      "status": 303
+    },
+    {
+      "method": "GET",
+      "path": "/tickets",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/logout",
+      "status": 303
+    },
+    {
+      "method": "GET",
+      "path": "/tickets",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/logout",
+      "status": 303
+    },
+    {
+      "method": "GET",
+      "path": "/tickets",
+      "status": 401
+    }
+  ],
+  "tickets_unchanged": true,
+  "remaining_sessions": 0,
+  "server_stopped": true
+}

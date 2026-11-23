@@ -1,0 +1,19 @@
+{
+  "request": 18,
+  "actor": "alice",
+  "method": "GET",
+  "url": "http://127.0.0.1:17499/tickets/b",
+  "status": 404,
+  "headers": {
+    "date": "Mon, 23 Nov 2026 02:00:05 GMT",
+    "server": "uvicorn",
+    "content-length": "22",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "content-security-policy": "default-src 'none'; form-action 'self'; frame-ancestors 'none'",
+    "cache-control": "no-store",
+    "connection": "close"
+  },
+  "body": "{\"detail\":\"Not Found\"}",
+  "truncated": false
+}

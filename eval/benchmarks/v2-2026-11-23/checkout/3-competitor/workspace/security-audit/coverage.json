@@ -1,0 +1,233 @@
+[
+  {
+    "id": "create-A07",
+    "surface": "create",
+    "boundary": "caller to account",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "create-A01",
+    "surface": "create",
+    "boundary": "account isolation",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "read-A07",
+    "surface": "read",
+    "boundary": "caller to account",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "read-A01",
+    "surface": "read",
+    "boundary": "account isolation",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "pay-A07",
+    "surface": "pay",
+    "boundary": "caller to account",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "pay-A01",
+    "surface": "pay",
+    "boundary": "account isolation",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "refund-A07",
+    "surface": "refund",
+    "boundary": "caller to account",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "refund-A01",
+    "surface": "refund",
+    "boundary": "account isolation",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "wallet-A07",
+    "surface": "wallet",
+    "boundary": "caller to account",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "wallet-A01",
+    "surface": "wallet",
+    "boundary": "account isolation",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "create-A05",
+    "surface": "create",
+    "boundary": "input to stored quantity",
+    "owasp_category": "A05:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "pay-A06",
+    "surface": "pay",
+    "boundary": "customer to charge and coupon policy",
+    "owasp_category": "A06:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "refund-A06",
+    "surface": "refund",
+    "boundary": "customer to credit policy",
+    "owasp_category": "A06:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "pay-A10",
+    "surface": "pay",
+    "boundary": "failed requests to saved state",
+    "owasp_category": "A10:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "refund-A10",
+    "surface": "refund",
+    "boundary": "failed requests to saved state",
+    "owasp_category": "A10:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "docs-A02",
+    "surface": "docs",
+    "boundary": "anonymous to schema",
+    "owasp_category": "A02:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "dependencies-A03",
+    "surface": "dependencies",
+    "boundary": "third-party code",
+    "owasp_category": "A03:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "credentials-A04",
+    "surface": "credentials",
+    "boundary": "fixture credentials",
+    "owasp_category": "A04:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "serialization-A08",
+    "surface": "serialization",
+    "boundary": "input to executable behavior",
+    "owasp_category": "A08:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "logging-A09",
+    "surface": "logging",
+    "boundary": "security events to monitoring",
+    "owasp_category": "A09:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "concurrency-A06",
+    "surface": "concurrency",
+    "boundary": "parallel requests to shared state",
+    "owasp_category": "A06:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  }
+]

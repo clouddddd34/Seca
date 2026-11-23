@@ -1,0 +1,20 @@
+python : test_auth_and_unshared_reads (test_security.AccessTests.test_auth_and_unshared_reads) ... ok
+At line:2 char:1
++ python -m unittest discover -s app -p 'test_*.py' -v 2>&1 | Tee-Objec ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_auth_and_u...d_reads) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_exact_expiry_boundary (test_security.AccessTests.test_exact_expiry_boundary) ... ok
+test_expired_share (test_security.AccessTests.test_expired_share) ... ok
+test_inventory (test_security.AccessTests.test_inventory) ... ok
+test_migrated_owner_cannot_mutate (test_security.AccessTests.test_migrated_owner_cannot_mutate) ... ok
+test_owner_migration (test_security.AccessTests.test_owner_migration) ... ok
+test_recipient_migration (test_security.AccessTests.test_recipient_migration) ... ok
+test_revocation_and_reshare (test_security.AccessTests.test_revocation_and_reshare) ... ok
+test_share_validation (test_security.AccessTests.test_share_validation) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.099s
+
+OK

@@ -1,0 +1,527 @@
+{
+  "note": "Six previously executed supplemental checks only; not frozen comparison scores. Third competitor checkout patch does not serialize state, but no new concurrency run was made.",
+  "runs": {
+    "1-baseline": {
+      "payment": {
+        "statuses": [
+          200,
+          200
+        ],
+        "wallet_before": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 8000,
+          "used_coupons": []
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 1000
+          }
+        ],
+        "passes": false
+      },
+      "refund": {
+        "statuses": [
+          200,
+          200
+        ],
+        "wallet_before": {
+          "balance": 9000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 11000,
+          "used_coupons": []
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "refunded",
+            "paid": 1000
+          }
+        ],
+        "passes": false
+      },
+      "coupon": {
+        "statuses": [
+          200,
+          200
+        ],
+        "wallet_before": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 9000,
+          "used_coupons": [
+            "WELCOME"
+          ]
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 500
+          },
+          {
+            "id": 2,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 500
+          }
+        ],
+        "passes": false
+      }
+    },
+    "1-competitor": {
+      "payment": {
+        "statuses": [
+          200,
+          409
+        ],
+        "wallet_before": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 9000,
+          "used_coupons": []
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 1000
+          }
+        ],
+        "passes": true
+      },
+      "refund": {
+        "statuses": [
+          200,
+          409
+        ],
+        "wallet_before": {
+          "balance": 9000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "refunded",
+            "paid": 1000
+          }
+        ],
+        "passes": true
+      },
+      "coupon": {
+        "statuses": [
+          200,
+          409
+        ],
+        "wallet_before": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 9500,
+          "used_coupons": [
+            "WELCOME"
+          ]
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 500
+          },
+          {
+            "id": 2,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "draft",
+            "paid": 0
+          }
+        ],
+        "passes": true
+      }
+    },
+    "1-seca": {
+      "payment": {
+        "statuses": [
+          200,
+          200
+        ],
+        "wallet_before": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 8000,
+          "used_coupons": []
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 1000
+          }
+        ],
+        "passes": false
+      },
+      "refund": {
+        "statuses": [
+          200,
+          200
+        ],
+        "wallet_before": {
+          "balance": 9000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 11000,
+          "used_coupons": []
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "refunded",
+            "paid": 1000
+          }
+        ],
+        "passes": false
+      },
+      "coupon": {
+        "statuses": [
+          200,
+          200
+        ],
+        "wallet_before": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 9000,
+          "used_coupons": [
+            "WELCOME"
+          ]
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 500
+          },
+          {
+            "id": 2,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 500
+          }
+        ],
+        "passes": false
+      }
+    },
+    "2-baseline": {
+      "payment": {
+        "statuses": [
+          200,
+          200
+        ],
+        "wallet_before": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 8000,
+          "used_coupons": []
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 1000
+          }
+        ],
+        "passes": false
+      },
+      "refund": {
+        "statuses": [
+          200,
+          200
+        ],
+        "wallet_before": {
+          "balance": 9000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 11000,
+          "used_coupons": []
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "refunded",
+            "paid": 1000
+          }
+        ],
+        "passes": false
+      },
+      "coupon": {
+        "statuses": [
+          200,
+          200
+        ],
+        "wallet_before": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 9000,
+          "used_coupons": [
+            "WELCOME"
+          ]
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 500
+          },
+          {
+            "id": 2,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 500
+          }
+        ],
+        "passes": false
+      }
+    },
+    "2-competitor": {
+      "payment": {
+        "statuses": [
+          200,
+          409
+        ],
+        "wallet_before": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 9000,
+          "used_coupons": []
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 1000
+          }
+        ],
+        "passes": true
+      },
+      "refund": {
+        "statuses": [
+          200,
+          409
+        ],
+        "wallet_before": {
+          "balance": 9000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "refunded",
+            "paid": 1000
+          }
+        ],
+        "passes": true
+      },
+      "coupon": {
+        "statuses": [
+          200,
+          409
+        ],
+        "wallet_before": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 9500,
+          "used_coupons": [
+            "WELCOME"
+          ]
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 500
+          },
+          {
+            "id": 2,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "draft",
+            "paid": 0
+          }
+        ],
+        "passes": true
+      }
+    },
+    "2-seca": {
+      "payment": {
+        "statuses": [
+          200,
+          200
+        ],
+        "wallet_before": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 8000,
+          "used_coupons": []
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 1000
+          }
+        ],
+        "passes": false
+      },
+      "refund": {
+        "statuses": [
+          200,
+          200
+        ],
+        "wallet_before": {
+          "balance": 9000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 11000,
+          "used_coupons": []
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "refunded",
+            "paid": 1000
+          }
+        ],
+        "passes": false
+      },
+      "coupon": {
+        "statuses": [
+          200,
+          200
+        ],
+        "wallet_before": {
+          "balance": 10000,
+          "used_coupons": []
+        },
+        "wallet_after": {
+          "balance": 9000,
+          "used_coupons": [
+            "WELCOME"
+          ]
+        },
+        "saved_orders": [
+          {
+            "id": 1,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 500
+          },
+          {
+            "id": 2,
+            "owner": "alice",
+            "quantity": 1,
+            "total": 1000,
+            "state": "paid",
+            "paid": 500
+          }
+        ],
+        "passes": false
+      }
+    }
+  }
+}

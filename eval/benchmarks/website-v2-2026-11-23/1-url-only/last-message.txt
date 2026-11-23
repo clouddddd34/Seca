@@ -1,0 +1,7 @@
+Created [report.md](</<USER_HOME>/AppData/Local/Temp/seca-website-v2-20261123/1-url-only/workspace/report.md>).
+
+- Used 5 of 40 allowed requests.
+- No confirmed findings.
+- Tickets and admin export denied anonymous access.
+- Authenticated/internal checks marked untested.
+- Evidence, protected controls, limitations, and additional access needed are documented.

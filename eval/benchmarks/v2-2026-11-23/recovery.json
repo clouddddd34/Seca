@@ -1,0 +1,9 @@
+{
+  "run_id": "documents/2-seca",
+  "donor": "documents/3-seca",
+  "archived_attempt": "invalid-attempts/documents-2-seca",
+  "reason": "Provider workspace spend cap; invalid infrastructure attempt excluded from quality scores.",
+  "fresh_inputs_verified": true,
+  "manifest_unchanged": true,
+  "model_call_made": false
+}

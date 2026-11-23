@@ -1,0 +1,95 @@
+test_auth_requires_documented_bearer_token (app.test_security.AuditTests.test_auth_requires_documented_bearer_token) ... FAIL
+test_coupon_once_across_orders_even_after_refund (app.test_security.AuditTests.test_coupon_once_across_orders_even_after_refund) ... FAIL
+test_failed_payment_preserves_unused_coupon (app.test_security.AuditTests.test_failed_payment_preserves_unused_coupon) ... ok
+test_ownership_and_auth_before_order_state (app.test_security.AuditTests.test_ownership_and_auth_before_order_state) ... ok
+test_refund_only_once_and_actual_charge (app.test_security.AuditTests.test_refund_only_once_and_actual_charge) ... FAIL
+test_simultaneous_coupon_use_across_orders (app.test_security.AuditTests.test_simultaneous_coupon_use_across_orders) ... FAIL
+test_simultaneous_payment_affects_wallet_once (app.test_security.AuditTests.test_simultaneous_payment_affects_wallet_once) ... FAIL
+test_simultaneous_refund_affects_wallet_once (app.test_security.AuditTests.test_simultaneous_refund_affects_wallet_once) ... FAIL
+test_validation_and_invalid_transitions_are_nonmutating (app.test_security.AuditTests.test_validation_and_invalid_transitions_are_nonmutating) ... ok
+
+======================================================================
+FAIL: test_auth_requires_documented_bearer_token (app.test_security.AuditTests.test_auth_requires_documented_bearer_token)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\2-competitor\workspace\app\test_security.py", line 45, in test_auth_requires_documented_bearer_token
+    self.assertEqual(self.client.get('/wallet', headers=h).status_code, 401, value)
+AssertionError: 200 != 401 : alice
+
+======================================================================
+FAIL: test_coupon_once_across_orders_even_after_refund (app.test_security.AuditTests.test_coupon_once_across_orders_even_after_refund)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\2-competitor\workspace\app\test_security.py", line 67, in test_coupon_once_across_orders_even_after_refund
+    self.assertEqual(self.post(f'/orders/{second}/pay', {'coupon': 'WELCOME'}).status_code, 409)
+AssertionError: 200 != 409
+
+======================================================================
+FAIL: test_refund_only_once_and_actual_charge (app.test_security.AuditTests.test_refund_only_once_and_actual_charge)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\2-competitor\workspace\app\test_security.py", line 56, in test_refund_only_once_and_actual_charge
+    self.assertEqual(self.post(f'/orders/{oid}/refund').status_code, 409)
+AssertionError: 200 != 409
+
+======================================================================
+FAIL: test_simultaneous_coupon_use_across_orders (app.test_security.AuditTests.test_simultaneous_coupon_use_across_orders)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\2-competitor\workspace\app\test_security.py", line 158, in test_simultaneous_coupon_use_across_orders
+    self.assertEqual((results, wallet, states),
+AssertionError: Tuples differ: ([200, 200], {'balance': 9000, 'used_coupons': ['WELCOME']}, ['paid', 'paid']) != ([200, 409], {'balance': 9500, 'used_coupons': ['WELCOME']}, ['draft', 'paid'])
+
+First differing element 0:
+[200, 200]
+[200, 409]
+
+- ([200, 200], {'balance': 9000, 'used_coupons': ['WELCOME']}, ['paid', 'paid'])
+?        ^ ^                ^                                    ^ ^^
+
++ ([200, 409], {'balance': 9500, 'used_coupons': ['WELCOME']}, ['draft', 'paid'])
+?        ^ ^                ^                                    ^^ ^^
+
+
+======================================================================
+FAIL: test_simultaneous_payment_affects_wallet_once (app.test_security.AuditTests.test_simultaneous_payment_affects_wallet_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\2-competitor\workspace\app\test_security.py", line 142, in test_simultaneous_payment_affects_wallet_once
+    self.assertEqual((results, wallet['balance'], order['paid'], order['state']),
+AssertionError: Tuples differ: ([200, 200], 8000, 1000, 'paid') != ([200, 409], 9000, 1000, 'paid')
+
+First differing element 0:
+[200, 200]
+[200, 409]
+
+- ([200, 200], 8000, 1000, 'paid')
+?        ^ ^   ^
+
++ ([200, 409], 9000, 1000, 'paid')
+?        ^ ^   ^
+
+
+======================================================================
+FAIL: test_simultaneous_refund_affects_wallet_once (app.test_security.AuditTests.test_simultaneous_refund_affects_wallet_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\2-competitor\workspace\app\test_security.py", line 150, in test_simultaneous_refund_affects_wallet_once
+    self.assertEqual((results, wallet['balance'], order['state']), ([200, 409], 10000, 'refunded'))
+AssertionError: Tuples differ: ([200, 200], 11000, 'refunded') != ([200, 409], 10000, 'refunded')
+
+First differing element 0:
+[200, 200]
+[200, 409]
+
+- ([200, 200], 11000, 'refunded')
+?        ^ ^   -
+
++ ([200, 409], 10000, 'refunded')
+?        ^ ^       +
+
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.245s
+
+FAILED (failures=6)

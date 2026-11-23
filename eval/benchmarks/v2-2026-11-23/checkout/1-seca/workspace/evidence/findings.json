@@ -1,0 +1,77 @@
+[
+  {
+    "id": "F-001",
+    "title": "Bare account name authenticates",
+    "status": "confirmed",
+    "severity": "medium",
+    "expected": "Bearer credential required (app/README.md)",
+    "observed": "Bare account header read wallet and paid order; 10000 -> 9000",
+    "evidence": [
+      "evidence/before-tests.txt",
+      "evidence/app-before.py",
+      "evidence/final-tests.txt",
+      "app/test_security.py::SecurityTests.test_bare_account_cannot_authenticate_or_mutate"
+    ],
+    "reproduction": [
+      "Run the named regression test against evidence/app-before.py via create_app; see report.md for exact bounded sequence."
+    ],
+    "preconditions": [
+      "Known account name"
+    ],
+    "uncertainty": [
+      "Synthetic local sequential behavior only; concurrency not verified."
+    ],
+    "impact": "Bare account header read wallet and paid order; 10000 -> 9000",
+    "remediation": "Require bearer scheme and fixture token prefix; applied and retested successfully."
+  },
+  {
+    "id": "F-002",
+    "title": "Refund replay credits wallet",
+    "status": "confirmed",
+    "severity": "medium",
+    "expected": "Refund only a paid order once (app/README.md)",
+    "observed": "Second refund returned 200; wallet 10000 -> 10500",
+    "evidence": [
+      "evidence/before-tests.txt",
+      "evidence/app-before.py",
+      "evidence/final-tests.txt",
+      "app/test_security.py::SecurityTests.test_refund_only_once"
+    ],
+    "reproduction": [
+      "Run the named regression test against evidence/app-before.py via create_app; see report.md for exact bounded sequence."
+    ],
+    "preconditions": [
+      "Owner of previously refunded order"
+    ],
+    "uncertainty": [
+      "Synthetic local sequential behavior only; concurrency not verified."
+    ],
+    "impact": "Second refund returned 200; wallet 10000 -> 10500",
+    "remediation": "Require paid state for refunds; applied and retested successfully."
+  },
+  {
+    "id": "F-003",
+    "title": "Coupon reused across orders",
+    "status": "confirmed",
+    "severity": "medium",
+    "expected": "WELCOME once per account, including after refunds (app/README.md)",
+    "observed": "Second discounted payment returned 200 and persisted paid=500",
+    "evidence": [
+      "evidence/before-tests.txt",
+      "evidence/app-before.py",
+      "evidence/final-tests.txt",
+      "app/test_security.py::SecurityTests.test_coupon_cannot_be_reused_across_orders"
+    ],
+    "reproduction": [
+      "Run the named regression test against evidence/app-before.py via create_app; see report.md for exact bounded sequence."
+    ],
+    "preconditions": [
+      "Account already consumed WELCOME"
+    ],
+    "uncertainty": [
+      "Synthetic local sequential behavior only; concurrency not verified."
+    ],
+    "impact": "Second discounted payment returned 200 and persisted paid=500",
+    "remediation": "Reject consumed account/coupon pair before mutation; applied and retested successfully."
+  }
+]

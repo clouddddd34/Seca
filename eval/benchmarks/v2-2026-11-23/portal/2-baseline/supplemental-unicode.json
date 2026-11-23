@@ -1,0 +1,14 @@
+{
+  "original": {
+    "unicode_login": 500,
+    "valid_login": 303,
+    "unicode_logout": 500,
+    "session_retained": true
+  },
+  "patched": {
+    "unicode_login": 401,
+    "valid_login": 303,
+    "unicode_logout": 403,
+    "session_retained": true
+  }
+}

@@ -1,0 +1,12 @@
+Request 1 GET http://127.0.0.1:2164/
+Linked from: User-supplied URL
+Status: 200
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+Cache-Control: no-store
+Date: Mon, 23 Nov 2026 02:01:56 GMT
+Server: uvicorn
+Content-Length: 303
+Content-Type: text/html; charset=utf-8
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Support portal</h1><p>Local synthetic evaluation service.</p></body></html>

@@ -1,0 +1,310 @@
+[
+  {
+    "id": "app/app.py:read:boundary:A01",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "member to document",
+    "owasp_category": "A01:2025",
+    "status": "candidate",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Current membership AND ownership or live share govern every document read.",
+        "method": "Source trace and local TestClient requests",
+        "result": "Four original failures; tenant and expiry checks fixed; all read-policy tests pass."
+      }
+    ],
+    "finding_fingerprints": [
+      "owasp-audit/access/app/app.py/expired-share",
+      "owasp-audit/access/app/app.py/tenant-membership"
+    ],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:share:boundary:A01",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to grant recipient",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Only a current-tenant owner can grant to a current same-tenant recipient with a future deadline.",
+        "method": "Source trace and local TestClient requests",
+        "result": "Owner/live grant succeeds; recipient reshare, cross-tenant/unknown recipient and past expiry fail; migrated owner cannot share. app/app.py:61-67."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:revoke:boundary:A01",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "member to grant mutation",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Only current-tenant owners revoke; revocation denies recipient reads.",
+        "method": "Source trace and local TestClient requests",
+        "result": "Owner DELETE returns 204; Bob/Carol and migrated owner denied; revoked share no longer permits reads. app/app.py:73-79."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:inventory:boundary:A01",
+    "surface": "GET /admin/inventory",
+    "boundary": "admin to current tenant",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Inventory requires admin role and filters by current tenant.",
+        "method": "Source trace and local TestClient requests",
+        "result": "Bob denied; admin sees a,b in north and c after migration to south. app/app.py:84-86."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:metadata:boundary:A01",
+    "surface": "framework documentation",
+    "boundary": "anonymous to schema",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Framework metadata must not expose document state.",
+        "method": "Source trace and local TestClient requests",
+        "result": "Four default metadata routes return schema/static documentation, not document records; route list matches four business routes. security-audit/surface-checks.json."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:all-business-routes:A07",
+    "surface": "all-business-routes",
+    "boundary": "request to application state",
+    "owasp_category": "A07:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Missing and unknown identities cannot use business routes.",
+        "method": "Complete source inspection; runtime checks where specified",
+        "result": "actor runs before document/share lookup; valid-body requests without or with unknown credentials return 401. Fake identity mapping is explicitly a fixture."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:share-input-and-path-parsing:A10",
+    "surface": "share-input-and-path-parsing",
+    "boundary": "request to application state",
+    "owasp_category": "A10:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Malformed bodies and non-integer share IDs do not mutate state.",
+        "method": "Complete source inspection; runtime checks where specified",
+        "result": "Two invalid share bodies and invalid DELETE ID return 422; zero shares created. No exception catch grants access."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:response-and-configuration:A02",
+    "surface": "response-and-configuration",
+    "boundary": "request to application state",
+    "owasp_category": "A02:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Review debug, CORS, error and metadata exposure.",
+        "method": "Complete source inspection; runtime checks where specified",
+        "result": "No debug=True or permissive CORS configured; public schema/docs contain no application records. Deployment absent by fixture design."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:runtime-sinks:A05",
+    "surface": "runtime-sinks",
+    "boundary": "request to application state",
+    "owasp_category": "A05:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Untrusted values must not reach executable SQL, shell or template sinks.",
+        "method": "Complete source inspection; runtime checks where specified",
+        "result": "No such sinks; IDs use dictionary lookups and user data is serialized as JSON."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:outbound-fetch:A01",
+    "surface": "outbound-fetch",
+    "boundary": "request to application state",
+    "owasp_category": "A01:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "User input cannot induce server-side HTTP.",
+        "method": "Complete source inspection; runtime checks where specified",
+        "result": "No outbound client, URL field or fetch call in app source."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:state-transition-design:A06",
+    "surface": "state-transition-design",
+    "boundary": "request to application state",
+    "owasp_category": "A06:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Members cannot reshare or override owner and tenant fields.",
+        "method": "Complete source inspection; runtime checks where specified",
+        "result": "Share model accepts recipient/expiry only; server sets document, id and revoked; owner/tenant checks precede append. No payment/job state machines."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:state-integrity:A08",
+    "surface": "state-integrity",
+    "boundary": "request to application state",
+    "owasp_category": "A08:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Client cannot inject serialized executable state or mutate returned objects by reference.",
+        "method": "Complete source inspection; runtime checks where specified",
+        "result": "Pydantic parses JSON; server creates share records and deep-copies outputs; no pickle, dynamic imports or external effects."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:audit-observability:A09",
+    "surface": "audit-observability",
+    "boundary": "request to application state",
+    "owasp_category": "A09:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Check sensitive logs and security event recording.",
+        "method": "Complete source inspection; runtime checks where specified",
+        "result": "No application logging or alerting calls; no sensitive logging sink. Observability recommendation recorded as hardening, without a traced exploit."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:crypto:A04",
+    "surface": "crypto",
+    "boundary": "request to application state",
+    "owasp_category": "A04:2025",
+    "status": "out_of_scope",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Do not report fake tokens or memory storage as production weaknesses.",
+        "method": "Complete source inspection; runtime checks where specified",
+        "result": "README explicitly defines synthetic tokens/storage; no production cryptography or transport configuration supplied."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:dependency-and-deployment-assurance:A03",
+    "surface": "dependency-and-deployment-assurance",
+    "boundary": "request to application state",
+    "owasp_category": "A03:2025",
+    "status": "out_of_scope",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Do not claim a dependency or deployment audit without evidence.",
+        "method": "Complete source inspection; runtime checks where specified",
+        "result": "No app lockfile, package manifest or deployment supplied; external advisory services and installs prohibited; no CVE assurance claimed."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  }
+]

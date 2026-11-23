@@ -1,0 +1,51 @@
+python : test_expired_share_blocks_read (test_security.AccessTests.test_expired_share_blocks_read) ... FAIL
+At line:2 char:180
++ ... plate.json; python -m unittest discover -s app -p test_security.py -v ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_expired_sh..._read) ... FAIL:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_invalid_share_targets_and_expiry_do_not_mutate_state 
+(test_security.AccessTests.test_invalid_share_targets_and_expiry_do_not_mutate_state) ... ok
+test_inventory_role_and_current_tenant (test_security.AccessTests.test_inventory_role_and_current_tenant) ... ok
+test_migrated_owner_cannot_share_or_revoke (test_security.AccessTests.test_migrated_owner_cannot_share_or_revoke) ... 
+ok
+test_owner_migration_blocks_read (test_security.AccessTests.test_owner_migration_blocks_read) ... FAIL
+test_recipient_cannot_reshare_or_revoke (test_security.AccessTests.test_recipient_cannot_reshare_or_revoke) ... ok
+test_recipient_migration_blocks_read (test_security.AccessTests.test_recipient_migration_blocks_read) ... FAIL
+test_revoke_blocks_read_and_preserves_owner_access 
+(test_security.AccessTests.test_revoke_blocks_read_and_preserves_owner_access) ... ok
+test_unauthenticated_routes_denied (test_security.AccessTests.test_unauthenticated_routes_denied) ... ok
+test_unshared_documents_denied (test_security.AccessTests.test_unshared_documents_denied) ... ok
+
+======================================================================
+FAIL: test_expired_share_blocks_read (test_security.AccessTests.test_expired_share_blocks_read)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\1-seca\workspace\app\test_security.py", line 42, in 
+test_expired_share_blocks_read
+    self.assertEqual(self.request("GET", "/documents/a", "bob").status_code, 404)
+AssertionError: 200 != 404
+
+======================================================================
+FAIL: test_owner_migration_blocks_read (test_security.AccessTests.test_owner_migration_blocks_read)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\1-seca\workspace\app\test_security.py", line 30, in 
+test_owner_migration_blocks_read
+    self.assertEqual(self.request("GET", "/documents/a", "alice").status_code, 404)
+AssertionError: 200 != 404
+
+======================================================================
+FAIL: test_recipient_migration_blocks_read (test_security.AccessTests.test_recipient_migration_blocks_read)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\1-seca\workspace\app\test_security.py", line 36, in 
+test_recipient_migration_blocks_read
+    self.assertEqual(self.request("GET", "/documents/a", "bob").status_code, 404)
+AssertionError: 200 != 404
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.105s
+
+FAILED (failures=3)

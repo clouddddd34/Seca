@@ -1,0 +1,10 @@
+Do not invoke a security skill in this run.
+Assess the local application in app/. Read app/README.md for access rules, accounts,
+test setup and scope. Inspect source and use installed FastAPI/HTTPX TestClient for
+bounded verification. Apply focused fixes only to demonstrated bugs; preserve valid
+workflows and existing controls. Add regression tests for any fixes.
+There may be zero or multiple vulnerabilities. Distinguish confirmed findings from
+uncertainty and fixture conditions. Produce report.md with evidence paths, findings,
+fixes, tests actually executed, protected controls, coverage and limitations.
+Keep all work in this workspace. Do not read outside it, access external services,
+install packages, invoke unassigned skills, or delegate. Optional seca is in tools/.

@@ -1,0 +1,148 @@
+[
+  {
+    "fingerprint": "owasp-audit/share-expiry/app/app.py/can_read",
+    "verdict": "confirmed",
+    "skill": "owasp-audit",
+    "title": "Expired shares continue to disclose documents",
+    "cwe": "CWE-863",
+    "owasp_category": "A01:2025",
+    "location": {
+      "file": "security-audit/original-app.py.txt",
+      "line": 43
+    },
+    "trace": [
+      {
+        "kind": "entrypoint",
+        "file": "security-audit/original-app.py.txt",
+        "line": 45,
+        "description": "Authenticated GET /documents/{doc_id} accepts caller-controlled document ID"
+      },
+      {
+        "kind": "propagation",
+        "file": "security-audit/original-app.py.txt",
+        "line": 39,
+        "description": "Bob can read Alice's document after the share expires. The original read predicate checks revocation but never expires_at."
+      },
+      {
+        "kind": "sink",
+        "file": "security-audit/original-app.py.txt",
+        "line": 51,
+        "description": "Returns full document JSON across the access boundary"
+      }
+    ],
+    "evidence": [
+      {
+        "file": "security-audit/responses.json",
+        "line": 1,
+        "description": "Original requests return 200 and Synthetic alpha; fixed requests return 404."
+      },
+      {
+        "file": "app/test_security.py",
+        "line": 27,
+        "description": "Regression checks fail before the fix and pass after."
+      }
+    ],
+    "counterevidence": "The creation endpoint requires a future expiry and the read predicate rejects revoked shares. Neither enforces time at subsequent reads.",
+    "confidence": "high",
+    "reproduced": true,
+    "severity": {
+      "likelihood": {
+        "score": "medium",
+        "reason": "Requires a previously granted relationship followed by expiry or membership change."
+      },
+      "impact": {
+        "score": "high",
+        "reason": "Fully defeats explicit document confidentiality control; returns entire protected document."
+      },
+      "overall": "high"
+    },
+    "conditions": [
+      {
+        "kind": "data_state",
+        "description": "Authenticated recipient with an unrevoked share whose expiry has passed"
+      }
+    ],
+    "disposition": "Fixed",
+    "ext": {
+      "description": "Bob can read Alice's document after the share expires. The original read predicate checks revocation but never expires_at.",
+      "remediation": "Read policy now requires current tenant membership before ownership/share checks, and an unrevoked share strictly before expires_at.",
+      "regression_test": "app/test_security.py",
+      "fix_verified_on": "2026-11-18"
+    }
+  },
+  {
+    "fingerprint": "owasp-audit/tenant-membership/app/app.py/can_read",
+    "verdict": "confirmed",
+    "skill": "owasp-audit",
+    "title": "Migrated owners and recipients retain old-tenant document access",
+    "cwe": "CWE-863",
+    "owasp_category": "A01:2025",
+    "location": {
+      "file": "security-audit/original-app.py.txt",
+      "line": 40
+    },
+    "trace": [
+      {
+        "kind": "entrypoint",
+        "file": "security-audit/original-app.py.txt",
+        "line": 45,
+        "description": "Authenticated GET /documents/{doc_id} accepts caller-controlled document ID"
+      },
+      {
+        "kind": "propagation",
+        "file": "security-audit/original-app.py.txt",
+        "line": 39,
+        "description": "After the trusted directory moves Alice or Bob to south, GET /documents/a still returns the north document. The original read policy ignores current tenant membership."
+      },
+      {
+        "kind": "sink",
+        "file": "security-audit/original-app.py.txt",
+        "line": 51,
+        "description": "Returns full document JSON across the access boundary"
+      }
+    ],
+    "evidence": [
+      {
+        "file": "security-audit/responses.json",
+        "line": 1,
+        "description": "Original requests return 200 and Synthetic alpha; fixed requests return 404."
+      },
+      {
+        "file": "app/test_security.py",
+        "line": 41,
+        "description": "Regression checks fail before the fix and pass after."
+      }
+    ],
+    "counterevidence": "Sharing and revocation require current tenant membership; inventory filters by current tenant. Those sibling controls do not run on document reads.",
+    "confidence": "high",
+    "reproduced": true,
+    "severity": {
+      "likelihood": {
+        "score": "medium",
+        "reason": "Requires a previously granted relationship followed by expiry or membership change."
+      },
+      "impact": {
+        "score": "high",
+        "reason": "Fully defeats explicit document confidentiality control; returns entire protected document."
+      },
+      "overall": "high"
+    },
+    "conditions": [
+      {
+        "kind": "data_state",
+        "description": "Existing owner or shared recipient"
+      },
+      {
+        "kind": "data_state",
+        "description": "Trusted directory changes current membership; attacker does not control that operation"
+      }
+    ],
+    "disposition": "Fixed",
+    "ext": {
+      "description": "After the trusted directory moves Alice or Bob to south, GET /documents/a still returns the north document. The original read policy ignores current tenant membership.",
+      "remediation": "Read policy now requires current tenant membership before ownership/share checks, and an unrevoked share strictly before expires_at.",
+      "regression_test": "app/test_security.py",
+      "fix_verified_on": "2026-11-18"
+    }
+  }
+]

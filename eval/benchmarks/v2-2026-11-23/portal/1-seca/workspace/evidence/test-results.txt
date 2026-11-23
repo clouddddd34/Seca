@@ -1,0 +1,12 @@
+test_admin_export_current_tenant_and_role (app.test_security.SecurityControls.test_admin_export_current_tenant_and_role) ... ok
+test_anonymous_and_public_routes (app.test_security.SecurityControls.test_anonymous_and_public_routes) ... ok
+test_current_membership_after_migration (app.test_security.SecurityControls.test_current_membership_after_migration) ... ok
+test_escaping_cookie_and_headers (app.test_security.SecurityControls.test_escaping_cookie_and_headers) ... ok
+test_login_origin_and_rotation (app.test_security.SecurityControls.test_login_origin_and_rotation) ... ok
+test_logout_csrf_and_invalidation (app.test_security.SecurityControls.test_logout_csrf_and_invalidation) ... ok
+test_ticket_ownership_and_tenant_matrix (app.test_security.SecurityControls.test_ticket_ownership_and_tenant_matrix) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.130s
+
+OK

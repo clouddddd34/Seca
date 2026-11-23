@@ -1,0 +1,10 @@
+{
+  "usage": {
+    "reasoning_output_tokens": 90,
+    "cache_write_input_tokens": 0,
+    "input_tokens": 158568,
+    "cached_input_tokens": 146944,
+    "output_tokens": 3264
+  },
+  "cost_usd": null
+}

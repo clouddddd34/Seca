@@ -1,0 +1,5 @@
+Created [report.md](report.md) with evidence, fixes, coverage and limitations.
+
+Confirmed and fixed three bugs: bare-name authentication bypass, repeated refund credits, and WELCOME coupon reuse. All 10 final regression tests pass.
+
+Concurrent-request behavior and dependency advisories remain unverified.

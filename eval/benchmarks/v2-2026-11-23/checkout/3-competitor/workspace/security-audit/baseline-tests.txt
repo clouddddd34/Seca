@@ -1,0 +1,74 @@
+python : test_bare_account_is_not_a_credential (test_security.SecurityTests.test_bare_account_is_not_a_credential) ... 
+FAIL
+At line:2 char:1
++ python -m unittest discover -s app -p test_security.py -v 2>&1 | Tee- ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_bare_accou...ntial) ... FAIL:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_coupon_cannot_be_reused_across_orders (test_security.SecurityTests.test_coupon_cannot_be_reused_across_orders) 
+... FAIL
+test_failed_payment_preserves_unused_coupon (test_security.SecurityTests.test_failed_payment_preserves_unused_coupon) 
+... ok
+test_invalid_inputs_and_transitions_preserve_state 
+(test_security.SecurityTests.test_invalid_inputs_and_transitions_preserve_state) ... ok
+test_missing_and_invalid_auth_all_routes (test_security.SecurityTests.test_missing_and_invalid_auth_all_routes) ... 
+FAIL
+test_ownership_before_state_and_mutation (test_security.SecurityTests.test_ownership_before_state_and_mutation) ... ok
+test_refund_does_not_restore_coupon_and_bob_is_independent 
+(test_security.SecurityTests.test_refund_does_not_restore_coupon_and_bob_is_independent) ... FAIL
+test_refund_is_once_and_matches_discounted_charge 
+(test_security.SecurityTests.test_refund_is_once_and_matches_discounted_charge) ... FAIL
+
+======================================================================
+FAIL: test_bare_account_is_not_a_credential (test_security.SecurityTests.test_bare_account_is_not_a_credential)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\3-competitor\workspace\app\test_security.py", line 
+44, in test_bare_account_is_not_a_credential
+    self.assertEqual(response.status_code, 401, response.text)
+AssertionError: 200 != 401 : {"balance":10000,"used_coupons":[]}
+
+======================================================================
+FAIL: test_coupon_cannot_be_reused_across_orders 
+(test_security.SecurityTests.test_coupon_cannot_be_reused_across_orders)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\3-competitor\workspace\app\test_security.py", line 
+51, in test_coupon_cannot_be_reused_across_orders
+    self.assertEqual(response.status_code, 409, response.text)
+AssertionError: 200 != 409 : {"id":2,"owner":"alice","quantity":1,"total":1000,"state":"paid","paid":500}
+
+======================================================================
+FAIL: test_missing_and_invalid_auth_all_routes (test_security.SecurityTests.test_missing_and_invalid_auth_all_routes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\3-competitor\workspace\app\test_security.py", line 
+124, in test_missing_and_invalid_auth_all_routes
+    self.assertEqual(self.request(method, path, headers=headers, **kwargs).status_code, 401)
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_refund_does_not_restore_coupon_and_bob_is_independent 
+(test_security.SecurityTests.test_refund_does_not_restore_coupon_and_bob_is_independent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\3-competitor\workspace\app\test_security.py", line 
+74, in test_refund_does_not_restore_coupon_and_bob_is_independent
+    self.assertEqual(self.pay(second, 'WELCOME').status_code, 409)
+AssertionError: 200 != 409
+
+======================================================================
+FAIL: test_refund_is_once_and_matches_discounted_charge 
+(test_security.SecurityTests.test_refund_is_once_and_matches_discounted_charge)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\3-competitor\workspace\app\test_security.py", line 
+64, in test_refund_is_once_and_matches_discounted_charge
+    self.assertEqual(response.status_code, 409, response.text)
+AssertionError: 200 != 409 : {"id":1,"owner":"alice","quantity":3,"total":3000,"state":"refunded","paid":2500}
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.102s
+
+FAILED (failures=5)

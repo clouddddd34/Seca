@@ -1,0 +1,14 @@
+{
+  "anonymous_denied": true,
+  "navigation": true,
+  "login_origin": true,
+  "bad_login_denied": true,
+  "ownership": true,
+  "escaped_search": true,
+  "middleware_admin": true,
+  "tenant_reassignment": true,
+  "csrf_logout": true,
+  "logout_invalidates": true,
+  "tenant_export": true,
+  "session_rotation": true
+}

@@ -1,0 +1,169 @@
+python : test_bare_account_cannot_authenticate_or_mutate 
+(app.test_security.SecurityTests.test_bare_account_cannot_authenticate_or_mutate) ... FAIL
+At line:2 char:1
++ python -m unittest app.test_security -v 2>&1 | Tee-Object -FilePath e ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_bare_accou...utate) ... FAIL:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_coupon_cannot_be_reused_across_orders 
+(app.test_security.SecurityTests.test_coupon_cannot_be_reused_across_orders) ... FAIL
+test_coupon_is_per_account (app.test_security.SecurityTests.test_coupon_is_per_account) ... ok
+test_failed_payment_keeps_coupon_and_draft 
+(app.test_security.SecurityTests.test_failed_payment_keeps_coupon_and_draft) ... ok
+test_ownership_and_authentication_controls 
+(app.test_security.SecurityTests.test_ownership_and_authentication_controls) ... ok
+test_quantity_bounds (app.test_security.SecurityTests.test_quantity_bounds) ... ok
+test_refund_does_not_restore_coupon (app.test_security.SecurityTests.test_refund_does_not_restore_coupon) ... FAIL
+test_refund_only_once (app.test_security.SecurityTests.test_refund_only_once) ... FAIL
+test_valid_workflows_and_transition_controls 
+(app.test_security.SecurityTests.test_valid_workflows_and_transition_controls) ... ok
+
+======================================================================
+FAIL: test_bare_account_cannot_authenticate_or_mutate 
+(app.test_security.SecurityTests.test_bare_account_cannot_authenticate_or_mutate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-seca\workspace\app\test_security.py", line 49, in 
+test_bare_account_cannot_authenticate_or_mutate
+    self.assertEqual((read.status_code, write.status_code, after), (401, 401, before))
+AssertionError: Tuples differ: (200, 200, ({'balance': 9000, 'used_coupon[94 chars]00})) != (401, 401, ({'balance': 
+10000, 'used_coupo[93 chars] 0}))
+
+First differing element 0:
+200
+401
+
+- (200,
+-  200,
++ (401,
++  401,
+-  ({'balance': 9000, 'used_coupons': []},
+?               ^
+
++  ({'balance': 10000, 'used_coupons': []},
+?               ^^
+
+    {'id': 1,
+     'owner': 'alice',
+-    'paid': 1000,
+?            ---
+
++    'paid': 0,
+     'quantity': 1,
+-    'state': 'paid',
+?              ^ ^^
+
++    'state': 'draft',
+?              ^^ ^^
+
+     'total': 1000}))
+
+======================================================================
+FAIL: test_coupon_cannot_be_reused_across_orders 
+(app.test_security.SecurityTests.test_coupon_cannot_be_reused_across_orders)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-seca\workspace\app\test_security.py", line 68, in 
+test_coupon_cannot_be_reused_across_orders
+    self.assertEqual((response.status_code, after), (409, before))
+AssertionError: Tuples differ: (200, ({'balance': 9000, 'used_coupons': [[97 chars]00})) != (409, ({'balance': 9500, 
+'used_coupons': [[96 chars] 0}))
+
+First differing element 0:
+200
+409
+
+- (200,
++ (409,
+-  ({'balance': 9000, 'used_coupons': ['WELCOME']},
+?                ^
+
++  ({'balance': 9500, 'used_coupons': ['WELCOME']},
+?                ^
+
+    {'id': 2,
+     'owner': 'alice',
+-    'paid': 500,
+?            --
+
++    'paid': 0,
+     'quantity': 1,
+-    'state': 'paid',
+?              ^ ^^
+
++    'state': 'draft',
+?              ^^ ^^
+
+     'total': 1000}))
+
+======================================================================
+FAIL: test_refund_does_not_restore_coupon (app.test_security.SecurityTests.test_refund_does_not_restore_coupon)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-seca\workspace\app\test_security.py", line 78, in 
+test_refund_does_not_restore_coupon
+    self.assertEqual((response.status_code, self.wallet(), self.order(second)), (409, *before))
+AssertionError: Tuples differ: (200, {'balance': 9500, 'used_coupons': ['[95 chars]500}) != (409, {'balance': 10000, 
+'used_coupons': [[95 chars]: 0})
+
+First differing element 0:
+200
+409
+
+- (200,
++ (409,
+-  {'balance': 9500, 'used_coupons': ['WELCOME']},
+?              ^^
+
++  {'balance': 10000, 'used_coupons': ['WELCOME']},
+?              ^^^
+
+   {'id': 2,
+    'owner': 'alice',
+-   'paid': 500,
+?           --
+
++   'paid': 0,
+    'quantity': 1,
+-   'state': 'paid',
+?             ^ ^^
+
++   'state': 'draft',
+?             ^^ ^^
+
+    'total': 1000})
+
+======================================================================
+FAIL: test_refund_only_once (app.test_security.SecurityTests.test_refund_only_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-seca\workspace\app\test_security.py", line 60, in 
+test_refund_only_once
+    self.assertEqual((response.status_code, after), (409, before))
+AssertionError: Tuples differ: (200, ({'balance': 10500, 'used_coupons': [102 chars]00})) != (409, ({'balance': 10000, 
+'used_coupons': [102 chars]00}))
+
+First differing element 0:
+200
+409
+
+- (200,
++ (409,
+-  ({'balance': 10500, 'used_coupons': ['WELCOME']},
+?                 ^
+
++  ({'balance': 10000, 'used_coupons': ['WELCOME']},
+?                 ^
+
+    {'id': 1,
+     'owner': 'alice',
+     'paid': 500,
+     'quantity': 1,
+     'state': 'refunded',
+     'total': 1000}))
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.111s
+
+FAILED (failures=4)

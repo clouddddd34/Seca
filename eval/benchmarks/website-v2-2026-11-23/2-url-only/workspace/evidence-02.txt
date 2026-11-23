@@ -1,0 +1,12 @@
+Request 2 GET http://127.0.0.1:2164/help
+Linked from: Request 1 navigation
+Status: 200
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+Cache-Control: no-store
+Date: Mon, 23 Nov 2026 02:02:00 GMT
+Server: uvicorn
+Content-Length: 399
+Content-Type: text/html; charset=utf-8
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Access rules</h1><p>Tickets require current tenant membership and ownership. Admins export only their current tenant. Search text is displayed literally.</p></body></html>

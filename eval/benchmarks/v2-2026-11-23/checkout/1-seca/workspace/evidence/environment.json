@@ -1,0 +1,14 @@
+{
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "packages": {
+    "fastapi": "0.115.6",
+    "httpx": "0.26.0",
+    "starlette": "0.41.3",
+    "pydantic": "2.13.4"
+  },
+  "sha256": {
+    "evidence/app-before.py": "39f2aec835d3371401427d016eb05422221bdf0d523df47fcc71761019dacdc5",
+    "app/app.py": "34e02efa390ca9e945e221f98d579d6c1a75d80796994f923cde785ee5ea0bd4",
+    "app/test_security.py": "138010c45f9b0eb97faf5026d393e5fe535333ea4a5c13e139bbd2e2547a354d"
+  }
+}

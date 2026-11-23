@@ -1,0 +1,124 @@
+python : test_bare_account_is_not_a_token (app.test_security.CheckoutTests.test_bare_account_is_not_a_token) ... FAIL
+At line:127 char:30
++ ... tent audit.json; python -m unittest app.test_security -v 2>&1 | Tee-O ...
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_bare_accou...token) ... FAIL:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_coupon_is_per_account (app.test_security.CheckoutTests.test_coupon_is_per_account) ... ok
+test_coupon_once_even_after_refund (app.test_security.CheckoutTests.test_coupon_once_even_after_refund) ... FAIL
+test_insufficient_funds_preserves_coupon (app.test_security.CheckoutTests.test_insufficient_funds_preserves_coupon) 
+... ok
+test_invalid_transitions_and_coupon (app.test_security.CheckoutTests.test_invalid_transitions_and_coupon) ... ok
+test_owner_boundary (app.test_security.CheckoutTests.test_owner_boundary) ... ok
+test_refund_only_once (app.test_security.CheckoutTests.test_refund_only_once) ... FAIL
+test_validation_authentication_and_missing_orders 
+(app.test_security.CheckoutTests.test_validation_authentication_and_missing_orders) ... ok
+
+======================================================================
+FAIL: test_bare_account_is_not_a_token (app.test_security.CheckoutTests.test_bare_account_is_not_a_token)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\2-seca\workspace\app\test_security.py", line 61, in 
+test_bare_account_is_not_a_token
+    self.assertEqual((response.status_code, after), (401, before))
+AssertionError: Tuples differ: (200, ({'balance': 9000, 'used_coupons': [[89 chars]00})) != (401, ({'balance': 10000, 
+'used_coupons': [88 chars] 0}))
+
+First differing element 0:
+200
+401
+
+- (200,
++ (401,
+-  ({'balance': 9000, 'used_coupons': []},
+?               ^
+
++  ({'balance': 10000, 'used_coupons': []},
+?               ^^
+
+    {'id': 1,
+     'owner': 'alice',
+-    'paid': 1000,
+?            ---
+
++    'paid': 0,
+     'quantity': 1,
+-    'state': 'paid',
+?              ^ ^^
+
++    'state': 'draft',
+?              ^^ ^^
+
+     'total': 1000}))
+
+======================================================================
+FAIL: test_coupon_once_even_after_refund (app.test_security.CheckoutTests.test_coupon_once_even_after_refund)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\2-seca\workspace\app\test_security.py", line 52, in 
+test_coupon_once_even_after_refund
+    self.assertEqual((response.status_code, after), (409, before))
+AssertionError: Tuples differ: (200, ({'balance': 9500, 'used_coupons': [[97 chars]00})) != (409, ({'balance': 10000, 
+'used_coupons': [97 chars] 0}))
+
+First differing element 0:
+200
+409
+
+- (200,
++ (409,
+-  ({'balance': 9500, 'used_coupons': ['WELCOME']},
+?               ^^
+
++  ({'balance': 10000, 'used_coupons': ['WELCOME']},
+?               ^^^
+
+    {'id': 2,
+     'owner': 'alice',
+-    'paid': 500,
+?            --
+
++    'paid': 0,
+     'quantity': 1,
+-    'state': 'paid',
+?              ^ ^^
+
++    'state': 'draft',
+?              ^^ ^^
+
+     'total': 1000}))
+
+======================================================================
+FAIL: test_refund_only_once (app.test_security.CheckoutTests.test_refund_only_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\2-seca\workspace\app\test_security.py", line 39, in 
+test_refund_only_once
+    self.assertEqual((response.status_code, after), (409, before))
+AssertionError: Tuples differ: (200, ({'balance': 11000, 'used_coupons': [94 chars]00})) != (409, ({'balance': 10000, 
+'used_coupons': [94 chars]00}))
+
+First differing element 0:
+200
+409
+
+- (200,
++ (409,
+-  ({'balance': 11000, 'used_coupons': []},
+?               -
+
++  ({'balance': 10000, 'used_coupons': []},
+?                   +
+
+    {'id': 1,
+     'owner': 'alice',
+     'paid': 1000,
+     'quantity': 1,
+     'state': 'refunded',
+     'total': 1000}))
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.257s
+
+FAILED (failures=3)

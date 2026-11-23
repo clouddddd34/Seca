@@ -33,6 +33,14 @@ def evaluate(path):
     checks["authentication_preserved"] = client.get("/invoices/inv-a").status_code == 401
     checks["quantity_validation_preserved"] = client.post("/orders", headers=auth("alice"), json={
         "sku":"book", "quantity":0, "unit_price_cents":1000}).status_code == 422
+    # An owner moved to another tenant must lose access to the old tenant's data.
+    previous_tenant = module.USERS["fixture-bob"]["tenant"]
+    try:
+        module.USERS["fixture-bob"]["tenant"] = "south"
+        checks["tenant_reassignment_preserved"] = client.get(
+            "/invoices/inv-b", headers=auth("bob")).status_code in (403, 404)
+    finally:
+        module.USERS["fixture-bob"]["tenant"] = previous_tenant
     return checks
 
 

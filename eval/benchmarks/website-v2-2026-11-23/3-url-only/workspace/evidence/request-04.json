@@ -1,0 +1,18 @@
+{
+  "request_number": 4,
+  "method": "GET",
+  "url": "http://127.0.0.1:56365/tickets",
+  "status": 401,
+  "headers": {
+    "date": "Mon, 23 Nov 2026 02:03:57 GMT",
+    "server": "uvicorn",
+    "content-length": "14",
+    "content-type": "text/html; charset=utf-8",
+    "connection": "close"
+  },
+  "truncated": false,
+  "elements": [],
+  "text": [
+    "Login required"
+  ]
+}

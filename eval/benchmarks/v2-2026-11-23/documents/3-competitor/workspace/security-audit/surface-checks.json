@@ -1,0 +1,95 @@
+[
+  {
+    "path": "/openapi.json",
+    "status": 200,
+    "type": "application/json"
+  },
+  {
+    "path": "/docs",
+    "status": 200,
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "path": "/docs/oauth2-redirect",
+    "status": 200,
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "path": "/redoc",
+    "status": 200,
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "malformed_share": {},
+    "status": 422
+  },
+  {
+    "malformed_share": {
+      "recipient": [],
+      "expires_at": "bad"
+    },
+    "status": 422
+  },
+  {
+    "malformed_share_id": 422
+  },
+  {
+    "shares_after_invalid_requests": 0
+  },
+  {
+    "routes": [
+      {
+        "path": "/openapi.json",
+        "methods": [
+          "GET",
+          "HEAD"
+        ]
+      },
+      {
+        "path": "/docs",
+        "methods": [
+          "GET",
+          "HEAD"
+        ]
+      },
+      {
+        "path": "/docs/oauth2-redirect",
+        "methods": [
+          "GET",
+          "HEAD"
+        ]
+      },
+      {
+        "path": "/redoc",
+        "methods": [
+          "GET",
+          "HEAD"
+        ]
+      },
+      {
+        "path": "/documents/{doc_id}",
+        "methods": [
+          "GET"
+        ]
+      },
+      {
+        "path": "/documents/{doc_id}/shares",
+        "methods": [
+          "POST"
+        ]
+      },
+      {
+        "path": "/shares/{share_id}",
+        "methods": [
+          "DELETE"
+        ]
+      },
+      {
+        "path": "/admin/inventory",
+        "methods": [
+          "GET"
+        ]
+      }
+    ]
+  }
+]

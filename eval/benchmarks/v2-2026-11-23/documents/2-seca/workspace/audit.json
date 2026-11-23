@@ -1,0 +1,67 @@
+{
+  "target": "local app/",
+  "scope": "source review and bounded local TestClient tests",
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Document reads ignore current tenant membership",
+      "status": "confirmed",
+      "severity": "high",
+      "expected": "Current tenant membership is required for owners and shared recipients (app/README.md).",
+      "observed": "After authorized directory migration to south, both owner and live-share recipient received HTTP 200 and the complete north document.",
+      "evidence": [
+        "evidence/app.before.py:40-45",
+        "evidence/reproduction-before.json",
+        "evidence/tests-before.txt",
+        "evidence/reproduction-after.json",
+        "evidence/tests-after.txt",
+        "tests/test_access.py"
+      ],
+      "reproduction": [
+        "Run python evidence/reproduce.py against evidence/app.before.py restored as app/app.py in an isolated workspace copy.",
+        "Observe owner_migration and recipient_migration: baseline 200; after migration 200 with document_returned=true."
+      ],
+      "preconditions": [
+        "Authenticated owner or live-share recipient subsequently moves away from the document tenant."
+      ],
+      "uncertainty": [
+        "Demonstrated only against local synthetic instances; deployment and real data impact were not assessed."
+      ],
+      "impact": "Cross-tenant confidentiality breach of previously owned/shared documents; no new write capability demonstrated.",
+      "remediation": "Applied tenant comparison before ownership/share evaluation; both paths retested as 404."
+    },
+    {
+      "id": "F-002",
+      "title": "Expired shares continue granting document access",
+      "status": "confirmed",
+      "severity": "medium",
+      "expected": "Shares grant access only while unrevoked and before expires_at (app/README.md).",
+      "observed": "An initially valid persisted share was expired through authorized fixture setup; recipient still received HTTP 200 and the complete document.",
+      "evidence": [
+        "evidence/app.before.py:40-45",
+        "evidence/reproduction-before.json",
+        "evidence/tests-before.txt",
+        "evidence/reproduction-after.json",
+        "evidence/tests-after.txt",
+        "tests/test_access.py"
+      ],
+      "reproduction": [
+        "Run python evidence/reproduce.py against the preserved original source in an isolated workspace copy.",
+        "Observe expiry: baseline 200; after expiry 200 with document_returned=true."
+      ],
+      "preconditions": [
+        "Authenticated same-tenant recipient has a previously valid, now expired, unrevoked share."
+      ],
+      "uncertainty": [
+        "Demonstrated only against local synthetic instances; deployment and real data impact were not assessed."
+      ],
+      "impact": "Confidentiality exposure continues beyond the owner-selected access window.",
+      "remediation": "Applied strict current-time comparison in share read authorization; expired access retested as 404 while owner and live shares remain valid."
+    }
+  ],
+  "outstanding_hypotheses": [],
+  "limitations": [
+    "No external advisory lookup permitted",
+    "No deployment, concurrency, load, or broad malformed-input testing"
+  ]
+}

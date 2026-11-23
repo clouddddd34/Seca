@@ -24,6 +24,10 @@ class EvaluationTests(unittest.TestCase):
             candidate = Path(directory) / "app.py"
             candidate.write_text(fixed, encoding="utf-8")
             result = evaluate(candidate)
+            owner_only = fixed.replace('item is None or item["tenant"] != request.state.actor["tenant"]', 'item is None')
+            candidate.write_text(owner_only, encoding="utf-8")
+            weakened = evaluate(candidate)
+            self.assertFalse(weakened["tenant_reassignment_preserved"])
         self.assertTrue(all(result.values()), result)
 
 

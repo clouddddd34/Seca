@@ -1,0 +1,25 @@
+{
+  "id": "F-002",
+  "title": "WELCOME coupon can be reused",
+  "status": "confirmed",
+  "severity": "medium",
+  "expected": "One WELCOME payment per account, even after refund. Rule: app/README.md.",
+  "observed": "Second order payment with WELCOME returned 200, charged 500 and saved paid state instead of rejecting unchanged.",
+  "evidence": [
+    "evidence/app.before.py",
+    "evidence/tests-before.txt",
+    "app/test_security.py::CheckoutTests.test_coupon_once_even_after_refund",
+    "evidence/tests-after.txt"
+  ],
+  "reproduction": [
+    "Pay first order with WELCOME, refund, create second order, pay with WELCOME, read wallet and order."
+  ],
+  "preconditions": [
+    "Account has used WELCOME."
+  ],
+  "uncertainty": [
+    "Local synthetic fixture only; no production exploitability claim."
+  ],
+  "impact": "Repeated unauthorized 500-cent discounts on orders.",
+  "remediation": "Check used_coupons before any payment mutation. Applied in app/app.py and successfully retested."
+}

@@ -1,0 +1,12 @@
+{
+  "owner_and_peer": true,
+  "anonymous_denied": true,
+  "live_share": true,
+  "recipient_cannot_reshare": true,
+  "cross_tenant_share_denied": true,
+  "expired_share_denied": true,
+  "recipient_migration_denied": true,
+  "owner_migration_denied": true,
+  "revocation_preserved": true,
+  "admin_preserved": true
+}

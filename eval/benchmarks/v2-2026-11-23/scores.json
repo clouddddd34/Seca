@@ -1,0 +1,1460 @@
+{
+  "note": "Preliminary synthetic fixtures; planned root causes only. Additional findings listed per run. Dollar costs unavailable.",
+  "complete": false,
+  "planned_runs": 27,
+  "scored_runs": 22,
+  "excluded_runs": [
+    {
+      "run_id": "checkout/3-baseline",
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "failed",
+        "exit_code": 1,
+        "elapsed_seconds": 57.73
+      }
+    },
+    {
+      "run_id": "checkout/3-seca",
+      "execution": {
+        "status": "not_started"
+      }
+    },
+    {
+      "run_id": "portal/3-competitor",
+      "execution": {
+        "status": "not_started"
+      }
+    },
+    {
+      "run_id": "portal/3-baseline",
+      "execution": {
+        "status": "not_started"
+      }
+    },
+    {
+      "run_id": "portal/3-seca",
+      "execution": {
+        "status": "not_started"
+      }
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "documents/1-baseline",
+      "arm": "baseline",
+      "fixture": "documents",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 101.94
+      },
+      "metrics": {
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 101120,
+          "input_tokens": 113760,
+          "reasoning_output_tokens": 154,
+          "output_tokens": 3848
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "owner_and_peer": true,
+        "anonymous_denied": true,
+        "live_share": true,
+        "recipient_cannot_reshare": true,
+        "cross_tenant_share_denied": true,
+        "expired_share_denied": true,
+        "recipient_migration_denied": true,
+        "owner_migration_denied": true,
+        "revocation_preserved": true,
+        "admin_preserved": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 0,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [
+        "Malformed Authorization accepts bare username: valid separately reviewed parsing defect, fixed; status-only runtime evidence."
+      ],
+      "proof_limits": [
+        "Both planned pre-fix denial tests assert HTTP status only; no forbidden document body observed."
+      ],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/app/test_app.py",
+        "workspace/baseline-tests.txt",
+        "workspace/fixed-tests.txt",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Current tenant check precedes ownership/share checks; share expiration enforced; strict bearer-prefix check added; legitimate controls retained.",
+      "unverified_candidates": []
+    },
+    {
+      "run_id": "documents/1-seca",
+      "arm": "seca",
+      "fixture": "documents",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 138.41
+      },
+      "metrics": {
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 96000,
+          "input_tokens": 120499,
+          "reasoning_output_tokens": 146,
+          "output_tokens": 5388
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "owner_and_peer": true,
+        "anonymous_denied": true,
+        "live_share": true,
+        "recipient_cannot_reshare": true,
+        "cross_tenant_share_denied": true,
+        "expired_share_denied": true,
+        "recipient_migration_denied": true,
+        "owner_migration_denied": true,
+        "revocation_preserved": true,
+        "admin_preserved": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 2,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [],
+      "proof_limits": [],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/evidence/runtime-before.json",
+        "workspace/evidence/verify_baseline.py",
+        "workspace/evidence/tests-after.txt",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Minimal can_read changes enforce tenant before owner/share and expiry in share predicate; all independent checks pass.",
+      "unverified_candidates": []
+    },
+    {
+      "run_id": "documents/1-competitor",
+      "arm": "competitor",
+      "fixture": "documents",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "timed_out",
+        "exit_code": 1,
+        "elapsed_seconds": 180.31
+      },
+      "metrics": {
+        "usage": null,
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "owner_and_peer": true,
+        "anonymous_denied": true,
+        "live_share": true,
+        "recipient_cannot_reshare": true,
+        "cross_tenant_share_denied": true,
+        "expired_share_denied": true,
+        "recipient_migration_denied": true,
+        "owner_migration_denied": true,
+        "revocation_preserved": true,
+        "admin_preserved": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 2,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 1,
+      "scope_violations": [],
+      "additional_findings": [],
+      "proof_limits": [
+        "Timed out before final report; findings, coverage, response proof and successful unittest output exist."
+      ],
+      "evidence": [
+        "workspace/security-audit/findings.json",
+        "workspace/security-audit/responses.json",
+        "workspace/security-audit/verify_responses.py",
+        "workspace/security-audit/verification.md",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Minimal tenant-first and strict expiry predicate; all independent checks pass.",
+      "unverified_candidates": []
+    },
+    {
+      "run_id": "checkout/1-baseline",
+      "arm": "baseline",
+      "fixture": "checkout",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 128.86
+      },
+      "metrics": {
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 80896,
+          "input_tokens": 92245,
+          "reasoning_output_tokens": 151,
+          "output_tokens": 3779
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "draft_refund_denied": true,
+        "owner_boundary": true,
+        "discount_payment": true,
+        "payment_once": true,
+        "refund_actual_paid": true,
+        "refund_once": true,
+        "coupon_once": true,
+        "normal_purchase": true,
+        "coupon_per_account": true,
+        "validation_preserved": true,
+        "failed_payment_atomic": true,
+        "failed_payment_keeps_coupon": true,
+        "refund_keeps_coupon_consumed": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 2,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [
+        "Bare username accepted as Authorization: separately reviewed credential parsing defect, fixed; runtime wallet body observed."
+      ],
+      "proof_limits": [],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/app/evidence-before.json",
+        "workspace/app/test_app.py",
+        "workspace/app/test-after.txt",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Coupon-consumption check before mutations and paid-only refund predicate; stricter auth parser; all independent checks pass.",
+      "unverified_candidates": []
+    },
+    {
+      "run_id": "checkout/1-seca",
+      "arm": "seca",
+      "fixture": "checkout",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 157.56
+      },
+      "metrics": {
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 124544,
+          "input_tokens": 152577,
+          "reasoning_output_tokens": 196,
+          "output_tokens": 6149
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "draft_refund_denied": true,
+        "owner_boundary": true,
+        "discount_payment": true,
+        "payment_once": true,
+        "refund_actual_paid": true,
+        "refund_once": true,
+        "coupon_once": true,
+        "normal_purchase": true,
+        "coupon_per_account": true,
+        "validation_preserved": true,
+        "failed_payment_atomic": true,
+        "failed_payment_keeps_coupon": true,
+        "refund_keeps_coupon_consumed": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 2,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [
+        "Bare username accepted as Authorization: separately reviewed parsing defect, fixed with case-insensitive bearer scheme; pre-fix wallet mutation observed."
+      ],
+      "proof_limits": [],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/evidence/before-tests.txt",
+        "workspace/app/test_security.py",
+        "workspace/evidence/final-tests.txt",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Coupon-consumption guard before state changes, paid-only refund, stricter token parsing; all independent checks pass.",
+      "unverified_candidates": [
+        "Concurrent shared-state races explicitly unverified in the in-budget report."
+      ]
+    },
+    {
+      "run_id": "checkout/1-competitor",
+      "arm": "competitor",
+      "fixture": "checkout",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "timed_out",
+        "exit_code": 1,
+        "elapsed_seconds": 180.31
+      },
+      "metrics": {
+        "usage": null,
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "draft_refund_denied": true,
+        "owner_boundary": true,
+        "discount_payment": true,
+        "payment_once": true,
+        "refund_actual_paid": true,
+        "refund_once": true,
+        "coupon_once": true,
+        "normal_purchase": true,
+        "coupon_per_account": true,
+        "validation_preserved": true,
+        "failed_payment_atomic": true,
+        "failed_payment_keeps_coupon": true,
+        "refund_keeps_coupon_consumed": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 2,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 1,
+      "scope_violations": [],
+      "additional_findings": [
+        "Bare-username parsing defect: reproduced and fixed.",
+        "Instrumented two-request financial races tested; added in-process lock. Separate evaluator supplemental check confirms saved balances under this schedule."
+      ],
+      "proof_limits": [
+        "Timed out before findings/final report; in-budget tests and response artifacts demonstrate both planned root causes.",
+        "Concurrency evidence uses an instrumented schedule; no production concurrency claim."
+      ],
+      "evidence": [
+        "workspace/security-audit/probe-before.json",
+        "workspace/security-audit/probe-after.json",
+        "workspace/app/test_security.py",
+        "workspace/security-audit/tests-after.txt",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Coupon/refund guards and strict auth prefix plus RLock around state reads/writes; independent sequential checks pass. Supplementary race checks recorded separately.",
+      "unverified_candidates": []
+    },
+    {
+      "run_id": "portal/1-baseline",
+      "arm": "baseline",
+      "fixture": "portal",
+      "opportunities": 0,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 108.03
+      },
+      "metrics": {
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 84736,
+          "input_tokens": 97407,
+          "reasoning_output_tokens": 158,
+          "output_tokens": 3833
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "anonymous_denied": true,
+        "navigation": true,
+        "login_origin": true,
+        "bad_login_denied": true,
+        "ownership": true,
+        "escaped_search": true,
+        "middleware_admin": true,
+        "tenant_reassignment": true,
+        "csrf_logout": true,
+        "logout_invalidates": true,
+        "tenant_export": true,
+        "session_rotation": true
+      },
+      "discovery": 0,
+      "complete_runtime_proofs": 0,
+      "false_accusations": 0,
+      "fixes": 0,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [],
+      "proof_limits": [],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/app/test_assessment.py",
+        "workspace/app/assessment-results.txt",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Application source unchanged; eight executed control tests and all independent checks pass. Missing headers on constant denial responses explicitly left as non-vulnerability observation.",
+      "unverified_candidates": []
+    },
+    {
+      "run_id": "portal/1-seca",
+      "arm": "seca",
+      "fixture": "portal",
+      "opportunities": 0,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 121.78
+      },
+      "metrics": {
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 125952,
+          "input_tokens": 139709,
+          "reasoning_output_tokens": 124,
+          "output_tokens": 4407
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "anonymous_denied": true,
+        "navigation": true,
+        "login_origin": true,
+        "bad_login_denied": true,
+        "ownership": true,
+        "escaped_search": true,
+        "middleware_admin": true,
+        "tenant_reassignment": true,
+        "csrf_logout": true,
+        "logout_invalidates": true,
+        "tenant_export": true,
+        "session_rotation": true
+      },
+      "discovery": 0,
+      "complete_runtime_proofs": 0,
+      "false_accusations": 0,
+      "fixes": 0,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [],
+      "proof_limits": [],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/app/test_security.py",
+        "workspace/evidence/test-results.txt",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Source unchanged; seven executed control tests and independent checks pass. Configuration observation distinguished from vulnerability.",
+      "unverified_candidates": []
+    },
+    {
+      "run_id": "portal/1-competitor",
+      "arm": "competitor",
+      "fixture": "portal",
+      "opportunities": 0,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 165.05
+      },
+      "metrics": {
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "cached_input_tokens": 329472,
+          "input_tokens": 371556,
+          "reasoning_output_tokens": 76,
+          "output_tokens": 6094
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "anonymous_denied": true,
+        "navigation": true,
+        "login_origin": true,
+        "bad_login_denied": true,
+        "ownership": true,
+        "escaped_search": true,
+        "middleware_admin": true,
+        "tenant_reassignment": true,
+        "csrf_logout": true,
+        "logout_invalidates": true,
+        "tenant_export": true,
+        "session_rotation": true
+      },
+      "discovery": 0,
+      "complete_runtime_proofs": 0,
+      "false_accusations": 0,
+      "fixes": 0,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [],
+      "proof_limits": [],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/security-audit/test_portal.py",
+        "workspace/security-audit/test-results.txt",
+        "workspace/security-audit/findings.json",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Source unchanged; seven executed control tests and independent checks pass. Malformed-input 500s and missing denial headers explicitly classified as hardening observations without exploitation claim.",
+      "unverified_candidates": []
+    },
+    {
+      "run_id": "documents/2-seca",
+      "arm": "seca",
+      "fixture": "documents",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 136.14
+      },
+      "metrics": {
+        "usage": {
+          "cached_input_tokens": 105856,
+          "input_tokens": 120544,
+          "reasoning_output_tokens": 86,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5361
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "owner_and_peer": true,
+        "anonymous_denied": true,
+        "live_share": true,
+        "recipient_cannot_reshare": true,
+        "cross_tenant_share_denied": true,
+        "expired_share_denied": true,
+        "recipient_migration_denied": true,
+        "owner_migration_denied": true,
+        "revocation_preserved": true,
+        "admin_preserved": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 2,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [],
+      "unverified_candidates": [],
+      "proof_limits": [],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/evidence/reproduction-before.json",
+        "workspace/evidence/reproduce.py",
+        "workspace/evidence/tests-after.txt",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Minimal tenant-first guard and strict expiry predicate; full document equality observed before and denied after, with legitimate baselines; all independent checks pass."
+    },
+    {
+      "run_id": "documents/2-competitor",
+      "arm": "competitor",
+      "fixture": "documents",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "timed_out",
+        "exit_code": 1,
+        "elapsed_seconds": 180.33
+      },
+      "metrics": {
+        "usage": null,
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "owner_and_peer": true,
+        "anonymous_denied": true,
+        "live_share": true,
+        "recipient_cannot_reshare": true,
+        "cross_tenant_share_denied": true,
+        "expired_share_denied": true,
+        "recipient_migration_denied": true,
+        "owner_migration_denied": true,
+        "revocation_preserved": true,
+        "admin_preserved": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 0,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 1,
+      "scope_violations": [],
+      "additional_findings": [],
+      "unverified_candidates": [],
+      "proof_limits": [
+        "Pre-fix tests assert denial status only; no forbidden document content inspected. Timed out without final report."
+      ],
+      "evidence": [
+        "workspace/security-audit/findings.json",
+        "workspace/security-audit/verification.md",
+        "workspace/app/test_security.py",
+        "workspace/security-audit/before-tests.txt",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Tenant-first and expiry guards retained all independent controls; twelve post-fix tests pass."
+    },
+    {
+      "run_id": "documents/2-baseline",
+      "arm": "baseline",
+      "fixture": "documents",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 113.25
+      },
+      "metrics": {
+        "usage": {
+          "cached_input_tokens": 87552,
+          "input_tokens": 108093,
+          "reasoning_output_tokens": 77,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3848
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "owner_and_peer": true,
+        "anonymous_denied": true,
+        "live_share": true,
+        "recipient_cannot_reshare": true,
+        "cross_tenant_share_denied": true,
+        "expired_share_denied": true,
+        "recipient_migration_denied": true,
+        "owner_migration_denied": true,
+        "revocation_preserved": true,
+        "admin_preserved": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 0,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [
+        "Bare-username Authorization accepted; separately reviewed parsing defect fixed. Status-only reproduction."
+      ],
+      "unverified_candidates": [],
+      "proof_limits": [
+        "Inline reproduction and regression failures report status only, without observing forbidden document contents."
+      ],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/app/test_app.py",
+        "workspace/baseline-tests.txt",
+        "workspace/fixed-tests.txt",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Tenant-first and expiry guards plus strict case-insensitive bearer parser. All independent controls retained."
+    },
+    {
+      "run_id": "checkout/2-seca",
+      "arm": "seca",
+      "fixture": "checkout",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 143.78
+      },
+      "metrics": {
+        "usage": {
+          "cached_input_tokens": 105984,
+          "input_tokens": 120528,
+          "reasoning_output_tokens": 80,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5144
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "draft_refund_denied": true,
+        "owner_boundary": true,
+        "discount_payment": true,
+        "payment_once": true,
+        "refund_actual_paid": true,
+        "refund_once": true,
+        "coupon_once": true,
+        "normal_purchase": true,
+        "coupon_per_account": true,
+        "validation_preserved": true,
+        "failed_payment_atomic": true,
+        "failed_payment_keeps_coupon": true,
+        "refund_keeps_coupon_consumed": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 2,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [
+        "Bare-username authentication parser defect reproduced through saved payment effects and fixed."
+      ],
+      "unverified_candidates": [
+        "Concurrent check/update races explicitly left unverified in-run."
+      ],
+      "proof_limits": [
+        "Frozen sequential checks pass; supplementary instrumented race check fails for payment, refund and coupon."
+      ],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/app/test_security.py",
+        "workspace/evidence/tests-before.txt",
+        "workspace/evidence/tests-after.txt",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Sequential coupon/refund and auth guards correct; legitimate workflows retained. No synchronization added; supplementary results remain separate from frozen scores."
+    },
+    {
+      "run_id": "checkout/2-competitor",
+      "arm": "competitor",
+      "fixture": "checkout",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "timed_out",
+        "exit_code": 1,
+        "elapsed_seconds": 180.23
+      },
+      "metrics": {
+        "usage": null,
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "draft_refund_denied": true,
+        "owner_boundary": true,
+        "discount_payment": true,
+        "payment_once": true,
+        "refund_actual_paid": true,
+        "refund_once": true,
+        "coupon_once": true,
+        "normal_purchase": true,
+        "coupon_per_account": true,
+        "validation_preserved": true,
+        "failed_payment_atomic": true,
+        "failed_payment_keeps_coupon": true,
+        "refund_keeps_coupon_consumed": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 2,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 1,
+      "scope_violations": [],
+      "additional_findings": [
+        "Bare username authentication parser defect reproduced and fixed.",
+        "Instrumented payment/refund/coupon races exercised and serialized with per-instance RLock."
+      ],
+      "unverified_candidates": [],
+      "proof_limits": [
+        "Timed out before final report; partial coverage and executed proofs preserved. Initial test import error corrected within budget."
+      ],
+      "evidence": [
+        "workspace/security-audit/evidence/before-state.json",
+        "workspace/security-audit/evidence/before-tests.txt",
+        "workspace/security-audit/evidence/after-tests.txt",
+        "workspace/app/test_security.py",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Auth parsing and coupon/refund guards plus lock around all state paths. Independent sequential and supplemental race checks pass."
+    },
+    {
+      "run_id": "checkout/2-baseline",
+      "arm": "baseline",
+      "fixture": "checkout",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 95.42
+      },
+      "metrics": {
+        "usage": {
+          "output_tokens": 3359,
+          "cached_input_tokens": 81664,
+          "input_tokens": 91837,
+          "reasoning_output_tokens": 134,
+          "cache_write_input_tokens": 0
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "draft_refund_denied": true,
+        "owner_boundary": true,
+        "discount_payment": true,
+        "payment_once": true,
+        "refund_actual_paid": true,
+        "refund_once": true,
+        "coupon_once": true,
+        "normal_purchase": true,
+        "coupon_per_account": true,
+        "validation_preserved": true,
+        "failed_payment_atomic": true,
+        "failed_payment_keeps_coupon": true,
+        "refund_keeps_coupon_consumed": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 2,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [
+        "Bare username authentication parser defect reproduced and fixed."
+      ],
+      "unverified_candidates": [
+        "Concurrency explicitly unverified in assessment."
+      ],
+      "proof_limits": [
+        "Sequential proofs only; supplemental race checks fail for payment, refund and coupon."
+      ],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/baseline-tests.txt",
+        "workspace/fixed-tests.txt",
+        "workspace/app/test_app.py",
+        "patch-check.json",
+        "supplemental-concurrency.json"
+      ],
+      "manual_patch_review": "Strict bearer prefix, per-account coupon guard and paid-only refund guard; legitimate workflows preserved. Executed before/after suite includes independently fetched persisted financial state."
+    },
+    {
+      "run_id": "portal/2-seca",
+      "arm": "seca",
+      "fixture": "portal",
+      "opportunities": 0,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 131.02
+      },
+      "metrics": {
+        "usage": {
+          "input_tokens": 120550,
+          "cache_write_input_tokens": 0,
+          "reasoning_output_tokens": 112,
+          "cached_input_tokens": 87552,
+          "output_tokens": 4531
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "anonymous_denied": true,
+        "navigation": true,
+        "login_origin": true,
+        "bad_login_denied": true,
+        "ownership": true,
+        "escaped_search": true,
+        "middleware_admin": true,
+        "tenant_reassignment": true,
+        "csrf_logout": true,
+        "logout_invalidates": true,
+        "tenant_export": true,
+        "session_rotation": true
+      },
+      "discovery": 0,
+      "complete_runtime_proofs": 0,
+      "false_accusations": 0,
+      "fixes": 0,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [],
+      "unverified_candidates": [],
+      "proof_limits": [
+        "Response-level escaping only; no browser or concurrency tests."
+      ],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/app/test_security.py",
+        "workspace/evidence/security-tests.txt",
+        "workspace/evidence/environment.json",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Application source unchanged. Eight executed tests cover owner/tenant matrix, current membership, role-limited export, session rotation, Origin/CSRF and HTML escaping. Independent controls all pass."
+    },
+    {
+      "run_id": "portal/2-competitor",
+      "arm": "competitor",
+      "fixture": "portal",
+      "opportunities": 0,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "timed_out",
+        "exit_code": 1,
+        "elapsed_seconds": 180.3
+      },
+      "metrics": {
+        "usage": null,
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "anonymous_denied": true,
+        "navigation": true,
+        "login_origin": true,
+        "bad_login_denied": true,
+        "ownership": true,
+        "escaped_search": true,
+        "middleware_admin": true,
+        "tenant_reassignment": true,
+        "csrf_logout": true,
+        "logout_invalidates": true,
+        "tenant_export": true,
+        "session_rotation": true
+      },
+      "discovery": 0,
+      "complete_runtime_proofs": 0,
+      "false_accusations": 0,
+      "fixes": 0,
+      "coverage": 1,
+      "scope_violations": [],
+      "additional_findings": [],
+      "unverified_candidates": [],
+      "proof_limits": [
+        "Timed out before final report; coverage ledger still planned despite executed tests. Architecture records bounded scope and untested areas."
+      ],
+      "evidence": [
+        "workspace/security-audit/architecture.md",
+        "workspace/security-audit/coverage.json",
+        "workspace/security-audit/test-results.txt",
+        "workspace/app/test_security.py",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Application unchanged; seven control tests executed successfully, confirmed process exit zero after PowerShell pipeline issue. Independent portal checks pass."
+    },
+    {
+      "run_id": "portal/2-baseline",
+      "arm": "baseline",
+      "fixture": "portal",
+      "opportunities": 0,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 118.2
+      },
+      "metrics": {
+        "usage": {
+          "input_tokens": 128056,
+          "cache_write_input_tokens": 0,
+          "reasoning_output_tokens": 229,
+          "cached_input_tokens": 116224,
+          "output_tokens": 4375
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "anonymous_denied": true,
+        "navigation": true,
+        "login_origin": true,
+        "bad_login_denied": true,
+        "ownership": true,
+        "escaped_search": true,
+        "middleware_admin": true,
+        "tenant_reassignment": true,
+        "csrf_logout": true,
+        "logout_invalidates": true,
+        "tenant_export": true,
+        "session_rotation": true
+      },
+      "discovery": 0,
+      "complete_runtime_proofs": 0,
+      "false_accusations": 0,
+      "fixes": 0,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [
+        "Non-ASCII password/CSRF inputs produce request-level 500 errors; reproduced and fixed using byte comparisons. Low-severity robustness defect, no bypass or persistent outage demonstrated."
+      ],
+      "unverified_candidates": [
+        "Account-existence distinction mentioned but explicitly not verified as a separate finding."
+      ],
+      "proof_limits": [
+        "No browser, concurrency or production deployment validation."
+      ],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/app/test_app.py",
+        "events.jsonl",
+        "patch-check.json",
+        "supplemental-unicode.json"
+      ],
+      "manual_patch_review": "Only two constant-time comparison operands changed to UTF-8 bytes. Seven tests pass; pre-fix HTTP probe and original-comparison regression reproduce defect. Independent controls and supplemental Unicode checks confirm preserved access and session state."
+    },
+    {
+      "run_id": "documents/3-competitor",
+      "arm": "competitor",
+      "fixture": "documents",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "timed_out",
+        "exit_code": 1,
+        "elapsed_seconds": 180.27
+      },
+      "metrics": {
+        "usage": null,
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "owner_and_peer": true,
+        "anonymous_denied": true,
+        "live_share": true,
+        "recipient_cannot_reshare": true,
+        "cross_tenant_share_denied": true,
+        "expired_share_denied": true,
+        "recipient_migration_denied": true,
+        "owner_migration_denied": true,
+        "revocation_preserved": true,
+        "admin_preserved": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 0,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 1,
+      "scope_violations": [],
+      "additional_findings": [],
+      "unverified_candidates": [],
+      "proof_limits": [
+        "Pre-fix checks assert response status only, not disclosed document content; no complete runtime-proof credit.",
+        "Timed out before final report; structured findings, verification and coverage artifacts preserved."
+      ],
+      "evidence": [
+        "workspace/security-audit/findings.json",
+        "workspace/security-audit/verification.md",
+        "workspace/security-audit/before-tests.txt",
+        "workspace/security-audit/after-tests.txt",
+        "workspace/app/test_security.py",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Tenant guard precedes owner and share paths; strict expiry check retains revocation and multiple-share semantics. Ten tests executed, independent evaluator passes."
+    },
+    {
+      "run_id": "documents/3-baseline",
+      "arm": "baseline",
+      "fixture": "documents",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 118.88
+      },
+      "metrics": {
+        "usage": {
+          "input_tokens": 137768,
+          "cache_write_input_tokens": 0,
+          "reasoning_output_tokens": 243,
+          "cached_input_tokens": 113536,
+          "output_tokens": 4645
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "owner_and_peer": true,
+        "anonymous_denied": true,
+        "live_share": true,
+        "recipient_cannot_reshare": true,
+        "cross_tenant_share_denied": true,
+        "expired_share_denied": true,
+        "recipient_migration_denied": true,
+        "owner_migration_denied": true,
+        "revocation_preserved": true,
+        "admin_preserved": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 0,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [
+        "Bare username authentication parser defect reproduced at document read and admin inventory, then fixed."
+      ],
+      "unverified_candidates": [],
+      "proof_limits": [
+        "Pre-fix planned-issue checks inspect status only, not forbidden content; no complete runtime-proof credit."
+      ],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/evidence/before-tests.txt",
+        "workspace/evidence/after-tests.txt",
+        "workspace/evidence/fix.diff",
+        "workspace/app/test_app.py",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Current tenant checked before owner/share; strict expiry with revocation preserved; bearer scheme and token prefix validated. Fifteen executed tests and independent controls pass."
+    },
+    {
+      "run_id": "documents/3-seca",
+      "arm": "seca",
+      "fixture": "documents",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "completed",
+        "exit_code": 0,
+        "elapsed_seconds": 142.72
+      },
+      "metrics": {
+        "usage": {
+          "input_tokens": 139763,
+          "cache_write_input_tokens": 0,
+          "reasoning_output_tokens": 112,
+          "cached_input_tokens": 124800,
+          "output_tokens": 5558
+        },
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "owner_and_peer": true,
+        "anonymous_denied": true,
+        "live_share": true,
+        "recipient_cannot_reshare": true,
+        "cross_tenant_share_denied": true,
+        "expired_share_denied": true,
+        "recipient_migration_denied": true,
+        "owner_migration_denied": true,
+        "revocation_preserved": true,
+        "admin_preserved": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 2,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 2,
+      "scope_violations": [],
+      "additional_findings": [],
+      "unverified_candidates": [],
+      "proof_limits": [
+        "Exact expiry equality and multiple-share cases not exercised; report explicitly states this.",
+        "Bare-username parser behavior treated as fixture condition rather than an additional finding."
+      ],
+      "evidence": [
+        "workspace/report.md",
+        "workspace/evidence/probe.py",
+        "workspace/evidence/probe-before.txt",
+        "workspace/evidence/probe-after.txt",
+        "workspace/evidence/tests-before.txt",
+        "workspace/evidence/tests-after.txt",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Tenant guard precedes owner/share paths; expiry and revocation enforced. Pre-fix probes check actual document equality with valid controls, post-fix deny. Twelve tests and independent evaluator pass."
+    },
+    {
+      "run_id": "checkout/3-competitor",
+      "arm": "competitor",
+      "fixture": "checkout",
+      "opportunities": 2,
+      "execution": {
+        "model_requested": "gpt-6-astra",
+        "reasoning_effort": "medium",
+        "time_limit_seconds": 180,
+        "sandbox": "workspace-write",
+        "windows_sandbox": "elevated",
+        "web_search": "disabled",
+        "plugins_default_enabled": false,
+        "status": "timed_out",
+        "exit_code": 1,
+        "elapsed_seconds": 180.34
+      },
+      "metrics": {
+        "usage": null,
+        "cost_usd": null,
+        "cost_note": "No authoritative billing/rate supplied; usage is not dollar cost."
+      },
+      "independent_checks": {
+        "draft_refund_denied": true,
+        "owner_boundary": true,
+        "discount_payment": true,
+        "payment_once": true,
+        "refund_actual_paid": true,
+        "refund_once": true,
+        "coupon_once": true,
+        "normal_purchase": true,
+        "coupon_per_account": true,
+        "validation_preserved": true,
+        "failed_payment_atomic": true,
+        "failed_payment_keeps_coupon": true,
+        "refund_keeps_coupon_consumed": true
+      },
+      "discovery": 2,
+      "complete_runtime_proofs": 2,
+      "false_accusations": 0,
+      "fixes": 2,
+      "coverage": 1,
+      "scope_violations": [],
+      "additional_findings": [
+        "Bare-account authentication parser defect reproduced and fixed."
+      ],
+      "unverified_candidates": [
+        "Concurrency explicitly unverified; no serialized workflow fix."
+      ],
+      "proof_limits": [
+        "Timed out before final report and findings.json; coverage ledger remains planned."
+      ],
+      "evidence": [
+        "workspace/security-audit/verification.md",
+        "workspace/security-audit/probe.py",
+        "workspace/security-audit/baseline-evidence.json",
+        "workspace/security-audit/baseline-tests.txt",
+        "workspace/security-audit/fixed-tests.txt",
+        "workspace/security-audit/runtime.json",
+        "workspace/app/test_security.py",
+        "patch-check.json"
+      ],
+      "manual_patch_review": "Coupon eligibility checked before mutations; refunds require paid state; bearer prefix validated. Executed pre-fix probe independently reads wallet/order state with legitimate controls in tests. Eight post-fix tests pass with confirmed process exit zero, and all thirteen independent checks pass. No concurrency fix; this is separate from frozen scoring."
+    }
+  ],
+  "arms": {
+    "baseline": {
+      "scored_runs": 7,
+      "opportunities": 10,
+      "discovery": 10,
+      "complete_runtime_proofs": 4,
+      "false_accusations": 0,
+      "fixes": 10,
+      "completed": 7,
+      "timed_out": 0,
+      "median_completed_seconds": 113.25,
+      "all_checks_passed": 7,
+      "known_usage_runs": 7,
+      "unknown_usage_runs": 0,
+      "known_usage_totals": {
+        "reasoning_output_tokens": 1146,
+        "output_tokens": 27687,
+        "input_tokens": 769166,
+        "cache_write_input_tokens": 0,
+        "cached_input_tokens": 665728
+      },
+      "cost_usd": null,
+      "secure_portal_false_accusations": 0
+    },
+    "seca": {
+      "scored_runs": 7,
+      "opportunities": 10,
+      "discovery": 10,
+      "complete_runtime_proofs": 10,
+      "false_accusations": 0,
+      "fixes": 10,
+      "completed": 7,
+      "timed_out": 0,
+      "median_completed_seconds": 138.41,
+      "all_checks_passed": 7,
+      "known_usage_runs": 7,
+      "unknown_usage_runs": 0,
+      "known_usage_totals": {
+        "reasoning_output_tokens": 856,
+        "output_tokens": 36538,
+        "input_tokens": 914170,
+        "cache_write_input_tokens": 0,
+        "cached_input_tokens": 770688
+      },
+      "cost_usd": null,
+      "secure_portal_false_accusations": 0
+    },
+    "competitor": {
+      "scored_runs": 8,
+      "opportunities": 12,
+      "discovery": 12,
+      "complete_runtime_proofs": 8,
+      "false_accusations": 0,
+      "fixes": 12,
+      "completed": 1,
+      "timed_out": 7,
+      "median_completed_seconds": 165.05,
+      "all_checks_passed": 8,
+      "known_usage_runs": 1,
+      "unknown_usage_runs": 7,
+      "known_usage_totals": {
+        "reasoning_output_tokens": 76,
+        "output_tokens": 6094,
+        "input_tokens": 371556,
+        "cache_write_input_tokens": 0,
+        "cached_input_tokens": 329472
+      },
+      "cost_usd": null,
+      "secure_portal_false_accusations": 0
+    }
+  }
+}

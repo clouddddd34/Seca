@@ -1,0 +1,211 @@
+[
+  {
+    "id": "app/app.py:home:A05",
+    "surface": "GET /",
+    "boundary": "anonymous to static HTML",
+    "owasp_category": "A05:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:help:A05",
+    "surface": "GET /help",
+    "boundary": "anonymous to static HTML",
+    "owasp_category": "A05:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:login_form:A05",
+    "surface": "GET /login",
+    "boundary": "anonymous to login form",
+    "owasp_category": "A05:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:login_origin:A01",
+    "surface": "POST /login",
+    "boundary": "cross-origin to session creation",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:login_session:A07",
+    "surface": "POST /login",
+    "boundary": "anonymous to authenticated session",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:tokens:A04",
+    "surface": "POST /login",
+    "boundary": "client to session secrets",
+    "owasp_category": "A04:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:list:A01",
+    "surface": "GET /tickets",
+    "boundary": "user to other owner or tenant",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:detail:A01",
+    "surface": "GET /tickets/{ticket_id}",
+    "boundary": "user to other owner or tenant",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:export:A01",
+    "surface": "GET /admin/export",
+    "boundary": "member to admin and tenant to other tenant",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:search:A05",
+    "surface": "GET /tickets?q=",
+    "boundary": "query to HTML",
+    "owasp_category": "A05:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:logout:A01",
+    "surface": "POST /logout",
+    "boundary": "cross-site to session invalidation",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:headers:A02",
+    "surface": "HTTP middleware",
+    "boundary": "client to response configuration",
+    "owasp_category": "A02:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:state:A06",
+    "surface": "Login/logout and directory membership",
+    "boundary": "client to trusted state",
+    "owasp_category": "A06:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:integrity:A08",
+    "surface": "Application sinks",
+    "boundary": "untrusted input to deserialization and side effects",
+    "owasp_category": "A08:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:logging:A09",
+    "surface": "Login/logout",
+    "boundary": "security events to operator",
+    "owasp_category": "A09:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:exceptions:A10",
+    "surface": "HTTP request parsing and guards",
+    "boundary": "invalid input to error handling",
+    "owasp_category": "A10:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:ssrf:A01",
+    "surface": "Application sinks",
+    "boundary": "untrusted input to outbound requests",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:advisories:A03",
+    "surface": "Installed dependencies",
+    "boundary": "dependency supply chain",
+    "owasp_category": "A03:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:fixtures:A02",
+    "surface": "Local fixture configuration",
+    "boundary": "local fixture to production assumptions",
+    "owasp_category": "A02:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  }
+]

@@ -1,0 +1,5 @@
+Completed the assessment and [report](report.md).
+
+Fixed three confirmed bugs: missing tenant checks on reads, expired shares granting access, and bare usernames accepted as credentials.
+
+All 12 regression and control tests pass. The report includes evidence, fixes, executed tests, preserved controls, fixture distinctions, and coverage limitations.

@@ -1,0 +1,25 @@
+{
+  "id": "F-003",
+  "title": "Bare account name bypasses bearer authentication",
+  "status": "confirmed",
+  "severity": "medium",
+  "expected": "Authenticate with the documented bearer token. Rule: app/README.md.",
+  "observed": "Authorization containing only the account name returned 200 on payment and reduced balance from 10000 to 9000.",
+  "evidence": [
+    "evidence/app.before.py",
+    "evidence/tests-before.txt",
+    "app/test_security.py::CheckoutTests.test_bare_account_is_not_a_token",
+    "evidence/tests-after.txt"
+  ],
+  "reproduction": [
+    "Create Alice order with authorized fixture token, pay with bare account name, read saved wallet and order using valid authentication."
+  ],
+  "preconditions": [
+    "Known account name and existing draft for demonstrated payment."
+  ],
+  "uncertainty": [
+    "Local synthetic fixture only; no production exploitability claim."
+  ],
+  "impact": "Impersonation through shared authentication helper; payment demonstrated, other authenticated routes share the same helper.",
+  "remediation": "Reject missing bearer fixture prefix before extracting identity. Applied in app/app.py and successfully retested."
+}

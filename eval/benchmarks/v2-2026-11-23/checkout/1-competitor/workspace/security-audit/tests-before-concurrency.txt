@@ -1,0 +1,187 @@
+python : test_concurrent_coupon_across_orders_only_applies_once 
+(test_security.CheckoutSecurityTests.test_concurrent_coupon_across_orders_only_applies_once) ... FAIL
+At line:2 char:1
++ python -m unittest discover -s app -p 'test_*.py' -v 2>&1 | Tee-Objec ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_concurrent..._once) ... FAIL:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_concurrent_payment_only_charges_once 
+(test_security.CheckoutSecurityTests.test_concurrent_payment_only_charges_once) ... FAIL
+test_concurrent_refund_only_credits_once 
+(test_security.CheckoutSecurityTests.test_concurrent_refund_only_credits_once) ... FAIL
+test_coupon_reuse_rejected_before_and_after_refund 
+(test_security.CheckoutSecurityTests.test_coupon_reuse_rejected_before_and_after_refund) ... FAIL
+test_insufficient_funds_does_not_consume_coupon 
+(test_security.CheckoutSecurityTests.test_insufficient_funds_does_not_consume_coupon) ... ok
+test_missing_and_wrong_credentials (test_security.CheckoutSecurityTests.test_missing_and_wrong_credentials) ... ok
+test_owner_isolation_in_each_state (test_security.CheckoutSecurityTests.test_owner_isolation_in_each_state) ... ok
+test_raw_account_name_is_not_a_bearer_token 
+(test_security.CheckoutSecurityTests.test_raw_account_name_is_not_a_bearer_token) ... 
+  test_raw_account_name_is_not_a_bearer_token 
+(test_security.CheckoutSecurityTests.test_raw_account_name_is_not_a_bearer_token) (path='/wallet') ... FAIL
+  test_raw_account_name_is_not_a_bearer_token 
+(test_security.CheckoutSecurityTests.test_raw_account_name_is_not_a_bearer_token) (path='/orders/1') ... FAIL
+  test_raw_account_name_is_not_a_bearer_token 
+(test_security.CheckoutSecurityTests.test_raw_account_name_is_not_a_bearer_token) (path='/orders') ... FAIL
+  test_raw_account_name_is_not_a_bearer_token 
+(test_security.CheckoutSecurityTests.test_raw_account_name_is_not_a_bearer_token) (path='/orders/1/pay') ... FAIL
+  test_raw_account_name_is_not_a_bearer_token 
+(test_security.CheckoutSecurityTests.test_raw_account_name_is_not_a_bearer_token) (path='/orders/1/refund') ... FAIL
+test_raw_account_name_is_not_a_bearer_token 
+(test_security.CheckoutSecurityTests.test_raw_account_name_is_not_a_bearer_token) ... FAIL
+test_refund_only_once_and_for_actual_charge 
+(test_security.CheckoutSecurityTests.test_refund_only_once_and_for_actual_charge) ... FAIL
+test_validation_and_invalid_transitions_leave_state_unchanged 
+(test_security.CheckoutSecurityTests.test_validation_and_invalid_transitions_leave_state_unchanged) ... ok
+
+======================================================================
+FAIL: test_concurrent_coupon_across_orders_only_applies_once 
+(test_security.CheckoutSecurityTests.test_concurrent_coupon_across_orders_only_applies_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-competitor\workspace\app\test_security.py", line 
+172, in test_concurrent_coupon_across_orders_only_applies_once
+    self.assertEqual(statuses, [200, 409])
+AssertionError: Lists differ: [200, 200] != [200, 409]
+
+First differing element 1:
+200
+409
+
+- [200, 200]
+?       ^ ^
+
++ [200, 409]
+?       ^ ^
+
+
+======================================================================
+FAIL: test_concurrent_payment_only_charges_once 
+(test_security.CheckoutSecurityTests.test_concurrent_payment_only_charges_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-competitor\workspace\app\test_security.py", line 
+159, in test_concurrent_payment_only_charges_once
+    self.assertEqual(self.concurrent_posts([f"/orders/{order}/pay"] * 2, {}), [200, 409])
+AssertionError: Lists differ: [200, 200] != [200, 409]
+
+First differing element 1:
+200
+409
+
+- [200, 200]
+?       ^ ^
+
++ [200, 409]
+?       ^ ^
+
+
+======================================================================
+FAIL: test_concurrent_refund_only_credits_once 
+(test_security.CheckoutSecurityTests.test_concurrent_refund_only_credits_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-competitor\workspace\app\test_security.py", line 
+166, in test_concurrent_refund_only_credits_once
+    self.assertEqual(self.concurrent_posts([f"/orders/{order}/refund"] * 2, None), [200, 409])
+AssertionError: Lists differ: [200, 200] != [200, 409]
+
+First differing element 1:
+200
+409
+
+- [200, 200]
+?       ^ ^
+
++ [200, 409]
+?       ^ ^
+
+
+======================================================================
+FAIL: test_coupon_reuse_rejected_before_and_after_refund 
+(test_security.CheckoutSecurityTests.test_coupon_reuse_rejected_before_and_after_refund)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-competitor\workspace\app\test_security.py", line 
+76, in test_coupon_reuse_rejected_before_and_after_refund
+    self.assertEqual(self.pay(second, "WELCOME").status_code, 409)
+AssertionError: 200 != 409
+
+======================================================================
+FAIL: test_raw_account_name_is_not_a_bearer_token 
+(test_security.CheckoutSecurityTests.test_raw_account_name_is_not_a_bearer_token) (path='/wallet')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-competitor\workspace\app\test_security.py", line 
+52, in test_raw_account_name_is_not_a_bearer_token
+    self.assertEqual(self.request(method, path, auth="alice", json=body).status_code, 401)
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_raw_account_name_is_not_a_bearer_token 
+(test_security.CheckoutSecurityTests.test_raw_account_name_is_not_a_bearer_token) (path='/orders/1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-competitor\workspace\app\test_security.py", line 
+52, in test_raw_account_name_is_not_a_bearer_token
+    self.assertEqual(self.request(method, path, auth="alice", json=body).status_code, 401)
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_raw_account_name_is_not_a_bearer_token 
+(test_security.CheckoutSecurityTests.test_raw_account_name_is_not_a_bearer_token) (path='/orders')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-competitor\workspace\app\test_security.py", line 
+52, in test_raw_account_name_is_not_a_bearer_token
+    self.assertEqual(self.request(method, path, auth="alice", json=body).status_code, 401)
+AssertionError: 201 != 401
+
+======================================================================
+FAIL: test_raw_account_name_is_not_a_bearer_token 
+(test_security.CheckoutSecurityTests.test_raw_account_name_is_not_a_bearer_token) (path='/orders/1/pay')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-competitor\workspace\app\test_security.py", line 
+52, in test_raw_account_name_is_not_a_bearer_token
+    self.assertEqual(self.request(method, path, auth="alice", json=body).status_code, 401)
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_raw_account_name_is_not_a_bearer_token 
+(test_security.CheckoutSecurityTests.test_raw_account_name_is_not_a_bearer_token) (path='/orders/1/refund')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-competitor\workspace\app\test_security.py", line 
+52, in test_raw_account_name_is_not_a_bearer_token
+    self.assertEqual(self.request(method, path, auth="alice", json=body).status_code, 401)
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_raw_account_name_is_not_a_bearer_token 
+(test_security.CheckoutSecurityTests.test_raw_account_name_is_not_a_bearer_token)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-competitor\workspace\app\test_security.py", line 
+54, in test_raw_account_name_is_not_a_bearer_token
+    self.assertEqual(self.order(order)["state"], "draft")
+AssertionError: 'refunded' != 'draft'
+- refunded
++ draft
+
+
+======================================================================
+FAIL: test_refund_only_once_and_for_actual_charge 
+(test_security.CheckoutSecurityTests.test_refund_only_once_and_for_actual_charge)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-competitor\workspace\app\test_security.py", line 
+65, in test_refund_only_once_and_for_actual_charge
+    self.assertEqual(self.request("POST", f"/orders/{order}/refund").status_code, 409)
+AssertionError: 200 != 409
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.400s
+
+FAILED (failures=11)

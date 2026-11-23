@@ -1,0 +1,25 @@
+{
+  "id": "F-001",
+  "title": "Repeated refunds create wallet credit",
+  "status": "confirmed",
+  "severity": "medium",
+  "expected": "Only paid orders may be refunded once. Rule: app/README.md.",
+  "observed": "Second refund returned 200; independently read balance increased from 10000 to 11000.",
+  "evidence": [
+    "evidence/app.before.py",
+    "evidence/tests-before.txt",
+    "app/test_security.py::CheckoutTests.test_refund_only_once",
+    "evidence/tests-after.txt"
+  ],
+  "reproduction": [
+    "Create one book order, pay, refund, repeat refund, read wallet and order."
+  ],
+  "preconditions": [
+    "Own paid order already refunded."
+  ],
+  "uncertainty": [
+    "Local synthetic fixture only; no production exploitability claim."
+  ],
+  "impact": "Extra synthetic wallet credit; unbounded replay follows from code, but only one replay tested.",
+  "remediation": "Require paid state before refund. Applied in app/app.py and successfully retested."
+}

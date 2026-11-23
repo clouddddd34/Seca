@@ -1,0 +1,19 @@
+{
+  "request": 3,
+  "actor": "anonymous",
+  "method": "GET",
+  "url": "http://127.0.0.1:17499/login",
+  "status": 200,
+  "headers": {
+    "date": "Mon, 23 Nov 2026 01:59:53 GMT",
+    "server": "uvicorn",
+    "content-length": "423",
+    "content-type": "text/html; charset=utf-8",
+    "x-content-type-options": "nosniff",
+    "content-security-policy": "default-src 'none'; form-action 'self'; frame-ancestors 'none'",
+    "cache-control": "no-store",
+    "connection": "close"
+  },
+  "body": "<!doctype html><html><head><title>Support portal</title></head><body><nav><a href=\"/\">Home</a> <a href=\"/help\">Help</a> <a href=\"/login\">Login</a> <a href=\"/tickets\">Tickets</a> <a href=\"/admin/export\">Admin export</a></nav><h1>Login</h1><form method=\"post\" action=\"/login\"><label>User <input name=\"username\"></label><label>Password <input type=\"password\" name=\"password\"></label><button>Login</button></form></body></html>",
+  "truncated": false
+}

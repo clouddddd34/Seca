@@ -1,0 +1,16 @@
+{
+  "recorded_on": "2026-11-23",
+  "status": "incomplete_provider_block",
+  "failed_run": "checkout/3-baseline",
+  "reason": "Provider cybersecurity safeguard stopped the assessment. No retry or alternate execution of that assessment was attempted.",
+  "pending_runs": [
+    "checkout/3-seca",
+    "portal/3-competitor",
+    "portal/3-baseline",
+    "portal/3-seca"
+  ],
+  "scored_runs": 22,
+  "reviews_complete_for_valid_runs": true,
+  "skill_changed": false,
+  "next_step": "Resolve access through the provider-supported process before planning any continuation. Preserve frozen inputs and failed evidence; do not treat this as a spend-cap failure."
+}

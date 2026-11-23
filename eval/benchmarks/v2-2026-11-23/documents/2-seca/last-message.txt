@@ -1,0 +1,7 @@
+Created [report.md](report.md) with evidence, coverage and limitations.
+
+Confirmed and fixed two bugs:
+- Document reads ignored current tenant membership.
+- Expired shares continued granting access.
+
+All eight regression/control tests now pass. Before-and-after evidence is saved in `evidence/`.

@@ -1,0 +1,27 @@
+{
+  "id": "F-001",
+  "title": "Document reads ignore current tenant membership",
+  "status": "confirmed",
+  "severity": "high",
+  "expected": "Read requires current tenant membership and ownership or live share.",
+  "observed": "Migrated owner and recipient received full document; after fix both receive 404.",
+  "evidence": [
+    "evidence/app-before.py:can_read",
+    "evidence/probe-before.txt",
+    "evidence/probe-after.txt",
+    "evidence/tests-before.txt",
+    "evidence/tests-after.txt"
+  ],
+  "reproduction": [
+    "Read as owner or live recipient, migrate actor to south, read again.",
+    "Run python evidence/probe.py against the assessed source."
+  ],
+  "preconditions": [
+    "Authenticated previous owner or share recipient; authorized synthetic setup as described in report.md."
+  ],
+  "uncertainty": [
+    "Local synthetic impact only; deployment not assessed."
+  ],
+  "impact": "Unauthorized document confidentiality loss under the stated preconditions.",
+  "remediation": "Applied and retested current tenant and live expiry checks in can_read; all 12 tests pass."
+}

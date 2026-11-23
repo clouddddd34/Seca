@@ -1,0 +1,57 @@
+{
+  "before": {
+    "expiry": {
+      "status": 200,
+      "body": {
+        "id": "a",
+        "owner": "alice",
+        "tenant": "north",
+        "text": "Synthetic alpha"
+      }
+    },
+    "owner_migration": {
+      "status": 200,
+      "body": {
+        "id": "a",
+        "owner": "alice",
+        "tenant": "north",
+        "text": "Synthetic alpha"
+      }
+    },
+    "recipient_migration": {
+      "status": 200,
+      "body": {
+        "id": "a",
+        "owner": "alice",
+        "tenant": "north",
+        "text": "Synthetic alpha"
+      }
+    }
+  },
+  "after": {
+    "expiry": {
+      "status": 404,
+      "body": {
+        "detail": "Not Found"
+      }
+    },
+    "owner_migration": {
+      "status": 404,
+      "body": {
+        "detail": "Not Found"
+      }
+    },
+    "recipient_migration": {
+      "status": 404,
+      "body": {
+        "detail": "Not Found"
+      }
+    }
+  },
+  "framework_routes": {
+    "/openapi.json": 200,
+    "/docs": 200,
+    "/redoc": 200,
+    "/docs/oauth2-redirect": 200
+  }
+}

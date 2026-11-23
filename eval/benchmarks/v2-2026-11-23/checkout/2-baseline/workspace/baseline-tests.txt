@@ -1,0 +1,140 @@
+python : test_accounts_have_independent_coupon_eligibility 
+(app.test_app.CheckoutTests.test_accounts_have_independent_coupon_eligibility) ... ok
+At line:118 char:1
++ python -m unittest app.test_app -v 2>&1 | Tee-Object baseline-tests.t ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_accounts_h...ibility) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_bare_account_is_not_a_bearer_token (app.test_app.CheckoutTests.test_bare_account_is_not_a_bearer_token) ... FAIL
+test_coupon_cannot_be_reused_across_paid_orders 
+(app.test_app.CheckoutTests.test_coupon_cannot_be_reused_across_paid_orders) ... FAIL
+test_coupon_cannot_be_reused_after_refund (app.test_app.CheckoutTests.test_coupon_cannot_be_reused_after_refund) ... 
+FAIL
+test_failed_payment_does_not_consume_coupon (app.test_app.CheckoutTests.test_failed_payment_does_not_consume_coupon) 
+... ok
+test_owner_controls (app.test_app.CheckoutTests.test_owner_controls) ... ok
+test_repeated_refund_is_rejected_without_credit 
+(app.test_app.CheckoutTests.test_repeated_refund_is_rejected_without_credit) ... FAIL
+test_transitions_and_unknown_coupon_preserve_state 
+(app.test_app.CheckoutTests.test_transitions_and_unknown_coupon_preserve_state) ... ok
+test_validation_and_missing_credentials (app.test_app.CheckoutTests.test_validation_and_missing_credentials) ... ok
+
+======================================================================
+FAIL: test_bare_account_is_not_a_bearer_token (app.test_app.CheckoutTests.test_bare_account_is_not_a_bearer_token)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\2-baseline\workspace\app\test_app.py", line 30, in 
+test_bare_account_is_not_a_bearer_token
+    self.assertEqual(response.status_code, 401, response.text)
+AssertionError: 201 != 401 : {"id":1,"owner":"alice","quantity":1,"total":1000,"state":"draft","paid":0}
+
+======================================================================
+FAIL: test_coupon_cannot_be_reused_across_paid_orders 
+(app.test_app.CheckoutTests.test_coupon_cannot_be_reused_across_paid_orders)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\2-baseline\workspace\app\test_app.py", line 59, in 
+test_coupon_cannot_be_reused_across_paid_orders
+    self.assertEqual((response.status_code, self.saved(second)), (409, before))
+AssertionError: Tuples differ: (200, ({'id': 2, 'owner': 'alice', 'quanti[97 chars]']})) != (409, ({'id': 2, 'owner': 
+'alice', 'quanti[96 chars]']}))
+
+First differing element 0:
+200
+409
+
+- (200,
++ (409,
+   ({'id': 2,
+     'owner': 'alice',
+-    'paid': 500,
+?            --
+
++    'paid': 0,
+     'quantity': 1,
+-    'state': 'paid',
+?              ^ ^^
+
++    'state': 'draft',
+?              ^^ ^^
+
+     'total': 1000},
+-   {'balance': 9000, 'used_coupons': ['WELCOME']}))
+?                ^
+
++   {'balance': 9500, 'used_coupons': ['WELCOME']}))
+?                ^
+
+
+======================================================================
+FAIL: test_coupon_cannot_be_reused_after_refund (app.test_app.CheckoutTests.test_coupon_cannot_be_reused_after_refund)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\2-baseline\workspace\app\test_app.py", line 50, in 
+test_coupon_cannot_be_reused_after_refund
+    self.assertEqual((response.status_code, self.saved(second)), (409, before))
+AssertionError: Tuples differ: (200, ({'id': 2, 'owner': 'alice', 'quanti[97 chars]']})) != (409, ({'id': 2, 'owner': 
+'alice', 'quanti[97 chars]']}))
+
+First differing element 0:
+200
+409
+
+- (200,
++ (409,
+   ({'id': 2,
+     'owner': 'alice',
+-    'paid': 500,
+?            --
+
++    'paid': 0,
+     'quantity': 1,
+-    'state': 'paid',
+?              ^ ^^
+
++    'state': 'draft',
+?              ^^ ^^
+
+     'total': 1000},
+-   {'balance': 9500, 'used_coupons': ['WELCOME']}))
+?               ^^
+
++   {'balance': 10000, 'used_coupons': ['WELCOME']}))
+?               ^^^
+
+
+======================================================================
+FAIL: test_repeated_refund_is_rejected_without_credit 
+(app.test_app.CheckoutTests.test_repeated_refund_is_rejected_without_credit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\2-baseline\workspace\app\test_app.py", line 40, in 
+test_repeated_refund_is_rejected_without_credit
+    self.assertEqual((response.status_code, after), (409, before))
+AssertionError: Tuples differ: (200, ({'id': 1, 'owner': 'alice', 'quanti[102 chars]']})) != (409, ({'id': 1, 'owner': 
+'alice', 'quanti[102 chars]']}))
+
+First differing element 0:
+200
+409
+
+- (200,
++ (409,
+   ({'id': 1,
+     'owner': 'alice',
+     'paid': 500,
+     'quantity': 1,
+     'state': 'refunded',
+     'total': 1000},
+-   {'balance': 10500, 'used_coupons': ['WELCOME']}))
+?                 ^
+
++   {'balance': 10000, 'used_coupons': ['WELCOME']}))
+?                 ^
+
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.204s
+
+FAILED (failures=4)

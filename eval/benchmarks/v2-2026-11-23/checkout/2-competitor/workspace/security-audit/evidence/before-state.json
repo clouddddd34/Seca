@@ -1,0 +1,42 @@
+{
+  "refund": {
+    "status": 200,
+    "wallet": {
+      "balance": 10500,
+      "used_coupons": [
+        "WELCOME"
+      ]
+    },
+    "order": {
+      "id": 1,
+      "owner": "alice",
+      "quantity": 1,
+      "total": 1000,
+      "state": "refunded",
+      "paid": 500
+    }
+  },
+  "coupon": {
+    "status": 200,
+    "wallet": {
+      "balance": 9500,
+      "used_coupons": [
+        "WELCOME"
+      ]
+    },
+    "order": {
+      "id": 2,
+      "owner": "alice",
+      "quantity": 1,
+      "total": 1000,
+      "state": "paid",
+      "paid": 500
+    }
+  },
+  "auth": {
+    "bare_alice_wallet": {
+      "balance": 10000,
+      "used_coupons": []
+    }
+  }
+}

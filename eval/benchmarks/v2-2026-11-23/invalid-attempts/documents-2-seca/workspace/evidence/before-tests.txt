@@ -1,0 +1,48 @@
+test_admin_inventory_tracks_current_tenant (test_security.AccessTests.test_admin_inventory_tracks_current_tenant) ... ok
+test_anonymous_and_unknown_identity_denied (test_security.AccessTests.test_anonymous_and_unknown_identity_denied) ... ok
+test_expired_share_revokes_read (test_security.AccessTests.test_expired_share_revokes_read) ... FAIL
+test_invalid_shares_leave_state_unchanged (test_security.AccessTests.test_invalid_shares_leave_state_unchanged) ... ok
+test_migrated_owner_cannot_share_or_revoke (test_security.AccessTests.test_migrated_owner_cannot_share_or_revoke) ... ok
+test_missing_resources_and_invalid_payload (test_security.AccessTests.test_missing_resources_and_invalid_payload) ... ok
+test_owner_migration_revokes_read (test_security.AccessTests.test_owner_migration_revokes_read) ... FAIL
+test_recipient_cannot_reshare_or_revoke (test_security.AccessTests.test_recipient_cannot_reshare_or_revoke) ... ok
+test_recipient_migration_revokes_read (test_security.AccessTests.test_recipient_migration_revokes_read) ... FAIL
+test_revocation_persists_and_blocks_read (test_security.AccessTests.test_revocation_persists_and_blocks_read) ... ok
+test_unshared_and_cross_tenant_reads_denied (test_security.AccessTests.test_unshared_and_cross_tenant_reads_denied) ... ok
+
+======================================================================
+FAIL: test_expired_share_revokes_read (test_security.AccessTests.test_expired_share_revokes_read)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\2-seca\workspace\app\test_security.py", line 52, in test_expired_share_revokes_read
+    self.assert_read("bob", allowed=False)
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\2-seca\workspace\app\test_security.py", line 31, in assert_read
+    self.assertEqual(response.status_code, 200 if allowed else 404)
+AssertionError: 200 != 404
+
+======================================================================
+FAIL: test_owner_migration_revokes_read (test_security.AccessTests.test_owner_migration_revokes_read)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\2-seca\workspace\app\test_security.py", line 40, in test_owner_migration_revokes_read
+    self.assert_read("alice", allowed=False)
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\2-seca\workspace\app\test_security.py", line 31, in assert_read
+    self.assertEqual(response.status_code, 200 if allowed else 404)
+AssertionError: 200 != 404
+
+======================================================================
+FAIL: test_recipient_migration_revokes_read (test_security.AccessTests.test_recipient_migration_revokes_read)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\2-seca\workspace\app\test_security.py", line 46, in test_recipient_migration_revokes_read
+    self.assert_read("bob", allowed=False)
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\documents\2-seca\workspace\app\test_security.py", line 31, in assert_read
+    self.assertEqual(response.status_code, 200 if allowed else 404)
+AssertionError: 200 != 404
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.104s
+
+FAILED (failures=3)
+
+Exit code: 1

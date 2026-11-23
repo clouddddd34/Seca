@@ -1,0 +1,178 @@
+[
+  {
+    "id": "create/A01-2025",
+    "surface": "create",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "create/A07-2025",
+    "surface": "create",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "create/A06-2025",
+    "surface": "create",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A06:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "create/A10-2025",
+    "surface": "create",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A10:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "read/A01-2025",
+    "surface": "read",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "read/A07-2025",
+    "surface": "read",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "pay/A01-2025",
+    "surface": "pay",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "pay/A07-2025",
+    "surface": "pay",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "pay/A06-2025",
+    "surface": "pay",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A06:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "pay/A10-2025",
+    "surface": "pay",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A10:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "refund/A01-2025",
+    "surface": "refund",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "refund/A07-2025",
+    "surface": "refund",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "refund/A06-2025",
+    "surface": "refund",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A06:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "refund/A10-2025",
+    "surface": "refund",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A10:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "wallet/A01-2025",
+    "surface": "wallet",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "wallet/A07-2025",
+    "surface": "wallet",
+    "boundary": "HTTP caller to account state",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  }
+]

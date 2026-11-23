@@ -1,0 +1,16 @@
+test_bare_identity_is_not_bearer_token (test_app.AccessTests.test_bare_identity_is_not_bearer_token) ... ok
+test_expired_share_denied (test_app.AccessTests.test_expired_share_denied) ... ok
+test_invalid_auth_and_missing_resources (test_app.AccessTests.test_invalid_auth_and_missing_resources) ... ok
+test_inventory_role_and_current_tenant (test_app.AccessTests.test_inventory_role_and_current_tenant) ... ok
+test_migrated_owner_cannot_share_or_revoke (test_app.AccessTests.test_migrated_owner_cannot_share_or_revoke) ... ok
+test_migrated_owner_denied (test_app.AccessTests.test_migrated_owner_denied) ... ok
+test_migrated_recipient_denied (test_app.AccessTests.test_migrated_recipient_denied) ... ok
+test_owner_share_revoke_workflow (test_app.AccessTests.test_owner_share_revoke_workflow) ... ok
+test_recipient_cannot_reshare_or_revoke (test_app.AccessTests.test_recipient_cannot_reshare_or_revoke) ... ok
+test_share_validation (test_app.AccessTests.test_share_validation) ... ok
+test_unshared_and_cross_tenant_access_denied (test_app.AccessTests.test_unshared_and_cross_tenant_access_denied) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.093s
+
+OK

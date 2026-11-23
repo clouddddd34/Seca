@@ -1,0 +1,9 @@
+Request 4 GET http://127.0.0.1:2164/tickets
+Linked from: Request 1 navigation
+Status: 401
+Date: Mon, 23 Nov 2026 02:02:08 GMT
+Server: uvicorn
+Content-Length: 14
+Content-Type: text/html; charset=utf-8
+
+Login required

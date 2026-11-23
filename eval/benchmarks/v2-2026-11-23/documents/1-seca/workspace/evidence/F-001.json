@@ -1,0 +1,28 @@
+{
+  "id": "F-001",
+  "title": "Read access survives tenant migration",
+  "status": "confirmed",
+  "severity": "medium",
+  "expected": "Current document-tenant membership is required for owners and recipients.",
+  "observed": "Migrated owner and live-share recipient received HTTP 200 and the full synthetic document.",
+  "evidence": [
+    "evidence/app-before.py:41",
+    "evidence/runtime-before.json",
+    "evidence/tests-before.txt",
+    "app/test_security.py",
+    "evidence/tests-after.txt"
+  ],
+  "reproduction": [
+    "Create a fresh app; read a as Alice.",
+    "Change Alice tenant to south; GET a still returns document.",
+    "On another fresh app share a to Bob, migrate Bob to south, and GET a as Bob."
+  ],
+  "preconditions": [
+    "Existing owner or valid share recipient; authorized fixture transition as described."
+  ],
+  "uncertainty": [
+    "Production deployment and impact outside this synthetic service were not assessed."
+  ],
+  "impact": "Former tenant members retain document confidentiality access.",
+  "remediation": "Applied current-tenant prerequisite and strict future-expiry predicate in can_read; all ten tests pass."
+}

@@ -1,0 +1,3 @@
+Created [report.md](report.md) with redacted evidence, protected controls, and coverage limits.
+
+No confirmed vulnerabilities found across 30 sequential requests and 4 logins. The main gap is testing an owned ticket outside the owner’s current tenant; the report specifies the additional fixture needed.

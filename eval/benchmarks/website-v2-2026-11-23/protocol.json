@@ -1,0 +1,17 @@
+{
+  "model_requested": "gpt-6-astra",
+  "seconds": 180,
+  "reasoning_effort": "medium",
+  "skill_sha256": {
+    "assets/finding.json": "ad061cbbbdacb09ff170790c850aa5bd52e4439410279a7431449b3a1d99dcca",
+    "references/access-rules.md": "391963d67ad83ad0bf7ae283f782f37fa1e894c85ac7da671a76ffa137ebfd2e",
+    "references/evidence.md": "a020b68e8d5468e4f20891dcc801ac6ab34daf1f15584891dded1871f743ee14",
+    "references/helpers.md": "6481d705cf0f860ca7dcd62176932d46346310a60831ce70e154aa040619d5cb",
+    "SKILL.md": "b10760e89fb2c6213def19f24348bafdc42d4957af29dc984973cd8c4a561d2b"
+  },
+  "source_sha256": {
+    "website.py": "4509f84bdf9ab76a9d74e6b7e2965131a46e8a6103e5d711f6331efe540497ef",
+    "fixtures/portal/app.py": "e6b0dbacd14ec56805faf9e0e5a67342a1f0b53fe0ac10eb4847d98df34d2259",
+    "PROTOCOL.md": "e9a49a80e5ff4459f99ca50e436296036b14e1183b0a07d0540ff8baad9e6e65"
+  }
+}

@@ -1,0 +1,489 @@
+[
+  {
+    "id": "read:A01",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "caller to document and current tenant",
+    "owasp_category": "A01:2025",
+    "status": "candidate",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Current membership AND (ownership OR matching live share)",
+        "method": "Full application source trace and bounded TestClient suite",
+        "result": "Two confirmed read-policy omissions fixed; 404 after expiry/migration; valid ownership/live shares remain 200. Unrelated/no grants and cross-tenant reads denied."
+      }
+    ],
+    "finding_fingerprints": [
+      "owasp-audit/CWE-863/app/app.py/read-expired-share",
+      "owasp-audit/CWE-863/app/app.py/read-tenant-membership"
+    ],
+    "unresolved": []
+  },
+  {
+    "id": "read:A07",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "caller to document and current tenant",
+    "owasp_category": "A07:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Missing/unknown fixture credentials cannot reach business sinks",
+        "method": "test_missing_and_invalid_credentials plus actor source review",
+        "result": "401 on all four business routes for missing/unknown credentials. Production token security expressly excluded."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "read:A10",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "caller to document and current tenant",
+    "owasp_category": "A10:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Expected denial/invalid-input paths do not mutate grants or return document bodies",
+        "method": "Source review and denial/malformed-input tests",
+        "result": "HTTPException gates run before sinks; malformed typed input returns 422. Arbitrary malformed/nonfinite JSON and fault injection not exhaustively tested."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "share:A01",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to recipient grant",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Only current-tenant owners grant to current same-tenant members with future expiry",
+        "method": "Full application source trace and bounded TestClient suite",
+        "result": "Owner grant is 201; recipient resharing and migrated-owner grants are 403; foreign/unknown recipients and past expirations are 422; failed requests do not append."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "share:A07",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to recipient grant",
+    "owasp_category": "A07:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Missing/unknown fixture credentials cannot reach business sinks",
+        "method": "test_missing_and_invalid_credentials plus actor source review",
+        "result": "401 on all four business routes for missing/unknown credentials. Production token security expressly excluded."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "share:A10",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to recipient grant",
+    "owasp_category": "A10:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Expected denial/invalid-input paths do not mutate grants or return document bodies",
+        "method": "Source review and denial/malformed-input tests",
+        "result": "HTTPException gates run before sinks; malformed typed input returns 422. Arbitrary malformed/nonfinite JSON and fault injection not exhaustively tested."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "revoke:A01",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "owner to grant mutation",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Only current-tenant owner mutates a grant",
+        "method": "Full application source trace and bounded TestClient suite",
+        "result": "Owner revocation is 204 and subsequent recipient read is 404; recipient/migrated-owner revoke is 403 with revoked unchanged."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "revoke:A07",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "owner to grant mutation",
+    "owasp_category": "A07:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Missing/unknown fixture credentials cannot reach business sinks",
+        "method": "test_missing_and_invalid_credentials plus actor source review",
+        "result": "401 on all four business routes for missing/unknown credentials. Production token security expressly excluded."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "revoke:A10",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "owner to grant mutation",
+    "owasp_category": "A10:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Expected denial/invalid-input paths do not mutate grants or return document bodies",
+        "method": "Source review and denial/malformed-input tests",
+        "result": "HTTPException gates run before sinks; malformed typed input returns 422. Arbitrary malformed/nonfinite JSON and fault injection not exhaustively tested."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "inventory:A01",
+    "surface": "GET /admin/inventory",
+    "boundary": "member to current tenant administrator",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Only admin role may list current tenant inventory",
+        "method": "Full application source trace and bounded TestClient suite",
+        "result": "Members receive 403; north admin sees a/b and after trusted migration sees c only; admin role alone does not authorize document GET."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "inventory:A07",
+    "surface": "GET /admin/inventory",
+    "boundary": "member to current tenant administrator",
+    "owasp_category": "A07:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Missing/unknown fixture credentials cannot reach business sinks",
+        "method": "test_missing_and_invalid_credentials plus actor source review",
+        "result": "401 on all four business routes for missing/unknown credentials. Production token security expressly excluded."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "inventory:A10",
+    "surface": "GET /admin/inventory",
+    "boundary": "member to current tenant administrator",
+    "owasp_category": "A10:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Expected denial/invalid-input paths do not mutate grants or return document bodies",
+        "method": "Source review and denial/malformed-input tests",
+        "result": "HTTPException gates run before sinks; malformed typed input returns 422. Arbitrary malformed/nonfinite JSON and fault injection not exhaustively tested."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "docs:A01",
+    "surface": "framework documentation",
+    "boundary": "anonymous to API schema",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Public documentation exposes API schema, not document state",
+        "method": "Full application source trace and bounded TestClient suite",
+        "result": "Schema/help source is framework generated. GET /openapi.json and /docs return 200. No user-controlled HTML sink; /redoc and OAuth redirect reviewed through route inventory only."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "docs:A07",
+    "surface": "framework documentation",
+    "boundary": "anonymous to API schema",
+    "owasp_category": "A07:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Schema and help are intentionally public",
+        "method": "Review generated route list and application state sinks",
+        "result": "No document contents in schema; no business mutation route bypass."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "docs:A10",
+    "surface": "framework documentation",
+    "boundary": "anonymous to API schema",
+    "owasp_category": "A10:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/test_security.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Expected denial/invalid-input paths do not mutate grants or return document bodies",
+        "method": "Source review and denial/malformed-input tests",
+        "result": "HTTPException gates run before sinks; malformed typed input returns 422. Arbitrary malformed/nonfinite JSON and fault injection not exhaustively tested."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "configuration",
+    "surface": "app/app.py application-wide",
+    "boundary": "caller to service / runtime",
+    "owasp_category": "A02:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "configuration",
+        "method": "Read complete application and README; enumerate available app files",
+        "result": "FastAPI default configuration has no explicit debug/CORS middleware; docs public but no demonstrated sensitive exposure. Deployment security headers are excluded fixture context."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "supply-chain",
+    "surface": "app/app.py application-wide",
+    "boundary": "caller to service / runtime",
+    "owasp_category": "A03:2025",
+    "status": "out_of_scope",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "supply-chain",
+        "method": "Read complete application and README; enumerate available app files",
+        "result": "No dependency manifest or lockfile in app/. External advisory queries, installations and outside-workspace dependency source are prohibited; no dependency safety claim."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": [
+      "No dependency manifest or lockfile in app/. External advisory queries, installations and outside-workspace dependency source are prohibited; no dependency safety claim."
+    ]
+  },
+  {
+    "id": "cryptography",
+    "surface": "app/app.py application-wide",
+    "boundary": "caller to service / runtime",
+    "owasp_category": "A04:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "cryptography",
+        "method": "Read complete application and README; enumerate available app files",
+        "result": "No application cryptographic operations, stored passwords or real secrets; synthetic identity and absent deployment TLS excluded by README."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "injection",
+    "surface": "app/app.py application-wide",
+    "boundary": "caller to service / runtime",
+    "owasp_category": "A05:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "injection",
+        "method": "Read complete application and README; enumerate available app files",
+        "result": "All application data access uses dictionary/list operations and JSON copies; no SQL, exec, filesystem, outbound HTTP or user-controlled HTML sink."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "business-invariants",
+    "surface": "app/app.py application-wide",
+    "boundary": "caller to service / runtime",
+    "owasp_category": "A06:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "business-invariants",
+        "method": "Read complete application and README; enumerate available app files",
+        "result": "Reviewed all share/revoke writes; ownership, tenant and recipient predicates remain intact. Read lifetime/tenant defects recorded under A01. No payments or external jobs."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "integrity",
+    "surface": "app/app.py application-wide",
+    "boundary": "caller to service / runtime",
+    "owasp_category": "A08:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "integrity",
+        "method": "Read complete application and README; enumerate available app files",
+        "result": "Only JSON/Pydantic Share input; no pickle/eval or external resources; trusted directory edits are test setup, not an API. Revocation is a guarded boolean assignment."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "logging",
+    "surface": "app/app.py application-wide",
+    "boundary": "caller to service / runtime",
+    "owasp_category": "A09:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "logging",
+        "method": "Read complete application and README; enumerate available app files",
+        "result": "No application security event logging or alert configuration. No sensitive logging sink. Record audit-event logging as a hardening note without demonstrated exploit."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "ssrf",
+    "surface": "app/app.py application-wide",
+    "boundary": "caller to service / runtime",
+    "owasp_category": "A01:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "ssrf",
+        "method": "Read complete application and README; enumerate available app files",
+        "result": "No outbound HTTP or URL-fetch surface in application source."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "fixture-conditions",
+    "surface": "app/app.py application-wide",
+    "boundary": "caller to service / runtime",
+    "owasp_category": null,
+    "status": "out_of_scope",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "fixture-conditions",
+        "method": "Read complete application and README; enumerate available app files",
+        "result": "Explicit README exclusions: fake token authentication, in-memory storage, absent deployment configuration (three groups). Trusted migration and expiry edits are authorized setup, not vulnerabilities."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": [
+      "Explicit README exclusions: fake token authentication, in-memory storage, absent deployment configuration (three groups). Trusted migration and expiry edits are authorized setup, not vulnerabilities."
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+Command: python -m unittest app.test_security -v
+Exit code: 0
+test_admin_export_current_tenant_and_role (app.test_security.SecurityControls.test_admin_export_current_tenant_and_role) ... ok
+test_anonymous_and_public_routes (app.test_security.SecurityControls.test_anonymous_and_public_routes) ... ok
+test_existing_session_tracks_tenant_migration (app.test_security.SecurityControls.test_existing_session_tracks_tenant_migration) ... ok
+test_literal_search_ticket_text_and_headers (app.test_security.SecurityControls.test_literal_search_ticket_text_and_headers) ... ok
+test_login_origin_and_credentials_preserve_state (app.test_security.SecurityControls.test_login_origin_and_credentials_preserve_state) ... ok
+test_logout_csrf_and_invalidation (app.test_security.SecurityControls.test_logout_csrf_and_invalidation) ... ok
+test_ownership_and_tenant_matrix (app.test_security.SecurityControls.test_ownership_and_tenant_matrix) ... ok
+test_rotation_and_cookie_controls (app.test_security.SecurityControls.test_rotation_and_cookie_controls) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.160s
+
+OK

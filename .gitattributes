@@ -1,1 +1,5 @@
 * text=auto eol=lf
+# Frozen benchmark metadata must retain its original bytes for hash verification.
+eval/benchmarks/v2-2026-11-23/manifest.json -text
+eval/benchmarks/v2-2026-11-23/protocol.json -text
+eval/benchmarks/website-v2-2026-11-23/protocol.json -text

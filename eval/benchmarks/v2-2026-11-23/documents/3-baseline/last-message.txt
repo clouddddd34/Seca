@@ -1,0 +1,9 @@
+Completed the assessment and [report.md](report.md).
+
+Confirmed and fixed three bugs:
+
+- Reads ignored current tenant membership.
+- Reads allowed expired shares.
+- Authentication accepted bare usernames.
+
+All 15 regression and control tests pass. The report includes evidence, fixes, executed tests, protected workflows, fixture distinctions, and limitations. No skills, external services, installations, or delegation were used.

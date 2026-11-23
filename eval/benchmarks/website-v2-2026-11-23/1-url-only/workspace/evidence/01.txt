@@ -1,0 +1,13 @@
+GET http://127.0.0.1:17689/
+Status: 200
+date: Mon, 23 Nov 2026 01:55:21 GMT
+server: uvicorn
+content-length: 303
+content-type: text/html; charset=utf-8
+x-content-type-options: nosniff
+content-security-policy: default-src 'none'; form-action 'self'; frame-ancestors 'none'
+cache-control: no-store
+connection: close
+
+
+<!doctype html><html><head><title>Support portal</title></head><body><nav><a href="/">Home</a> <a href="/help">Help</a> <a href="/login">Login</a> <a href="/tickets">Tickets</a> <a href="/admin/export">Admin export</a></nav><h1>Support portal</h1><p>Local synthetic evaluation service.</p></body></html>

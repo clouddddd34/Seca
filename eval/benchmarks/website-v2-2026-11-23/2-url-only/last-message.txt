@@ -1,0 +1,3 @@
+Created [report.md](report.md) with evidence, observed protections, coverage limits and additional access needed for follow-up.
+
+Used 5 of 40 permitted requests. No confirmed findings. Tickets and Admin export denied anonymous access. Authenticated and internal checks remain untested.

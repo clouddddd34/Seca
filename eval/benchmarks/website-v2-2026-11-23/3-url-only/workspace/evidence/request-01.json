@@ -1,0 +1,60 @@
+{
+  "request_number": 1,
+  "method": "GET",
+  "url": "http://127.0.0.1:56365/",
+  "status": 200,
+  "headers": {
+    "date": "Mon, 23 Nov 2026 02:03:48 GMT",
+    "server": "uvicorn",
+    "content-length": "303",
+    "content-type": "text/html; charset=utf-8",
+    "x-content-type-options": "nosniff",
+    "content-security-policy": "default-src 'none'; form-action 'self'; frame-ancestors 'none'",
+    "cache-control": "no-store",
+    "connection": "close"
+  },
+  "truncated": false,
+  "elements": [
+    {
+      "tag": "a",
+      "attrs": {
+        "href": "/"
+      }
+    },
+    {
+      "tag": "a",
+      "attrs": {
+        "href": "/help"
+      }
+    },
+    {
+      "tag": "a",
+      "attrs": {
+        "href": "/login"
+      }
+    },
+    {
+      "tag": "a",
+      "attrs": {
+        "href": "/tickets"
+      }
+    },
+    {
+      "tag": "a",
+      "attrs": {
+        "href": "/admin/export"
+      }
+    }
+  ],
+  "text": [
+    "Support portal",
+    "Home",
+    "Help",
+    "Login",
+    "Tickets",
+    "Admin export",
+    "Support portal",
+    "Local synthetic evaluation service."
+  ],
+  "body": "<!doctype html><html><head><title>Support portal</title></head><body><nav><a href=\"/\">Home</a> <a href=\"/help\">Help</a> <a href=\"/login\">Login</a> <a href=\"/tickets\">Tickets</a> <a href=\"/admin/export\">Admin export</a></nav><h1>Support portal</h1><p>Local synthetic evaluation service.</p></body></html>"
+}

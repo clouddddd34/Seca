@@ -1,0 +1,26 @@
+python : test_expired_share_denied (test_security.AccessTests.test_expired_share_denied) ... ok
+At line:2 char:1
++ python -m unittest discover -s app -p test_security.py -v 2>&1 | Tee- ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_expired_sh..._denied) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_invalid_shares_do_not_persist (test_security.AccessTests.test_invalid_shares_do_not_persist) ... ok
+test_inventory_role_and_current_tenant (test_security.AccessTests.test_inventory_role_and_current_tenant) ... ok
+test_live_share_allows_read (test_security.AccessTests.test_live_share_allows_read) ... ok
+test_migrated_owner_cannot_share_or_revoke (test_security.AccessTests.test_migrated_owner_cannot_share_or_revoke) ... 
+ok
+test_migrated_owner_denied (test_security.AccessTests.test_migrated_owner_denied) ... ok
+test_migrated_recipient_denied (test_security.AccessTests.test_migrated_recipient_denied) ... ok
+test_missing_and_unknown_identity_denied (test_security.AccessTests.test_missing_and_unknown_identity_denied) ... ok
+test_owner_current_tenant (test_security.AccessTests.test_owner_current_tenant) ... ok
+test_recipients_cannot_reshare_or_revoke (test_security.AccessTests.test_recipients_cannot_reshare_or_revoke) ... ok
+test_revoke_blocks_read_and_preserves_owner (test_security.AccessTests.test_revoke_blocks_read_and_preserves_owner) 
+... ok
+test_unshared_same_and_other_tenant_denied (test_security.AccessTests.test_unshared_same_and_other_tenant_denied) ... 
+ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.110s
+
+OK

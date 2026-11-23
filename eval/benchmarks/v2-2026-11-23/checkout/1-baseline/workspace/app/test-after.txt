@@ -1,0 +1,11 @@
+test_coupon_once_across_orders_even_after_refund (app.test_app.CheckoutTests.test_coupon_once_across_orders_even_after_refund) ... ok
+test_exact_bearer_required (app.test_app.CheckoutTests.test_exact_bearer_required) ... ok
+test_failed_payment_preserves_coupon (app.test_app.CheckoutTests.test_failed_payment_preserves_coupon) ... ok
+test_owner_controls_and_missing_orders (app.test_app.CheckoutTests.test_owner_controls_and_missing_orders) ... ok
+test_refund_only_once_and_net_charge (app.test_app.CheckoutTests.test_refund_only_once_and_net_charge) ... ok
+test_validation_and_transitions (app.test_app.CheckoutTests.test_validation_and_transitions) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.174s
+
+OK

@@ -1,0 +1,12 @@
+{
+  "model_requested": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "time_limit_seconds": 180,
+  "sandbox": "workspace-write",
+  "windows_sandbox": "elevated",
+  "web_search": "disabled",
+  "plugins_default_enabled": false,
+  "status": "completed",
+  "exit_code": 0,
+  "elapsed_seconds": 113.25
+}

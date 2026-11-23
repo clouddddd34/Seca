@@ -1,0 +1,21 @@
+python : test_bare_account_is_not_a_token (app.test_security.CheckoutTests.test_bare_account_is_not_a_token) ... ok
+At line:2 char:1
++ python -m unittest app.test_security -v 2>&1 | Tee-Object evidence/te ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_bare_accou...a_token) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_coupon_is_per_account (app.test_security.CheckoutTests.test_coupon_is_per_account) ... ok
+test_coupon_once_even_after_refund (app.test_security.CheckoutTests.test_coupon_once_even_after_refund) ... ok
+test_insufficient_funds_preserves_coupon (app.test_security.CheckoutTests.test_insufficient_funds_preserves_coupon) 
+... ok
+test_invalid_transitions_and_coupon (app.test_security.CheckoutTests.test_invalid_transitions_and_coupon) ... ok
+test_owner_boundary (app.test_security.CheckoutTests.test_owner_boundary) ... ok
+test_refund_only_once (app.test_security.CheckoutTests.test_refund_only_once) ... ok
+test_validation_authentication_and_missing_orders 
+(app.test_security.CheckoutTests.test_validation_authentication_and_missing_orders) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.193s
+
+OK

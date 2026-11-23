@@ -1,0 +1,62 @@
+{
+  "bare_account_auth": {
+    "status": 401,
+    "body": {
+      "detail": "Unauthorized"
+    }
+  },
+  "coupon_pay_statuses": [
+    200,
+    409
+  ],
+  "coupon_wallet": {
+    "balance": 9500,
+    "used_coupons": [
+      "WELCOME"
+    ]
+  },
+  "second_order": {
+    "id": 2,
+    "owner": "alice",
+    "quantity": 1,
+    "total": 1000,
+    "state": "draft",
+    "paid": 0
+  },
+  "refunds": [
+    {
+      "status": 200,
+      "wallet": {
+        "balance": 10000,
+        "used_coupons": [
+          "WELCOME"
+        ]
+      },
+      "order": {
+        "id": 1,
+        "owner": "alice",
+        "quantity": 3,
+        "total": 3000,
+        "state": "refunded",
+        "paid": 2500
+      }
+    },
+    {
+      "status": 409,
+      "wallet": {
+        "balance": 10000,
+        "used_coupons": [
+          "WELCOME"
+        ]
+      },
+      "order": {
+        "id": 1,
+        "owner": "alice",
+        "quantity": 3,
+        "total": 3000,
+        "state": "refunded",
+        "paid": 2500
+      }
+    }
+  ]
+}

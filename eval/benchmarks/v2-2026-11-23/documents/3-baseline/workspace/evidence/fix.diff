@@ -1,0 +1,30 @@
+--- original/app/app.py
++++ app/app.py
+@@ -26,7 +26,11 @@
+     app.state.shares = []
+ 
+     def actor(request):
+-        name = request.headers.get("authorization", "").removeprefix("Bearer fixture-")
++        authorization = request.headers.get("authorization", "")
++        scheme, separator, token = authorization.partition(" ")
++        if not separator or scheme.lower() != "bearer" or not token.startswith("fixture-"):
++            raise HTTPException(401)
++        name = token.removeprefix("fixture-")
+         if name not in app.state.users:
+             raise HTTPException(401)
+         return name, app.state.users[name]
+@@ -37,10 +41,13 @@
+         return app.state.documents[doc_id]
+ 
+     def can_read(name, user, doc):
++        if user["tenant"] != doc["tenant"]:
++            return False
+         if doc["owner"] == name:
+             return True
+         return any(s["document"] == doc["id"] and s["recipient"] == name
+-                   and not s["revoked"] for s in app.state.shares)
++                   and not s["revoked"] and time() < s["expires_at"]
++                   for s in app.state.shares)
+ 
+     @app.get("/documents/{doc_id}")
+     def read(doc_id: str, request: Request):

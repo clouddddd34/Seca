@@ -1,0 +1,45 @@
+{
+  "target": "app/app.py; local synthetic FastAPI TestClient only",
+  "scope": "All four application routes, authorization lifecycle and focused remediation",
+  "exclusions": [
+    "External services",
+    "Package installation",
+    "Deployment assessment",
+    "Credential attacks",
+    "Load testing"
+  ],
+  "rules": "app/README.md",
+  "checked": [
+    "Read ownership and share lifecycle",
+    "Share creation",
+    "Revocation",
+    "Admin inventory",
+    "Missing and unknown identity"
+  ],
+  "findings": [
+    {
+      "id": "F-001",
+      "status": "confirmed",
+      "title": "Read access survives tenant migration",
+      "evidence": [
+        "evidence/tests-before.txt",
+        "evidence/runtime-before.json"
+      ]
+    },
+    {
+      "id": "F-002",
+      "status": "confirmed",
+      "title": "Expired shares retain read access",
+      "evidence": [
+        "evidence/tests-before.txt",
+        "evidence/runtime-before.json"
+      ]
+    }
+  ],
+  "outstanding": [],
+  "limitations": [
+    "Fixture authentication and storage",
+    "No external dependency advisory lookup"
+  ],
+  "result": "Two confirmed findings fixed; ten regression/control tests pass."
+}

@@ -1,0 +1,145 @@
+[
+  {
+    "id": "app/app.py:create:A01",
+    "surface": "POST /orders",
+    "boundary": "account isolation",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:create:A07",
+    "surface": "POST /orders",
+    "boundary": "anonymous to account",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:create:A06",
+    "surface": "POST /orders",
+    "boundary": "customer to accounting policy",
+    "owasp_category": "A06:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:read:A01",
+    "surface": "GET /orders/{order_id}",
+    "boundary": "account isolation",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:read:A07",
+    "surface": "GET /orders/{order_id}",
+    "boundary": "anonymous to account",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:pay:A01",
+    "surface": "POST /orders/{order_id}/pay",
+    "boundary": "account isolation",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:pay:A07",
+    "surface": "POST /orders/{order_id}/pay",
+    "boundary": "anonymous to account",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:pay:A06",
+    "surface": "POST /orders/{order_id}/pay",
+    "boundary": "customer to accounting policy",
+    "owasp_category": "A06:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:refund:A01",
+    "surface": "POST /orders/{order_id}/refund",
+    "boundary": "account isolation",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:refund:A07",
+    "surface": "POST /orders/{order_id}/refund",
+    "boundary": "anonymous to account",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:refund:A06",
+    "surface": "POST /orders/{order_id}/refund",
+    "boundary": "customer to accounting policy",
+    "owasp_category": "A06:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:wallet:A01",
+    "surface": "GET /wallet",
+    "boundary": "account isolation",
+    "owasp_category": "A01:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:wallet:A07",
+    "surface": "GET /wallet",
+    "boundary": "anonymous to account",
+    "owasp_category": "A07:2025",
+    "status": "planned",
+    "reviewed_paths": [],
+    "checks": [],
+    "finding_fingerprints": [],
+    "unresolved": []
+  }
+]

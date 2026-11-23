@@ -1,0 +1,16 @@
+{
+  "request": 23,
+  "actor": "bob",
+  "method": "GET",
+  "url": "http://127.0.0.1:17499/admin/export",
+  "status": 403,
+  "headers": {
+    "date": "Mon, 23 Nov 2026 02:00:14 GMT",
+    "server": "uvicorn",
+    "content-length": "22",
+    "content-type": "text/html; charset=utf-8",
+    "connection": "close"
+  },
+  "body": "Administrator required",
+  "truncated": false
+}

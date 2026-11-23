@@ -1,0 +1,3 @@
+Completed [report.md](report.md) with findings, evidence, fixes, coverage, and limitations.
+
+Fixed two confirmed bugs: document reads ignored current tenant membership and share expiry. All 12 regression/control tests pass after the fixes; previously, three failed. Valid sharing, revocation, and inventory controls remain intact.

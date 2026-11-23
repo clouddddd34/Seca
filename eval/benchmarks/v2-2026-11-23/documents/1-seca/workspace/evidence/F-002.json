@@ -1,0 +1,28 @@
+{
+  "id": "F-002",
+  "title": "Expired shares retain read access",
+  "status": "confirmed",
+  "severity": "medium",
+  "expected": "Shares authorize reads only before expires_at and while not revoked.",
+  "observed": "A recipient received HTTP 200 and the full synthetic document after expiry.",
+  "evidence": [
+    "evidence/app-before.py:41",
+    "evidence/runtime-before.json",
+    "evidence/tests-before.txt",
+    "app/test_security.py",
+    "evidence/tests-after.txt"
+  ],
+  "reproduction": [
+    "Create a fresh app; Alice shares a to Bob with future expiry.",
+    "Verify Bob can read; set stored expiry to past timestamp.",
+    "GET a as Bob still returns document."
+  ],
+  "preconditions": [
+    "Existing owner or valid share recipient; authorized fixture transition as described."
+  ],
+  "uncertainty": [
+    "Production deployment and impact outside this synthetic service were not assessed."
+  ],
+  "impact": "Former recipients retain document access beyond the authorized period.",
+  "remediation": "Applied current-tenant prerequisite and strict future-expiry predicate in can_read; all ten tests pass."
+}

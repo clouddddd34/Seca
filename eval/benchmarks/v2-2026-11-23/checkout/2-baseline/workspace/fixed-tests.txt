@@ -1,0 +1,14 @@
+test_accounts_have_independent_coupon_eligibility (app.test_app.CheckoutTests.test_accounts_have_independent_coupon_eligibility) ... ok
+test_bare_account_is_not_a_bearer_token (app.test_app.CheckoutTests.test_bare_account_is_not_a_bearer_token) ... ok
+test_coupon_cannot_be_reused_across_paid_orders (app.test_app.CheckoutTests.test_coupon_cannot_be_reused_across_paid_orders) ... ok
+test_coupon_cannot_be_reused_after_refund (app.test_app.CheckoutTests.test_coupon_cannot_be_reused_after_refund) ... ok
+test_failed_payment_does_not_consume_coupon (app.test_app.CheckoutTests.test_failed_payment_does_not_consume_coupon) ... ok
+test_owner_controls (app.test_app.CheckoutTests.test_owner_controls) ... ok
+test_repeated_refund_is_rejected_without_credit (app.test_app.CheckoutTests.test_repeated_refund_is_rejected_without_credit) ... ok
+test_transitions_and_unknown_coupon_preserve_state (app.test_app.CheckoutTests.test_transitions_and_unknown_coupon_preserve_state) ... ok
+test_validation_and_missing_credentials (app.test_app.CheckoutTests.test_validation_and_missing_credentials) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.180s
+
+OK

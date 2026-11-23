@@ -1,0 +1,57 @@
+python : test_coupon_once_across_orders_even_after_refund 
+(app.test_app.CheckoutTests.test_coupon_once_across_orders_even_after_refund) ... FAIL
+At line:113 char:1
++ python -m unittest app.test_app -v 2>&1 | Tee-Object -FilePath app/te ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_coupon_onc...efund) ... FAIL:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_exact_bearer_required (app.test_app.CheckoutTests.test_exact_bearer_required) ... 
+  test_exact_bearer_required (app.test_app.CheckoutTests.test_exact_bearer_required) (token='alice') ... FAIL
+  test_exact_bearer_required (app.test_app.CheckoutTests.test_exact_bearer_required) (token='bob') ... FAIL
+test_failed_payment_preserves_coupon (app.test_app.CheckoutTests.test_failed_payment_preserves_coupon) ... ok
+test_owner_controls_and_missing_orders (app.test_app.CheckoutTests.test_owner_controls_and_missing_orders) ... ok
+test_refund_only_once_and_net_charge (app.test_app.CheckoutTests.test_refund_only_once_and_net_charge) ... FAIL
+test_validation_and_transitions (app.test_app.CheckoutTests.test_validation_and_transitions) ... ok
+
+======================================================================
+FAIL: test_coupon_once_across_orders_even_after_refund 
+(app.test_app.CheckoutTests.test_coupon_once_across_orders_even_after_refund)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-baseline\workspace\app\test_app.py", line 55, in 
+test_coupon_once_across_orders_even_after_refund
+    self.assertEqual(self.post(f'/orders/{second}/pay', {'coupon': 'WELCOME'}).status_code, 409)
+AssertionError: 200 != 409
+
+======================================================================
+FAIL: test_exact_bearer_required (app.test_app.CheckoutTests.test_exact_bearer_required) (token='alice')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-baseline\workspace\app\test_app.py", line 34, in 
+test_exact_bearer_required
+    self.assertEqual(self.client.get('/wallet', headers=headers).status_code, 401)
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_exact_bearer_required (app.test_app.CheckoutTests.test_exact_bearer_required) (token='bob')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-baseline\workspace\app\test_app.py", line 34, in 
+test_exact_bearer_required
+    self.assertEqual(self.client.get('/wallet', headers=headers).status_code, 401)
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_refund_only_once_and_net_charge (app.test_app.CheckoutTests.test_refund_only_once_and_net_charge)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<USER_HOME>\AppData\Local\Temp\seca-benchmark-v2-20261118\checkout\1-baseline\workspace\app\test_app.py", line 46, in 
+test_refund_only_once_and_net_charge
+    self.assertEqual(self.post(f'/orders/{order}/refund').status_code, 409)
+AssertionError: 200 != 409
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.144s
+
+FAILED (failures=4)

@@ -1,0 +1,33 @@
+--- app/app.py (before)
++++ app/app.py (after)
+@@ -16,7 +16,11 @@
+     app.state.used_coupons = set()
+ 
+     def actor(request):
+-        name = request.headers.get("authorization", "").removeprefix("Bearer fixture-")
++        authorization = request.headers.get("authorization", "")
++        scheme, separator, token = authorization.partition(" ")
++        if not separator or scheme.lower() != "bearer" or not token.startswith("fixture-"):
++            raise HTTPException(401)
++        name = token.removeprefix("fixture-")
+         if name not in app.state.wallets:
+             raise HTTPException(401)
+         return name
+@@ -47,6 +51,8 @@
+             raise HTTPException(409)
+         if body.coupon not in ("", "WELCOME"):
+             raise HTTPException(422)
++        if body.coupon and (name, body.coupon) in app.state.used_coupons:
++            raise HTTPException(409)
+         discount = 500 if body.coupon == "WELCOME" else 0
+         charge = order["total"] - discount
+         if app.state.wallets[name] < charge:
+@@ -61,7 +67,7 @@
+     def refund(order_id: int, request: Request):
+         name = actor(request)
+         order = owned(order_id, name)
+-        if order["state"] == "draft":
++        if order["state"] != "paid":
+             raise HTTPException(409)
+         app.state.wallets[name] += order["paid"]
+         order["state"] = "refunded"

@@ -1,0 +1,18 @@
+{
+  "request_number": 5,
+  "method": "GET",
+  "url": "http://127.0.0.1:56365/admin/export",
+  "status": 401,
+  "headers": {
+    "date": "Mon, 23 Nov 2026 02:03:58 GMT",
+    "server": "uvicorn",
+    "content-length": "14",
+    "content-type": "text/html; charset=utf-8",
+    "connection": "close"
+  },
+  "truncated": false,
+  "elements": [],
+  "text": [
+    "Login required"
+  ]
+}

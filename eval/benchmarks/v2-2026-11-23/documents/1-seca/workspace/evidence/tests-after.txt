@@ -1,0 +1,17 @@
+test_expired_share_blocks_read (test_security.AccessTests.test_expired_share_blocks_read) ... ok
+test_invalid_share_targets_and_expiry_do_not_mutate_state (test_security.AccessTests.test_invalid_share_targets_and_expiry_do_not_mutate_state) ... ok
+test_inventory_role_and_current_tenant (test_security.AccessTests.test_inventory_role_and_current_tenant) ... ok
+test_migrated_owner_cannot_share_or_revoke (test_security.AccessTests.test_migrated_owner_cannot_share_or_revoke) ... ok
+test_owner_migration_blocks_read (test_security.AccessTests.test_owner_migration_blocks_read) ... ok
+test_recipient_cannot_reshare_or_revoke (test_security.AccessTests.test_recipient_cannot_reshare_or_revoke) ... ok
+test_recipient_migration_blocks_read (test_security.AccessTests.test_recipient_migration_blocks_read) ... ok
+test_revoke_blocks_read_and_preserves_owner_access (test_security.AccessTests.test_revoke_blocks_read_and_preserves_owner_access) ... ok
+test_unauthenticated_routes_denied (test_security.AccessTests.test_unauthenticated_routes_denied) ... ok
+test_unshared_documents_denied (test_security.AccessTests.test_unshared_documents_denied) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.093s
+
+OK
+
+Python exit code: 0

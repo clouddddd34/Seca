@@ -1,0 +1,114 @@
+[
+  {
+    "fingerprint": "owasp-audit/export-isolation",
+    "verdict": "rejected",
+    "skill": "owasp-audit",
+    "title": "Export bypasses role or current tenant restrictions",
+    "owasp_category": "A01:2025",
+    "location": {
+      "file": "app/app.py",
+      "line": 40
+    },
+    "trace": [],
+    "evidence": [
+      {
+        "file": "security-audit/test_portal.py",
+        "line": 1,
+        "description": "Bounded executable verification; results in security-audit/test-results.txt"
+      }
+    ],
+    "counterevidence": "Middleware checks current role; export line 102 filters current tenant; role downgrade and migration tests pass.",
+    "confidence": "high",
+    "ruled_out_by": {
+      "control": "Middleware checks current role; export line 102 filters current tenant; role downgrade and migration tests pass.",
+      "location": {
+        "file": "app/app.py",
+        "line": 40
+      }
+    }
+  },
+  {
+    "fingerprint": "owasp-audit/search-html",
+    "verdict": "rejected",
+    "skill": "owasp-audit",
+    "title": "Search query executes HTML",
+    "owasp_category": "A05:2025",
+    "location": {
+      "file": "app/app.py",
+      "line": 89
+    },
+    "trace": [],
+    "evidence": [
+      {
+        "file": "security-audit/test_portal.py",
+        "line": 1,
+        "description": "Bounded executable verification; results in security-audit/test-results.txt"
+      }
+    ],
+    "counterevidence": "html.escape renders query literally; four markup/attribute payloads remained escaped.",
+    "confidence": "high",
+    "ruled_out_by": {
+      "control": "html.escape renders query literally; four markup/attribute payloads remained escaped.",
+      "location": {
+        "file": "app/app.py",
+        "line": 89
+      }
+    }
+  },
+  {
+    "fingerprint": "owasp-audit/session-lifecycle",
+    "verdict": "rejected",
+    "skill": "owasp-audit",
+    "title": "Session fixation or logout CSRF bypass",
+    "owasp_category": "A07:2025",
+    "location": {
+      "file": "app/app.py",
+      "line": 75
+    },
+    "trace": [],
+    "evidence": [
+      {
+        "file": "security-audit/test_portal.py",
+        "line": 1,
+        "description": "Bounded executable verification; results in security-audit/test-results.txt"
+      }
+    ],
+    "counterevidence": "Login removes old token and issues random new token; logout compare_digest at 107 precedes deletion; old-token and invalid-CSRF tests pass.",
+    "confidence": "high",
+    "ruled_out_by": {
+      "control": "Login removes old token and issues random new token; logout compare_digest at 107 precedes deletion; old-token and invalid-CSRF tests pass.",
+      "location": {
+        "file": "app/app.py",
+        "line": 75
+      }
+    }
+  },
+  {
+    "fingerprint": "owasp-audit/ticket-isolation",
+    "verdict": "rejected",
+    "skill": "owasp-audit",
+    "title": "Ticket list/detail disclose other owners or tenants",
+    "owasp_category": "A01:2025",
+    "location": {
+      "file": "app/app.py",
+      "line": 86
+    },
+    "trace": [],
+    "evidence": [
+      {
+        "file": "security-audit/test_portal.py",
+        "line": 1,
+        "description": "Bounded executable verification; results in security-audit/test-results.txt"
+      }
+    ],
+    "counterevidence": "Both ownership and current directory tenant predicates precede rendering; matrix and migration tests pass.",
+    "confidence": "high",
+    "ruled_out_by": {
+      "control": "Both ownership and current directory tenant predicates precede rendering; matrix and migration tests pass.",
+      "location": {
+        "file": "app/app.py",
+        "line": 86
+      }
+    }
+  }
+]

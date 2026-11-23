@@ -1,0 +1,100 @@
+{
+  "scope": "app/; source review and bounded local FastAPI/HTTPX TestClient tests",
+  "status": "Completed scoped assessment",
+  "rules": "app/README.md",
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Repeated refunds create wallet credit",
+      "status": "confirmed",
+      "severity": "medium",
+      "expected": "Only paid orders may be refunded once. Rule: app/README.md.",
+      "observed": "Second refund returned 200; independently read balance increased from 10000 to 11000.",
+      "evidence": [
+        "evidence/app.before.py",
+        "evidence/tests-before.txt",
+        "app/test_security.py::CheckoutTests.test_refund_only_once",
+        "evidence/tests-after.txt"
+      ],
+      "reproduction": [
+        "Create one book order, pay, refund, repeat refund, read wallet and order."
+      ],
+      "preconditions": [
+        "Own paid order already refunded."
+      ],
+      "uncertainty": [
+        "Local synthetic fixture only; no production exploitability claim."
+      ],
+      "impact": "Extra synthetic wallet credit; unbounded replay follows from code, but only one replay tested.",
+      "remediation": "Require paid state before refund. Applied in app/app.py and successfully retested."
+    },
+    {
+      "id": "F-002",
+      "title": "WELCOME coupon can be reused",
+      "status": "confirmed",
+      "severity": "medium",
+      "expected": "One WELCOME payment per account, even after refund. Rule: app/README.md.",
+      "observed": "Second order payment with WELCOME returned 200, charged 500 and saved paid state instead of rejecting unchanged.",
+      "evidence": [
+        "evidence/app.before.py",
+        "evidence/tests-before.txt",
+        "app/test_security.py::CheckoutTests.test_coupon_once_even_after_refund",
+        "evidence/tests-after.txt"
+      ],
+      "reproduction": [
+        "Pay first order with WELCOME, refund, create second order, pay with WELCOME, read wallet and order."
+      ],
+      "preconditions": [
+        "Account has used WELCOME."
+      ],
+      "uncertainty": [
+        "Local synthetic fixture only; no production exploitability claim."
+      ],
+      "impact": "Repeated unauthorized 500-cent discounts on orders.",
+      "remediation": "Check used_coupons before any payment mutation. Applied in app/app.py and successfully retested."
+    },
+    {
+      "id": "F-003",
+      "title": "Bare account name bypasses bearer authentication",
+      "status": "confirmed",
+      "severity": "medium",
+      "expected": "Authenticate with the documented bearer token. Rule: app/README.md.",
+      "observed": "Authorization containing only the account name returned 200 on payment and reduced balance from 10000 to 9000.",
+      "evidence": [
+        "evidence/app.before.py",
+        "evidence/tests-before.txt",
+        "app/test_security.py::CheckoutTests.test_bare_account_is_not_a_token",
+        "evidence/tests-after.txt"
+      ],
+      "reproduction": [
+        "Create Alice order with authorized fixture token, pay with bare account name, read saved wallet and order using valid authentication."
+      ],
+      "preconditions": [
+        "Known account name and existing draft for demonstrated payment."
+      ],
+      "uncertainty": [
+        "Local synthetic fixture only; no production exploitability claim."
+      ],
+      "impact": "Impersonation through shared authentication helper; payment demonstrated, other authenticated routes share the same helper.",
+      "remediation": "Reject missing bearer fixture prefix before extracting identity. Applied in app/app.py and successfully retested."
+    }
+  ],
+  "coverage": [
+    "All application source and routes inspected",
+    "8 tests executed before and after patch",
+    "Ownership, authentication, quantity validation, transitions, wallet conservation, coupon lifecycle"
+  ],
+  "outstanding_hypotheses": [
+    {
+      "status": "unverified",
+      "description": "Synchronous endpoints share mutable state without locks; concurrent check/update interleavings were not exercised."
+    }
+  ],
+  "limitations": [
+    "No external requests, installations, advisory lookup or scanner execution",
+    "No deployment, persistence, concurrency or load testing"
+  ],
+  "next_steps": [
+    "If separately scoped, verify concurrent payment/refund atomicity with controlled scheduling."
+  ]
+}

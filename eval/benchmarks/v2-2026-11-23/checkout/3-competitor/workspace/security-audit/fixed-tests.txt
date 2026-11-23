@@ -1,0 +1,13 @@
+test_bare_account_is_not_a_credential (test_security.SecurityTests.test_bare_account_is_not_a_credential) ... ok
+test_coupon_cannot_be_reused_across_orders (test_security.SecurityTests.test_coupon_cannot_be_reused_across_orders) ... ok
+test_failed_payment_preserves_unused_coupon (test_security.SecurityTests.test_failed_payment_preserves_unused_coupon) ... ok
+test_invalid_inputs_and_transitions_preserve_state (test_security.SecurityTests.test_invalid_inputs_and_transitions_preserve_state) ... ok
+test_missing_and_invalid_auth_all_routes (test_security.SecurityTests.test_missing_and_invalid_auth_all_routes) ... ok
+test_ownership_before_state_and_mutation (test_security.SecurityTests.test_ownership_before_state_and_mutation) ... ok
+test_refund_does_not_restore_coupon_and_bob_is_independent (test_security.SecurityTests.test_refund_does_not_restore_coupon_and_bob_is_independent) ... ok
+test_refund_is_once_and_matches_discounted_charge (test_security.SecurityTests.test_refund_is_once_and_matches_discounted_charge) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.113s
+
+OK

@@ -1,0 +1,25 @@
+{
+  "target": "app/app.py via local FastAPI TestClient",
+  "scope": "Local source and synthetic state only; no external services or packages; <=10 shares and <=10 state changes per fresh instance",
+  "requirements": "app/README.md",
+  "status": "Complete: two confirmed findings fixed and retested",
+  "checked": [
+    "All four endpoints, identity resolution, validation, state initialization",
+    "12 regression/control tests before and after patch",
+    "Three document-body disclosure probes before and after patch"
+  ],
+  "hypotheses": [],
+  "next": [],
+  "limitations": [
+    "Synthetic in-memory service; no deployed target",
+    "Dependency advisory lookup excluded by offline scope"
+  ],
+  "findings": [
+    "evidence\\F-001.json",
+    "evidence\\F-002.json"
+  ],
+  "results": {
+    "before": "12 tests, 3 failures; all three probes disclose document",
+    "after": "12 tests passed; all three probes denied with 404"
+  }
+}

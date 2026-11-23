@@ -1,0 +1,20 @@
+python : test_baseline_read_and_authentication (test_access.AccessTests.test_baseline_read_and_authentication) ... ok
+At line:2 char:1
++ python -m unittest discover -s tests -v 2>&1 | Tee-Object -FilePath e ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_baseline_r...ication) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_expired_share_removes_read_access (test_access.AccessTests.test_expired_share_removes_read_access) ... ok
+test_inventory_role_and_current_tenant (test_access.AccessTests.test_inventory_role_and_current_tenant) ... ok
+test_migrated_owner_cannot_mutate_shares (test_access.AccessTests.test_migrated_owner_cannot_mutate_shares) ... ok
+test_owner_migration_removes_read_access (test_access.AccessTests.test_owner_migration_removes_read_access) ... ok
+test_recipient_migration_removes_read_access (test_access.AccessTests.test_recipient_migration_removes_read_access) 
+... ok
+test_revocation_and_reshare_controls (test_access.AccessTests.test_revocation_and_reshare_controls) ... ok
+test_share_validation (test_access.AccessTests.test_share_validation) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.102s
+
+OK

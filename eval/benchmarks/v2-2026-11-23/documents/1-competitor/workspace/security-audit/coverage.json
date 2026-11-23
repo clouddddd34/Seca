@@ -1,0 +1,1005 @@
+[
+  {
+    "id": "app/app.py:read:boundary:A01",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "caller to document",
+    "owasp_category": "A01:2025",
+    "status": "candidate",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Enforce the documented access boundary",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Owner and live same-tenant recipient succeed; unshared member, other tenant, admin without share, missing document, expired share and migrated identities fail. Regression tests and responses.json demonstrate both fixed invariants."
+      }
+    ],
+    "finding_fingerprints": [
+      "owasp-audit/share-expiry/app/app.py/can_read",
+      "owasp-audit/tenant-membership/app/app.py/can_read"
+    ],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:read:boundary:A02",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "caller to document",
+    "owasp_category": "A02:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Configuration does not expose stored state through debug/docs",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "FastAPI default debug=False; no CORS middleware or custom exception trace responses. Docs/schema requests were local only. Deployment absent and not assessed."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:read:boundary:A03",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "caller to document",
+    "owasp_category": "A03:2025",
+    "status": "out_of_scope",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Dependency provenance and advisories",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "No manifest or lockfile supplied in app/. Registry access and packages forbidden; no dependency vulnerability claim."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:read:boundary:A04",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "caller to document",
+    "owasp_category": "A04:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No application cryptographic secret handling",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:read:boundary:A05",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "caller to document",
+    "owasp_category": "A05:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No interpreter or HTML input sink",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:read:boundary:A06",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "caller to document",
+    "owasp_category": "A06:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Workflow transitions preserve authorized sharing",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Owner and live same-tenant recipient succeed; unshared member, other tenant, admin without share, missing document, expired share and migrated identities fail. Regression tests and responses.json demonstrate both fixed invariants."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:read:boundary:A07",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "caller to document",
+    "owasp_category": "A07:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Unknown or absent identity cannot access business routes",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "actor() rejects missing/unknown names with 401 on all four business routes (test_auth_and_unshared_reads). Synthetic token format, including permissive name parsing, is fixture authentication, not production assurance."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:read:boundary:A08",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "caller to document",
+    "owasp_category": "A08:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No untrusted code/deserialization or external side effects",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:read:boundary:A09",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "caller to document",
+    "owasp_category": "A09:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No credentials or document content sent to application logs",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "No application logging calls or external notification sink. Security event logging absent: hardening note, no demonstrated exploit."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:read:boundary:A10",
+    "surface": "GET /documents/{doc_id}",
+    "boundary": "caller to document",
+    "owasp_category": "A10:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Invalid identity/resource/authorization fails before protected sink",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "actor and document helpers raise HTTPException; mutation guards precede writes; rejected mutations leave shares unchanged. Nine regression tests pass; no catch-and-allow path."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:share:boundary:A01",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to recipient",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Enforce the documented access boundary",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Owner plus current tenant checks precede append; cross-tenant and unknown recipients, past expiry and recipient resharing fail. tests share_validation, revocation_and_reshare, migrated_owner_cannot_mutate pass."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:share:boundary:A02",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to recipient",
+    "owasp_category": "A02:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Configuration does not expose stored state through debug/docs",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "FastAPI default debug=False; no CORS middleware or custom exception trace responses. Docs/schema requests were local only. Deployment absent and not assessed."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:share:boundary:A03",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to recipient",
+    "owasp_category": "A03:2025",
+    "status": "out_of_scope",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Dependency provenance and advisories",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "No manifest or lockfile supplied in app/. Registry access and packages forbidden; no dependency vulnerability claim."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:share:boundary:A04",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to recipient",
+    "owasp_category": "A04:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No application cryptographic secret handling",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:share:boundary:A05",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to recipient",
+    "owasp_category": "A05:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No interpreter or HTML input sink",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:share:boundary:A06",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to recipient",
+    "owasp_category": "A06:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Workflow transitions preserve authorized sharing",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Owner plus current tenant checks precede append; cross-tenant and unknown recipients, past expiry and recipient resharing fail. tests share_validation, revocation_and_reshare, migrated_owner_cannot_mutate pass."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:share:boundary:A07",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to recipient",
+    "owasp_category": "A07:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Unknown or absent identity cannot access business routes",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "actor() rejects missing/unknown names with 401 on all four business routes (test_auth_and_unshared_reads). Synthetic token format, including permissive name parsing, is fixture authentication, not production assurance."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:share:boundary:A08",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to recipient",
+    "owasp_category": "A08:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No untrusted code/deserialization or external side effects",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:share:boundary:A09",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to recipient",
+    "owasp_category": "A09:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No credentials or document content sent to application logs",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "No application logging calls or external notification sink. Security event logging absent: hardening note, no demonstrated exploit."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:share:boundary:A10",
+    "surface": "POST /documents/{doc_id}/shares",
+    "boundary": "owner to recipient",
+    "owasp_category": "A10:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Invalid identity/resource/authorization fails before protected sink",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "actor and document helpers raise HTTPException; mutation guards precede writes; rejected mutations leave shares unchanged. Nine regression tests pass; no catch-and-allow path."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:revoke:boundary:A01",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "caller to share",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Enforce the documented access boundary",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Ownership and current tenant precede revoked=True. Recipient and migrated-owner revocation fail; owner revocation succeeds and blocks reads; fresh share restores access."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:revoke:boundary:A02",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "caller to share",
+    "owasp_category": "A02:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Configuration does not expose stored state through debug/docs",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "FastAPI default debug=False; no CORS middleware or custom exception trace responses. Docs/schema requests were local only. Deployment absent and not assessed."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:revoke:boundary:A03",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "caller to share",
+    "owasp_category": "A03:2025",
+    "status": "out_of_scope",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Dependency provenance and advisories",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "No manifest or lockfile supplied in app/. Registry access and packages forbidden; no dependency vulnerability claim."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:revoke:boundary:A04",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "caller to share",
+    "owasp_category": "A04:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No application cryptographic secret handling",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:revoke:boundary:A05",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "caller to share",
+    "owasp_category": "A05:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No interpreter or HTML input sink",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:revoke:boundary:A06",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "caller to share",
+    "owasp_category": "A06:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Workflow transitions preserve authorized sharing",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Ownership and current tenant precede revoked=True. Recipient and migrated-owner revocation fail; owner revocation succeeds and blocks reads; fresh share restores access."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:revoke:boundary:A07",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "caller to share",
+    "owasp_category": "A07:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Unknown or absent identity cannot access business routes",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "actor() rejects missing/unknown names with 401 on all four business routes (test_auth_and_unshared_reads). Synthetic token format, including permissive name parsing, is fixture authentication, not production assurance."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:revoke:boundary:A08",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "caller to share",
+    "owasp_category": "A08:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No untrusted code/deserialization or external side effects",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:revoke:boundary:A09",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "caller to share",
+    "owasp_category": "A09:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No credentials or document content sent to application logs",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "No application logging calls or external notification sink. Security event logging absent: hardening note, no demonstrated exploit."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:revoke:boundary:A10",
+    "surface": "DELETE /shares/{share_id}",
+    "boundary": "caller to share",
+    "owasp_category": "A10:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Invalid identity/resource/authorization fails before protected sink",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "actor and document helpers raise HTTPException; mutation guards precede writes; rejected mutations leave shares unchanged. Nine regression tests pass; no catch-and-allow path."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:inventory:boundary:A01",
+    "surface": "GET /admin/inventory",
+    "boundary": "member to tenant administrator",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Enforce the documented access boundary",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Role guard rejects Bob. Current tenant filter returns a/b for north admin and c after directory migration to south; inventory test passes."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:inventory:boundary:A02",
+    "surface": "GET /admin/inventory",
+    "boundary": "member to tenant administrator",
+    "owasp_category": "A02:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Configuration does not expose stored state through debug/docs",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "FastAPI default debug=False; no CORS middleware or custom exception trace responses. Docs/schema requests were local only. Deployment absent and not assessed."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:inventory:boundary:A03",
+    "surface": "GET /admin/inventory",
+    "boundary": "member to tenant administrator",
+    "owasp_category": "A03:2025",
+    "status": "out_of_scope",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Dependency provenance and advisories",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "No manifest or lockfile supplied in app/. Registry access and packages forbidden; no dependency vulnerability claim."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:inventory:boundary:A04",
+    "surface": "GET /admin/inventory",
+    "boundary": "member to tenant administrator",
+    "owasp_category": "A04:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No application cryptographic secret handling",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:inventory:boundary:A05",
+    "surface": "GET /admin/inventory",
+    "boundary": "member to tenant administrator",
+    "owasp_category": "A05:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No interpreter or HTML input sink",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:inventory:boundary:A06",
+    "surface": "GET /admin/inventory",
+    "boundary": "member to tenant administrator",
+    "owasp_category": "A06:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Workflow transitions preserve authorized sharing",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Role guard rejects Bob. Current tenant filter returns a/b for north admin and c after directory migration to south; inventory test passes."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:inventory:boundary:A07",
+    "surface": "GET /admin/inventory",
+    "boundary": "member to tenant administrator",
+    "owasp_category": "A07:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Unknown or absent identity cannot access business routes",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "actor() rejects missing/unknown names with 401 on all four business routes (test_auth_and_unshared_reads). Synthetic token format, including permissive name parsing, is fixture authentication, not production assurance."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:inventory:boundary:A08",
+    "surface": "GET /admin/inventory",
+    "boundary": "member to tenant administrator",
+    "owasp_category": "A08:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No untrusted code/deserialization or external side effects",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:inventory:boundary:A09",
+    "surface": "GET /admin/inventory",
+    "boundary": "member to tenant administrator",
+    "owasp_category": "A09:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No credentials or document content sent to application logs",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "No application logging calls or external notification sink. Security event logging absent: hardening note, no demonstrated exploit."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:inventory:boundary:A10",
+    "surface": "GET /admin/inventory",
+    "boundary": "member to tenant administrator",
+    "owasp_category": "A10:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Invalid identity/resource/authorization fails before protected sink",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "actor and document helpers raise HTTPException; mutation guards precede writes; rejected mutations leave shares unchanged. Nine regression tests pass; no catch-and-allow path."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:docs:boundary:A01",
+    "surface": "GET /openapi.json, /docs, /redoc, /docs/oauth2-redirect",
+    "boundary": "anonymous to schema",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Enforce the documented access boundary",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Local schema/docs routes return 200; schema describes routes and Share fields, not stored document bodies. No document-state sink on these routes."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:docs:boundary:A02",
+    "surface": "GET /openapi.json, /docs, /redoc, /docs/oauth2-redirect",
+    "boundary": "anonymous to schema",
+    "owasp_category": "A02:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Configuration does not expose stored state through debug/docs",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "FastAPI default debug=False; no CORS middleware or custom exception trace responses. Docs/schema requests were local only. Deployment absent and not assessed."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:docs:boundary:A03",
+    "surface": "GET /openapi.json, /docs, /redoc, /docs/oauth2-redirect",
+    "boundary": "anonymous to schema",
+    "owasp_category": "A03:2025",
+    "status": "out_of_scope",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Dependency provenance and advisories",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "No manifest or lockfile supplied in app/. Registry access and packages forbidden; no dependency vulnerability claim."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:docs:boundary:A04",
+    "surface": "GET /openapi.json, /docs, /redoc, /docs/oauth2-redirect",
+    "boundary": "anonymous to schema",
+    "owasp_category": "A04:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No application cryptographic secret handling",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:docs:boundary:A05",
+    "surface": "GET /openapi.json, /docs, /redoc, /docs/oauth2-redirect",
+    "boundary": "anonymous to schema",
+    "owasp_category": "A05:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No interpreter or HTML input sink",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:docs:boundary:A06",
+    "surface": "GET /openapi.json, /docs, /redoc, /docs/oauth2-redirect",
+    "boundary": "anonymous to schema",
+    "owasp_category": "A06:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Workflow transitions preserve authorized sharing",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Local schema/docs routes return 200; schema describes routes and Share fields, not stored document bodies. No document-state sink on these routes."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:docs:boundary:A07",
+    "surface": "GET /openapi.json, /docs, /redoc, /docs/oauth2-redirect",
+    "boundary": "anonymous to schema",
+    "owasp_category": "A07:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Unknown or absent identity cannot access business routes",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Documentation routes are intentionally anonymous and contain schema only."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:docs:boundary:A08",
+    "surface": "GET /openapi.json, /docs, /redoc, /docs/oauth2-redirect",
+    "boundary": "anonymous to schema",
+    "owasp_category": "A08:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No untrusted code/deserialization or external side effects",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "Read full app/app.py: fixed fixture identities, typed JSON input, dictionary lookups and deep-copy JSON output only. No database, shell, filesystem, outbound HTTP, user HTML or unsafe deserializer."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:docs:boundary:A09",
+    "surface": "GET /openapi.json, /docs, /redoc, /docs/oauth2-redirect",
+    "boundary": "anonymous to schema",
+    "owasp_category": "A09:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No credentials or document content sent to application logs",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "No application logging calls or external notification sink. Security event logging absent: hardening note, no demonstrated exploit."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "app/app.py:docs:boundary:A10",
+    "surface": "GET /openapi.json, /docs, /redoc, /docs/oauth2-redirect",
+    "boundary": "anonymous to schema",
+    "owasp_category": "A10:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Invalid identity/resource/authorization fails before protected sink",
+        "method": "Full source trace; local TestClient checks where cited",
+        "result": "actor and document helpers raise HTTPException; mutation guards precede writes; rejected mutations leave shares unchanged. Nine regression tests pass; no catch-and-allow path."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  }
+]

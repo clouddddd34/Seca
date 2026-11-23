@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-23",
+  "release_published": false,
+  "packaging_validation_only": true,
+  "local_artifact_directory": "artifacts/v0.1.0-rc.1-checkpoint-20261123",
+  "archives": [
+    {
+      "file": "seca-skill-v0.1.0-rc.1.zip",
+      "sha256": "6c219600fcf239d6177a5911e2d54390e69b39dc5ab2d3f75f0c6a1211c0d8b3",
+      "zip_integrity": true,
+      "files": 10
+    },
+    {
+      "file": "seca-v0.1.0-rc.1-windows-x86_64.zip",
+      "sha256": "c9f3c49fb529cb7cf54c3374c0dfd8a073471cd2c1eab3f56b1af0f431fa372c",
+      "zip_integrity": true,
+      "files": 194
+    }
+  ],
+  "extracted_cli_smoke": "passed log-init and log-check",
+  "python_tests": 26,
+  "rust_tests": 3,
+  "rust_fmt": "passed",
+  "rust_clippy": "passed",
+  "rust_release_build": "passed"
+}

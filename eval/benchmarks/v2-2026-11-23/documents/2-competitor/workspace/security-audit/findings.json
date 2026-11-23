@@ -1,0 +1,172 @@
+[
+  {
+    "fingerprint": "owasp-audit/CWE-863/app/app.py/read-expired-share",
+    "verdict": "confirmed",
+    "skill": "owasp-audit",
+    "title": "Expired shares continue to authorize document reads",
+    "cwe": "CWE-863",
+    "owasp_category": "A01:2025",
+    "location": {
+      "file": "app/app.py",
+      "line": 46
+    },
+    "trace": [
+      {
+        "kind": "entrypoint",
+        "file": "app/app.py",
+        "line": 48,
+        "description": "GET /documents/{doc_id} authenticates and resolves requested document"
+      },
+      {
+        "kind": "propagation",
+        "file": "app/app.py",
+        "line": 39,
+        "description": "can_read policy; original version omits required predicate"
+      },
+      {
+        "kind": "sink",
+        "file": "app/app.py",
+        "line": 54,
+        "description": "Returns full copied document JSON"
+      }
+    ],
+    "evidence": [
+      {
+        "file": "security-audit/original-app.py",
+        "line": 39,
+        "description": "Preserved pre-fix policy"
+      },
+      {
+        "file": "security-audit/before-tests.txt",
+        "line": 1,
+        "description": "test_expired_share_denied and test_expiry_exact_boundary_denied fail with 200 != 404 before fix"
+      },
+      {
+        "file": "app/test_security.py",
+        "line": 32,
+        "description": "Executable bounded regressions"
+      },
+      {
+        "file": "security-audit/after-tests.txt",
+        "line": 1,
+        "description": "All 12 regression/control tests pass after fix"
+      }
+    ],
+    "counterevidence": "Share creation rejects past expiration (original app.py:60), and reads reject revoked shares (original :43). Neither evaluates elapsed time on a later read. Owner access is intentionally independent of shares.",
+    "confidence": "high",
+    "reproduced": true,
+    "severity": {
+      "likelihood": {
+        "score": "medium",
+        "reason": "Requires a previously legitimate grant or ownership and subsequent expiry/migration."
+      },
+      "impact": {
+        "score": "high",
+        "reason": "Fully defeats the explicit access withdrawal or tenant boundary and discloses full document contents."
+      },
+      "overall": "high"
+    },
+    "conditions": [
+      {
+        "kind": "authentication_level",
+        "description": "Authenticated fixture user"
+      },
+      {
+        "kind": "data_state",
+        "description": "A same-tenant recipient has a legitimate share whose expiration has elapsed."
+      }
+    ],
+    "disposition": "Fixed",
+    "ext": {
+      "description": "An authenticated recipient requests a previously shared document after the grant expires and receives its full JSON. The original read policy checked document, recipient and revoked only; it never checked expires_at. At the exact expiry boundary it also returned 200 instead of 404.",
+      "regression_test": "app/test_security.py",
+      "fix_verified_on": "2026-11-18",
+      "verification": "test_expired_share_denied and test_expiry_exact_boundary_denied"
+    }
+  },
+  {
+    "fingerprint": "owasp-audit/CWE-863/app/app.py/read-tenant-membership",
+    "verdict": "confirmed",
+    "skill": "owasp-audit",
+    "title": "Document reads ignore current tenant membership",
+    "cwe": "CWE-863",
+    "owasp_category": "A01:2025",
+    "location": {
+      "file": "app/app.py",
+      "line": 40
+    },
+    "trace": [
+      {
+        "kind": "entrypoint",
+        "file": "app/app.py",
+        "line": 48,
+        "description": "GET /documents/{doc_id} authenticates and resolves requested document"
+      },
+      {
+        "kind": "propagation",
+        "file": "app/app.py",
+        "line": 39,
+        "description": "can_read policy; original version omits required predicate"
+      },
+      {
+        "kind": "sink",
+        "file": "app/app.py",
+        "line": 54,
+        "description": "Returns full copied document JSON"
+      }
+    ],
+    "evidence": [
+      {
+        "file": "security-audit/original-app.py",
+        "line": 39,
+        "description": "Preserved pre-fix policy"
+      },
+      {
+        "file": "security-audit/before-tests.txt",
+        "line": 1,
+        "description": "test_migrated_owner_denied_and_return_restores_ownership and test_migrated_recipient_denied_and_return_restores_live_grant fail with 200 != 404 before fix"
+      },
+      {
+        "file": "app/test_security.py",
+        "line": 32,
+        "description": "Executable bounded regressions"
+      },
+      {
+        "file": "security-audit/after-tests.txt",
+        "line": 1,
+        "description": "All 12 regression/control tests pass after fix"
+      }
+    ],
+    "counterevidence": "actor resolves current user state, and share/revoke require owner plus current tenant (original app.py:58 and :74). Those controls do not execute in the read path. Revocation and document/recipient matching limit access to formerly authorized resources but do not enforce membership.",
+    "confidence": "high",
+    "reproduced": true,
+    "severity": {
+      "likelihood": {
+        "score": "medium",
+        "reason": "Requires a previously legitimate grant or ownership and subsequent expiry/migration."
+      },
+      "impact": {
+        "score": "high",
+        "reason": "Fully defeats the explicit access withdrawal or tenant boundary and discloses full document contents."
+      },
+      "overall": "high"
+    },
+    "conditions": [
+      {
+        "kind": "authentication_level",
+        "description": "Authenticated fixture user"
+      },
+      {
+        "kind": "data_state",
+        "description": "A trusted directory has moved the authenticated owner or live-share recipient to another tenant; the document remains in its original tenant."
+      }
+    ],
+    "disposition": "Fixed",
+    "ext": {
+      "description": "A previously authorized owner or share recipient can GET a document from the original tenant after a trusted directory migration to another tenant. The original can_read ignored its user argument, so both branches bypassed the required current-tenant boundary and returned full document JSON.",
+      "regression_test": "app/test_security.py",
+      "fix_verified_on": "2026-11-18",
+      "verification": "test_migrated_owner_denied_and_return_restores_ownership and test_migrated_recipient_denied_and_return_restores_live_grant"
+    }
+  }
+]

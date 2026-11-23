@@ -1,0 +1,13 @@
+test_current_membership_with_existing_session (app.test_assessment.PortalAssessment.test_current_membership_with_existing_session) ... ok
+test_export_role_and_current_tenant (app.test_assessment.PortalAssessment.test_export_role_and_current_tenant) ... ok
+test_literal_rendering_and_response_controls (app.test_assessment.PortalAssessment.test_literal_rendering_and_response_controls) ... ok
+test_login_origin_and_invalid_credentials (app.test_assessment.PortalAssessment.test_login_origin_and_invalid_credentials) ... ok
+test_logout_csrf_and_invalidation (app.test_assessment.PortalAssessment.test_logout_csrf_and_invalidation) ... ok
+test_public_navigation_and_anonymous_boundary (app.test_assessment.PortalAssessment.test_public_navigation_and_anonymous_boundary) ... ok
+test_session_rotation_and_cookie_controls (app.test_assessment.PortalAssessment.test_session_rotation_and_cookie_controls) ... ok
+test_ticket_ownership_and_tenant_matrix (app.test_assessment.PortalAssessment.test_ticket_ownership_and_tenant_matrix) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.145s
+
+OK

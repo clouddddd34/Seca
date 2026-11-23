@@ -1,0 +1,401 @@
+[
+  {
+    "id": "home",
+    "surface": "GET /",
+    "boundary": "anonymous to HTML",
+    "owasp_category": "A05:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Static HTML only",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "GET / returns 200; no user input sink."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "help",
+    "surface": "GET /help",
+    "boundary": "anonymous to HTML",
+    "owasp_category": "A05:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Static policy text only",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "GET /help returns 200."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "form",
+    "surface": "GET /login",
+    "boundary": "anonymous to HTML",
+    "owasp_category": "A05:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Static login form only",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "GET /login returns 200; no interpolation of user input."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "login",
+    "surface": "POST /login",
+    "boundary": "anonymous to session",
+    "owasp_category": "A07:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Session rotation and opaque credentials",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "32-byte token_urlsafe session/CSRF tokens, constant-time password comparison, HttpOnly/SameSite=strict; rotation/replay tests pass."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "origin",
+    "surface": "POST /login",
+    "boundary": "cross-origin to session",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Login requires exact site Origin",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "Missing, foreign and suffix-confusion origins return 403 without session creation."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "list",
+    "surface": "GET /tickets",
+    "boundary": "member to other owner/tenant",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Ownership AND current membership",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "All four users tested; only own current-tenant tickets listed; migrated Alice loses north ticket."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "detail",
+    "surface": "GET /tickets/{ticket_id}",
+    "boundary": "member to other owner/tenant",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Ownership AND current membership before disclosure",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "Other owners/tenants and absent IDs return 404; anonymous requests return 401 including encoded slashes."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "search",
+    "surface": "GET /tickets?q=",
+    "boundary": "user input to HTML",
+    "owasp_category": "A05:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Search is literal text",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "Four markup payloads escaped using html.escape, including img/onerror and SVG forms."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "export",
+    "surface": "GET /admin/export",
+    "boundary": "member/admin to tenant data",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Current admin role and tenant required",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "Members return 403; anonymous 401; admin exports north then south after migration; downgrade returns 403."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "logout",
+    "surface": "POST /logout",
+    "boundary": "request to session revocation",
+    "owasp_category": "A01:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "CSRF verification before invalidation",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "Missing/wrong CSRF returns 403 preserving session; valid token returns 303; replayed session returns 401."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "config",
+    "surface": "middleware",
+    "boundary": "HTTP to response",
+    "owasp_category": "A02:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Restrictive headers and disabled docs",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "CSP, nosniff, no-store verified on public pages; docs disabled; static early denials lack these headers (hardening note)."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "crypto",
+    "surface": "sessions",
+    "boundary": "anonymous to credential",
+    "owasp_category": "A04:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No attacker-derived bearer credentials",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "secrets.token_urlsafe(32) and compare_digest used; fixed fixture passwords excluded by README."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "design",
+    "surface": "login/logout",
+    "boundary": "request to state",
+    "owasp_category": "A06:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Bounded workflow preserves valid use",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "Login, navigation, own-ticket reads and valid logout succeed; only login/logout mutate sessions; rate limiting intentionally absent."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "integrity",
+    "surface": "directory/session",
+    "boundary": "trusted state to authorization",
+    "owasp_category": "A08:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Authorization uses trusted current directory",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "Session stores name/CSRF, not tenant/role snapshot; current tenant and role changes applied on next request."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "logs",
+    "surface": "all routes",
+    "boundary": "request to diagnostics",
+    "owasp_category": "A09:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "No credentials written to application logs",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "No logging calls or external sinks; missing security telemetry noted without claimed exploit."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "errors",
+    "surface": "login/logout",
+    "boundary": "malformed input to handler",
+    "owasp_category": "A10:2025",
+    "status": "covered",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Malformed requests do not bypass controls",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "Invalid UTF-8 login and non-ASCII logout CSRF return generic 500; sessions unchanged; subsequent authorized request succeeds."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "supply",
+    "surface": "dependencies",
+    "boundary": "packages to runtime",
+    "owasp_category": "A03:2025",
+    "status": "out_of_scope",
+    "reviewed_paths": [
+      "app/app.py",
+      "app/README.md"
+    ],
+    "checks": [
+      {
+        "invariant": "Dependency provenance/advisories",
+        "method": "Source trace; security-audit/test_portal.py where applicable",
+        "result": "No manifest or lockfile supplied in app; external advisory services and package installation forbidden. Package vulnerability assurance excluded."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": [
+      "No external services authorized; no app dependency lockfile supplied."
+    ]
+  },
+  {
+    "id": "ssrf",
+    "surface": "all application routes",
+    "boundary": "request to external/interpreter sink",
+    "owasp_category": "A01:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Relevant dangerous sink absent",
+        "method": "Complete source read",
+        "result": "No outbound HTTP, URL fetch or redirect destination from user input."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "injection",
+    "surface": "all application routes",
+    "boundary": "request to external/interpreter sink",
+    "owasp_category": "A05:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Relevant dangerous sink absent",
+        "method": "Complete source read",
+        "result": "No SQL, NoSQL, shell execution, template evaluation, or filesystem sink."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  },
+  {
+    "id": "deserialization",
+    "surface": "all application routes",
+    "boundary": "request to external/interpreter sink",
+    "owasp_category": "A08:2025",
+    "status": "not_applicable",
+    "reviewed_paths": [
+      "app/app.py"
+    ],
+    "checks": [
+      {
+        "invariant": "Relevant dangerous sink absent",
+        "method": "Complete source read",
+        "result": "No pickle/eval or signed external artifact ingestion; only URL-encoded form parsing."
+      }
+    ],
+    "finding_fingerprints": [],
+    "unresolved": []
+  }
+]

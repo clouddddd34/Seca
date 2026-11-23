@@ -1,0 +1,25 @@
+python : test_bare_account_cannot_authenticate_or_mutate 
+(app.test_security.SecurityTests.test_bare_account_cannot_authenticate_or_mutate) ... ok
+At line:2 char:1
++ python -m unittest app.test_security -v 2>&1 | Tee-Object -FilePath e ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_bare_accou..._mutate) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_coupon_cannot_be_reused_across_orders 
+(app.test_security.SecurityTests.test_coupon_cannot_be_reused_across_orders) ... ok
+test_coupon_is_per_account (app.test_security.SecurityTests.test_coupon_is_per_account) ... ok
+test_failed_payment_keeps_coupon_and_draft 
+(app.test_security.SecurityTests.test_failed_payment_keeps_coupon_and_draft) ... ok
+test_ownership_and_authentication_controls 
+(app.test_security.SecurityTests.test_ownership_and_authentication_controls) ... ok
+test_quantity_bounds (app.test_security.SecurityTests.test_quantity_bounds) ... ok
+test_refund_does_not_restore_coupon (app.test_security.SecurityTests.test_refund_does_not_restore_coupon) ... ok
+test_refund_only_once (app.test_security.SecurityTests.test_refund_only_once) ... ok
+test_valid_workflows_and_transition_controls 
+(app.test_security.SecurityTests.test_valid_workflows_and_transition_controls) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.108s
+
+OK

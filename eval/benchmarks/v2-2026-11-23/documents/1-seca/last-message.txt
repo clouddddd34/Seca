@@ -1,0 +1,8 @@
+Completed [report.md](report.md) with evidence, fixes, tested controls, coverage, and limitations.
+
+Confirmed and fixed two authorization bugs:
+
+- Document access persisted after tenant migration.
+- Expired shares still granted read access.
+
+All 10 regression and control tests pass. Changes are limited to the read authorization check; valid workflows remain working.

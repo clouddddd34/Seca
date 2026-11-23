@@ -1,0 +1,13 @@
+test_admin_export_uses_current_tenant_and_role (test_security.SecurityTests.test_admin_export_uses_current_tenant_and_role) ... ok
+test_literal_search_and_headers (test_security.SecurityTests.test_literal_search_and_headers) ... ok
+test_login_origin_rotation_and_cookie_controls (test_security.SecurityTests.test_login_origin_rotation_and_cookie_controls) ... ok
+test_logout_csrf_and_replay (test_security.SecurityTests.test_logout_csrf_and_replay) ... ok
+test_membership_changes_apply_to_existing_session (test_security.SecurityTests.test_membership_changes_apply_to_existing_session) ... ok
+test_owner_and_tenant_matrix (test_security.SecurityTests.test_owner_and_tenant_matrix) ... ok
+test_public_and_anonymous_boundaries (test_security.SecurityTests.test_public_and_anonymous_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.170s
+
+OK
+Process exit code: 0

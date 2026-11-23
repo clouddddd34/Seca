@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "path": "/openapi.json",
+      "methods": [
+        "GET",
+        "HEAD"
+      ]
+    },
+    {
+      "path": "/docs",
+      "methods": [
+        "GET",
+        "HEAD"
+      ]
+    },
+    {
+      "path": "/docs/oauth2-redirect",
+      "methods": [
+        "GET",
+        "HEAD"
+      ]
+    },
+    {
+      "path": "/redoc",
+      "methods": [
+        "GET",
+        "HEAD"
+      ]
+    },
+    {
+      "path": "/orders",
+      "methods": [
+        "POST"
+      ]
+    },
+    {
+      "path": "/orders/{order_id}",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "path": "/orders/{order_id}/pay",
+      "methods": [
+        "POST"
+      ]
+    },
+    {
+      "path": "/orders/{order_id}/refund",
+      "methods": [
+        "POST"
+      ]
+    },
+    {
+      "path": "/wallet",
+      "methods": [
+        "GET"
+      ]
+    }
+  ],
+  "local_get_status": {
+    "/openapi.json": 200,
+    "/docs": 200,
+    "/redoc": 200,
+    "/docs/oauth2-redirect": 200
+  }
+}

@@ -1,0 +1,3 @@
+Created [report.md](report.md) with findings, evidence, fixes, coverage, and limitations.
+
+Confirmed and fixed three bugs: repeated refunds, coupon reuse, and bare-account authentication bypass. All eight regression tests pass. Concurrent-request behavior remains explicitly unverified.

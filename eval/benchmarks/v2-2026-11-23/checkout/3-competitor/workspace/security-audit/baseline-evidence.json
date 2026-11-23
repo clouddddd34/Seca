@@ -1,0 +1,51 @@
+{
+  "bare_account": {
+    "status": 200
+  },
+  "coupon_reuse": {
+    "status": 200,
+    "before": {
+      "balance": 9500,
+      "used_coupons": [
+        "WELCOME"
+      ]
+    },
+    "after": {
+      "balance": 9000,
+      "used_coupons": [
+        "WELCOME"
+      ]
+    },
+    "order": {
+      "id": 2,
+      "owner": "alice",
+      "quantity": 1,
+      "total": 1000,
+      "state": "paid",
+      "paid": 500
+    }
+  },
+  "refund_replay": {
+    "status": 200,
+    "before": {
+      "balance": 10000,
+      "used_coupons": [
+        "WELCOME"
+      ]
+    },
+    "after": {
+      "balance": 12500,
+      "used_coupons": [
+        "WELCOME"
+      ]
+    },
+    "order": {
+      "id": 1,
+      "owner": "alice",
+      "quantity": 3,
+      "total": 3000,
+      "state": "refunded",
+      "paid": 2500
+    }
+  }
+}

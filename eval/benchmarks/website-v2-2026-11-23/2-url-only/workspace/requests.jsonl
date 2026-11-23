@@ -1,0 +1,5 @@
+{"id":1,"method":"GET","url":"http://127.0.0.1:2164/","linkedFrom":"User-supplied URL","utc":"2026-11-23T02:01:57.4047140Z"}
+{"id":2,"method":"GET","url":"http://127.0.0.1:2164/help","linkedFrom":"Request 1 navigation","utc":"2026-11-23T02:02:01.1273449Z"}
+{"id":3,"method":"GET","url":"http://127.0.0.1:2164/login","linkedFrom":"Request 1 navigation","utc":"2026-11-23T02:02:04.9003436Z"}
+{"id":4,"method":"GET","url":"http://127.0.0.1:2164/tickets","linkedFrom":"Request 1 navigation","utc":"2026-11-23T02:02:08.5846850Z"}
+{"id":5,"method":"GET","url":"http://127.0.0.1:2164/admin/export","linkedFrom":"Request 1 navigation: Admin export (read/download)","utc":"2026-11-23T02:02:12.2700408Z"}
