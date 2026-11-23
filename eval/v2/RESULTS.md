@@ -1,9 +1,14 @@
-# Benchmark v2: incomplete comparison
+# Benchmark v2: closed with incomplete results
 
 Recorded 2026-11-23 (Asia/Taipei). Assessments span November 18 and 23.
 The requested model was `gpt-6-astra`, medium reasoning, with a 180-second budget.
 The provider model build and global runtime instructions cannot be guaranteed identical
 across dates. The original nine-run benchmark remains unchanged.
+
+The comparison was closed on 2026-11-23 before revising the skill. Its 22 reviewed
+results and exclusions are final for this study. The blocked attempt will not be
+retried and the four unstarted assessments will not be filled with a different skill
+revision. Any future comparison requires a new protocol and fresh workspaces.
 
 ## Source assessments
 
@@ -64,23 +69,23 @@ The strengthened retrospective tenant-migration check accepts all three original
 patches, one baseline patch, and no competitor patches. It does not change the original
 benchmark scores. See [retrospective results](retrospective-tenant-check.json).
 
-## Skill improvement still pending
+## Improvements identified by this comparison
 
-Keep the assessed skill unchanged while the source comparison is suspended. The narrow
+The assessed skill is preserved by the checkpoint at `b172c67`. The narrow
 candidate improvement is to consider bounded overlapping-request verification when an
 authorized local workflow promises at-most-once payment, refund, or resource consumption;
 sequential replay alone does not establish atomicity. Any such verification must remain
 within authorized state changes and inspect resulting state. If it cannot be performed,
 report concurrency as unverified. This proposed wording has not been behaviorally tested
-and is not included in the distributed skill.
+in this comparison. Subsequent revisions and validation are separate evidence.
 
-After permitted evaluation can continue, freeze the comparative results before applying
-that change. A post-change follow-up must remain separate from comparative scores.
+The comparative results are now frozen. Post-change follow-ups remain separate from
+these scores and do not complete the missing assessments.
 
 The separate website experiment also exposed an execution-policy deviation in one
 URL-only run. Any later skill revision should explicitly treat a denied execution as
 a blocker for that check, without trying another mechanism to execute the denied
-script. This behavioral improvement is also pending; the original skill is preserved.
+script. The original skill and observed deviation remain part of the historical record.
 
 ## Evidence and reproduction
 

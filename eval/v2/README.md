@@ -1,7 +1,8 @@
 # Benchmark v2
 
-**Current status:** the comparison is interrupted: 22 reviewed results, one
-provider-safeguard failure, and four unstarted assessments. See [results](RESULTS.md).
+**Current status:** the comparison is closed with incomplete results: 22 reviewed
+results, one provider-safeguard failure, and four unstarted assessments. See
+[results](RESULTS.md) and [closure record](CLOSURE.json).
 The spend-cap recovery example below does not apply to the safeguard failure.
 
 Read [PROTOCOL.md](PROTOCOL.md) before preparing or scoring. It defines the root-cause

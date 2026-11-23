@@ -1,0 +1,14 @@
+{
+  "closed_on": "2026-11-23",
+  "timezone": "Asia/Taipei",
+  "status": "closed_incomplete",
+  "checkpoint_commit": "b172c679865ca62e506b17109371a5e5ff3763a5",
+  "planned_assessments": 27,
+  "reviewed_assessments": 22,
+  "failed_assessment": "checkout/3-baseline",
+  "unstarted_assessments": ["checkout/3-seca", "portal/3-competitor", "portal/3-baseline", "portal/3-seca"],
+  "reason": "Provider safeguard stopped one assessment. Close the comparison with its observed denominators rather than bypassing the block or mixing skill revisions.",
+  "historical_scores_changed": false,
+  "retry_authorized_by_this_record": false,
+  "followups": "Separate permitted cases and fresh workspaces; no rerun of the denied checkout assessment."
+}
