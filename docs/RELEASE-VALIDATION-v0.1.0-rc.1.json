@@ -1,0 +1,24 @@
+{
+  "source_commit": "d9207cb29545dd257be07075ceffdd9e862a1724",
+  "archives": [
+    {
+      "file": "seca-skill-v0.1.0-rc.1.zip",
+      "sha256": "faaf5c4a6a1d0c7f3f6b656a54e59a987336f19437b04376aee18fabf25d8828",
+      "files": 10,
+      "zip_integrity": true
+    },
+    {
+      "file": "seca-v0.1.0-rc.1-windows-x86_64.zip",
+      "sha256": "9c6f2b596573f450f7cd7e8c4d8d0db0dea49d92566f4df5e5de732dc2d7a7ab",
+      "files": 195,
+      "zip_integrity": true
+    }
+  ],
+  "extracted_cli_smoke": "passed log-init and log-check",
+  "python_tests": 29,
+  "rust_tests": 3,
+  "release_url": "https://github.com/clouddddd34/Seca/releases/tag/v0.1.0-rc.1",
+  "release_published": true,
+  "prerelease": true,
+  "remote_asset_hashes_verified": true
+}
